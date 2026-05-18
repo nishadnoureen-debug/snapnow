@@ -376,6 +376,28 @@
         </div>
     </footer>
 
+    <!-- Booking Confirmation Popup / Modal -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close-btn" id="closeModal">&times;</div>
+            <div class="modal-success-icon">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h3 class="modal-title">Booking Received!</h3>
+            <p class="modal-message">Thank you, <strong id="modalName">Name</strong>. Your request for <strong id="modalPackage">Package</strong> is successfully sent.</p>
+            <div class="modal-details">
+                <p><strong>Email:</strong> <span id="modalEmail">email@example.com</span></p>
+                <p><strong>Phone:</strong> <span id="modalPhone">+971...</span></p>
+                <p id="modalDateContainer"><strong>Event Date:</strong> <span id="modalDate">TBD</span></p>
+            </div>
+            <p class="modal-subtext">Our team will contact you within 24 hours to confirm your session.</p>
+            <button id="modalOkBtn" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Perfect, Thank You!</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

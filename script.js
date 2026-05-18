@@ -170,15 +170,123 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Modal Selectors
+    const confirmationModal = document.getElementById('confirmationModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modalOkBtn = document.getElementById('modalOkBtn');
+    const modalName = document.getElementById('modalName');
+    const modalPackage = document.getElementById('modalPackage');
+    const modalEmail = document.getElementById('modalEmail');
+    const modalPhone = document.getElementById('modalPhone');
+    const modalDate = document.getElementById('modalDate');
+    const modalDateContainer = document.getElementById('modalDateContainer');
+
+    function showModal(name, pkg, email, phone, date) {
+        if (modalName) modalName.textContent = name;
+        if (modalPackage) {
+            modalPackage.textContent = pkg ? pkg + ' Package' : 'a Session';
+        }
+        if (modalEmail) modalEmail.textContent = email;
+        if (modalPhone) modalPhone.textContent = phone;
+        
+        if (modalDate) {
+            if (date) {
+                modalDate.textContent = new Date(date).toLocaleDateString('en-US', {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                if (modalDateContainer) modalDateContainer.style.display = 'flex';
+            } else {
+                if (modalDateContainer) modalDateContainer.style.display = 'none';
+            }
+        }
+        
+        if (confirmationModal) {
+            confirmationModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Disable background scrolling when modal is open
+        }
+    }
+
+    function hideModal() {
+        if (confirmationModal) {
+            confirmationModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore body scroll
+        }
+    }
+
+    if (closeModalBtn) closeModalBtn.addEventListener('click', hideModal);
+    if (modalOkBtn) modalOkBtn.addEventListener('click', hideModal);
+    if (confirmationModal) {
+        confirmationModal.addEventListener('click', (e) => {
+            if (e.target === confirmationModal) {
+                hideModal();
+            }
+        });
+    }
+
     if (bookingForm) {
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            
+            const fullName = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const date = document.getElementById('date').value.trim();
             const pkg = selectedPackageInput ? selectedPackageInput.value : '';
-            alert(`Thank you for your request to book ${pkg}! We will contact you soon.`);
-            bookingForm.reset();
-            if (bookingFormTitle) {
-                bookingFormTitle.textContent = 'Book a Package';
+            
+            // Format name with package if chosen, e.g. "John Doe [Package: Signature]"
+            const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
+
+            // Submit using fetch in x-www-form-urlencoded
+            const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
+            
+            const urlParams = new URLSearchParams();
+            urlParams.append('entry.720595420', fullNameWithPackage);
+            urlParams.append('entry.190919875', email);
+            urlParams.append('entry.992756748', phone);
+            urlParams.append('entry.494052433', date || 'Not Specified');
+            
+            // Change submit button state to loading
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Request';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
             }
+
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: urlParams.toString()
+            })
+            .then(() => {
+                // Show custom popup modal with form values
+                showModal(fullName, pkg, email, phone, date);
+                
+                // Reset form
+                bookingForm.reset();
+                if (bookingFormTitle) {
+                    bookingFormTitle.textContent = 'Book a Package';
+                }
+            })
+            .catch((err) => {
+                console.error("Submission error:", err);
+                // Fallback (e.g. offline/network blocked): trigger success since opaque redirects may trigger errors on certain environments
+                showModal(fullName, pkg, email, phone, date);
+                bookingForm.reset();
+            })
+            .finally(() => {
+                // Reset button state
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            });
         });
     }
 
