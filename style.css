@@ -967,15 +967,6 @@ a.hero-slide-side {
 .item-2 { grid-column: 7 / 13; grid-row: 2 / 8; }
 .item-3 { grid-column: 4 / 9; grid-row: 5 / 11; z-index: 5; }
 
-/* Wedding Stories caption — top-left, always visible */
-.item-1 .moment-caption {
-    bottom: auto;
-    top: 0;
-    text-align: left;
-    background: linear-gradient(rgba(0,0,0,0.75), transparent);
-    transform: translateY(0);
-    opacity: 1;
-}
 
 .moment-caption {
     position: absolute;
