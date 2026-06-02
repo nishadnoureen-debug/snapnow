@@ -553,31 +553,36 @@ a.hero-slide-side {
 
 /* Express / Same-Day Delivery Card */
 .package-card.express {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: linear-gradient(135deg, #0e0e1e 0%, #15152a 100%);
     color: var(--white);
+    border: 1px solid rgba(245, 166, 35, 0.25);
     border-top: 4px solid #f5a623;
-    box-shadow: 0 15px 35px rgba(245, 166, 35, 0.25);
+    box-shadow: 0 15px 35px rgba(245, 166, 35, 0.15), 0 0 20px rgba(245, 166, 35, 0.1);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .package-card.express:hover {
-    transform: scale(1.03);
-    box-shadow: 0 25px 50px rgba(245, 166, 35, 0.5);
-    border-top-color: #f5a623;
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(245, 166, 35, 0.4), 0 0 30px rgba(245, 166, 35, 0.2);
+    border-color: #f5a623;
     z-index: 10;
 }
 
 .package-card.express h3,
 .package-card.express .package-number {
     color: #f5a623;
+    text-shadow: 0 0 10px rgba(245, 166, 35, 0.3);
 }
 
 .package-card.express .package-price {
     color: #f5a623;
+    text-shadow: 0 0 15px rgba(245, 166, 35, 0.4);
 }
 
 .package-card.express .package-best-for {
-    color: rgba(255, 255, 255, 0.75);
-    border-bottom-color: rgba(245, 166, 35, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom-color: rgba(245, 166, 35, 0.25);
 }
 
 .package-card.express .package-highlights i {
@@ -585,7 +590,51 @@ a.hero-slide-side {
 }
 
 .package-card.express .package-highlights li {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+}
+
+/* Express Sections & Facilities styling */
+.express-highlights-section {
+    margin-bottom: 1.5rem;
+}
+
+.express-facilities-section {
+    margin-bottom: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(245, 166, 35, 0.3);
+}
+
+.express-section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #f7c948;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.express-facilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.express-facilities-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.express-facilities-list i {
+    color: #f5a623;
+    font-size: 0.95rem;
+    width: 20px;
+    text-align: center;
 }
 
 .express-badge {
