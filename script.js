@@ -290,4 +290,153 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================
+    // Portfolio Filtering Logic
+    // =========================================
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    if (filterButtons.length > 0 && portfolioCards.length > 0) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+
+                    if (filterValue === 'all' || cardCategory === filterValue) {
+                        card.style.display = 'flex';
+                        // Add fade-in animation
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300); // match transition duration
+                    }
+                });
+            });
+        });
+    }
+
+    // =========================================
+    // Lightbox / Project Details Modal Logic
+    // =========================================
+    const projectLightbox = document.getElementById('projectLightbox');
+    const closeLightboxBtn = document.getElementById('closeLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTag = document.getElementById('lightboxTag');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const lightboxClient = document.getElementById('lightboxClient');
+    const lightboxLocation = document.getElementById('lightboxLocation');
+    const lightboxDate = document.getElementById('lightboxDate');
+    const lightboxGear = document.getElementById('lightboxGear');
+    const lightboxBookBtn = document.getElementById('lightboxBookBtn');
+
+    if (projectLightbox && portfolioCards.length > 0) {
+        portfolioCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Get data attributes from clicked card
+                const title = card.getAttribute('data-title');
+                const tag = card.querySelector('.portfolio-tag').textContent;
+                const desc = card.getAttribute('data-desc');
+                const client = card.getAttribute('data-client');
+                const location = card.getAttribute('data-location');
+                const date = card.getAttribute('data-date');
+                const gear = card.getAttribute('data-gear');
+                const imgUrl = card.getAttribute('data-img');
+
+                // Map to lightbox elements
+                if (lightboxImg) lightboxImg.src = imgUrl;
+                if (lightboxImg) lightboxImg.alt = title;
+                if (lightboxTag) lightboxTag.textContent = tag;
+                if (lightboxTitle) lightboxTitle.textContent = title;
+                if (lightboxDesc) lightboxDesc.textContent = desc;
+                if (lightboxClient) lightboxClient.textContent = client;
+                if (lightboxLocation) lightboxLocation.textContent = location;
+                if (lightboxDate) lightboxDate.textContent = date;
+                if (lightboxGear) lightboxGear.textContent = gear;
+
+                // Setup CTA button text & target package
+                if (lightboxBookBtn) {
+                    lightboxBookBtn.textContent = `Book similar ${tag} shoot`;
+                    
+                    // Remove existing event listeners by replacing the node (avoids stack accumulations)
+                    const newBookBtn = lightboxBookBtn.cloneNode(true);
+                    lightboxBookBtn.parentNode.replaceChild(newBookBtn, lightboxBookBtn);
+                    
+                    newBookBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // Close lightbox
+                        hideLightbox();
+                        
+                        // Set selected package and scroll to booking form
+                        const selectedPackageInput = document.getElementById('selectedPackage');
+                        const bookingFormTitle = document.getElementById('bookingFormTitle');
+                        if (selectedPackageInput) selectedPackageInput.value = `${tag} (Inspired by ${title})`;
+                        if (bookingFormTitle) bookingFormTitle.textContent = `Book ${tag} Session`;
+                        
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            window.scrollTo({
+                                top: contactSection.offsetTop,
+                                behavior: 'smooth'
+                            });
+                            setTimeout(() => {
+                                const nameInput = document.getElementById('name');
+                                if (nameInput) nameInput.focus();
+                            }, 800);
+                        }
+                    });
+                }
+
+                // Show lightbox
+                showLightbox();
+            });
+        });
+    }
+
+    function showLightbox() {
+        if (projectLightbox) {
+            projectLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Disable body scroll
+        }
+    }
+
+    function hideLightbox() {
+        if (projectLightbox) {
+            projectLightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Restore body scroll
+        }
+    }
+
+    if (closeLightboxBtn) {
+        closeLightboxBtn.addEventListener('click', hideLightbox);
+    }
+
+    if (projectLightbox) {
+        projectLightbox.addEventListener('click', (e) => {
+            if (e.target === projectLightbox) {
+                hideLightbox();
+            }
+        });
+    }
+
+    // ESC key closes lightbox
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            hideLightbox();
+        }
+    });
+
 });
