@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navLinks.classList.contains('active')) {
                 hamburgerIcon.classList.remove('fa-bars');
                 hamburgerIcon.classList.add('fa-xmark');
-                // Ensure hamburger is visible against white menu background
-                hamburger.style.color = 'var(--dark)';
+                // Ensure hamburger is visible against dark menu background
+                hamburger.style.color = 'var(--white)';
             } else {
                 hamburgerIcon.classList.remove('fa-xmark');
                 hamburgerIcon.classList.add('fa-bars');
