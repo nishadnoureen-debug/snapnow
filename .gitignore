@@ -17,3 +17,7 @@ Thumbs.db
 
 node20/
 node20.zip
+
+# Dependencies
+node_modules/
+package-lock.json
