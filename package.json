@@ -1,0 +1,17 @@
+{
+  "name": "snapnow",
+  "version": "1.0.0",
+  "description": "Professional visual storytelling website",
+  "main": "script.js",
+  "scripts": {
+    "build": "echo 'Static HTML project - no build required'",
+    "lint": "echo 'No linter configured'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": ["photography", "videography", "visual storytelling"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}
