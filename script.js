@@ -432,11 +432,146 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ESC key closes lightbox
+    // ESC key closes modals / lightboxes
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             hideLightbox();
+            hideBlogModal();
         }
     });
+
+    // =========================================
+    // Blogs Filtering Logic
+    // =========================================
+    const blogFilterButtons = document.querySelectorAll('.blogs-filters .filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    if (blogFilterButtons.length > 0 && blogCards.length > 0) {
+        blogFilterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                blogFilterButtons.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                blogCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+
+                    if (filterValue === 'all' || cardCategory === filterValue) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    }
+
+    // =========================================
+    // Blog Modal / Reading Logic
+    // =========================================
+    const blogModal = document.getElementById('blogModal');
+    const closeBlogModalBtn = document.getElementById('closeBlogModal');
+    const blogModalImg = document.getElementById('blogModalImg');
+    const blogModalTag = document.getElementById('blogModalTag');
+    const blogModalDate = document.getElementById('blogModalDate');
+    const blogModalTitle = document.getElementById('blogModalTitle');
+    const blogModalBody = document.getElementById('blogModalBody');
+    const blogModalBookBtn = document.getElementById('blogModalBookBtn');
+
+    if (blogModal && blogCards.length > 0) {
+        blogCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Check if the click was inside a link or booking CTA, if so, ignore card click
+                if (e.target.closest('.btn') || e.target.closest('a')) {
+                    return;
+                }
+
+                const title = card.getAttribute('data-title');
+                const tag = card.getAttribute('data-tag');
+                const date = card.getAttribute('data-date');
+                const imgUrl = card.getAttribute('data-img');
+                const fullContentDiv = card.querySelector('.blog-full-content');
+                const fullContentHtml = fullContentDiv ? fullContentDiv.innerHTML : '';
+
+                // Map to modal elements
+                if (blogModalImg) blogModalImg.src = imgUrl;
+                if (blogModalImg) blogModalImg.alt = title;
+                if (blogModalTag) blogModalTag.textContent = tag;
+                if (blogModalDate) blogModalDate.innerHTML = `<i class="fa-regular fa-calendar-days"></i> ${date}`;
+                if (blogModalTitle) blogModalTitle.textContent = title;
+                if (blogModalBody) blogModalBody.innerHTML = fullContentHtml;
+
+                // Setup CTA button
+                if (blogModalBookBtn) {
+                    blogModalBookBtn.textContent = `Book a Session (Inspired by: ${tag})`;
+                    
+                    // Replace to remove previous listeners
+                    const newBookBtn = blogModalBookBtn.cloneNode(true);
+                    blogModalBookBtn.parentNode.replaceChild(newBookBtn, blogModalBookBtn);
+                    
+                    newBookBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        hideBlogModal();
+                        
+                        const selectedPackageInput = document.getElementById('selectedPackage');
+                        const bookingFormTitle = document.getElementById('bookingFormTitle');
+                        if (selectedPackageInput) selectedPackageInput.value = `Blog: ${title}`;
+                        if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session`;
+                        
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            window.scrollTo({
+                                top: contactSection.offsetTop,
+                                behavior: 'smooth'
+                            });
+                            setTimeout(() => {
+                                const nameInput = document.getElementById('name');
+                                if (nameInput) nameInput.focus();
+                            }, 800);
+                        }
+                    });
+                }
+
+                showBlogModal();
+            });
+        });
+    }
+
+    function showBlogModal() {
+        if (blogModal) {
+            blogModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function hideBlogModal() {
+        if (blogModal) {
+            blogModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (closeBlogModalBtn) {
+        closeBlogModalBtn.addEventListener('click', hideBlogModal);
+    }
+
+    if (blogModal) {
+        blogModal.addEventListener('click', (e) => {
+            if (e.target === blogModal) {
+                hideBlogModal();
+            }
+        });
+    }
 
 });
