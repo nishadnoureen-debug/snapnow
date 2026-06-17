@@ -355,10 +355,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 const date = card.getAttribute('data-date');
                 const gear = card.getAttribute('data-gear');
                 const imgUrl = card.getAttribute('data-img');
+                const videoUrl = card.getAttribute('data-video');
+                const container = projectLightbox.querySelector('.lightbox-container');
+
+                // Clear any existing iframe first
+                const existingIframe = projectLightbox.querySelector('.lightbox-media iframe');
+                if (existingIframe) {
+                    existingIframe.remove();
+                }
+
+                if (videoUrl) {
+                    if (lightboxImg) lightboxImg.style.display = 'none';
+                    if (container) container.classList.add('has-video');
+                    
+                    const iframe = document.createElement('iframe');
+                    iframe.src = videoUrl;
+                    iframe.setAttribute('allowtransparency', 'true');
+                    iframe.setAttribute('allow', 'encrypted-media');
+                    iframe.setAttribute('scrolling', 'no');
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.border = 'none';
+                    
+                    const lightboxMedia = projectLightbox.querySelector('.lightbox-media');
+                    if (lightboxMedia) lightboxMedia.appendChild(iframe);
+                } else {
+                    if (lightboxImg) {
+                        lightboxImg.style.display = 'block';
+                        lightboxImg.src = imgUrl;
+                        lightboxImg.alt = title;
+                    }
+                    if (container) container.classList.remove('has-video');
+                }
 
                 // Map to lightbox elements
-                if (lightboxImg) lightboxImg.src = imgUrl;
-                if (lightboxImg) lightboxImg.alt = title;
                 if (lightboxTag) lightboxTag.textContent = tag;
                 if (lightboxTitle) lightboxTitle.textContent = title;
                 if (lightboxDesc) lightboxDesc.textContent = desc;
@@ -417,6 +447,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (projectLightbox) {
             projectLightbox.classList.remove('active');
             document.body.style.overflow = ''; // Restore body scroll
+            
+            // Clear iframe if present to stop video audio
+            const lightboxMedia = projectLightbox.querySelector('.lightbox-media');
+            if (lightboxMedia) {
+                const iframe = lightboxMedia.querySelector('iframe');
+                if (iframe) {
+                    iframe.remove();
+                }
+            }
+            const container = projectLightbox.querySelector('.lightbox-container');
+            if (container) {
+                container.classList.remove('has-video');
+            }
         }
     }
 
