@@ -345,7 +345,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (projectLightbox && portfolioCards.length > 0) {
         portfolioCards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+                // Check if card has a direct external link to open in new tab
+                const directLink = card.getAttribute('data-link');
+                if (directLink) {
+                    window.open(directLink, '_blank');
+                    return;
+                }
+
                 // Get data attributes from clicked card
                 const title = card.getAttribute('data-title');
                 const tag = card.querySelector('.portfolio-tag').textContent;
