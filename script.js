@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     existingIframe.remove();
                 }
 
-                if (videoUrl) {
+                    if (videoUrl) {
                     if (lightboxImg) lightboxImg.style.display = 'none';
                     if (container) container.classList.add('has-video');
                     
@@ -376,6 +376,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     iframe.style.width = '100%';
                     iframe.style.height = '100%';
                     iframe.style.border = 'none';
+                    // Sandbox to prevent third-party embeds (like Instagram) from hijacking/redirecting the parent window
+                    iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
                     
                     const lightboxMedia = projectLightbox.querySelector('.lightbox-media');
                     if (lightboxMedia) lightboxMedia.appendChild(iframe);
@@ -398,12 +400,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lightboxGear) lightboxGear.textContent = gear;
 
                 // Setup CTA button text & target package
-                if (lightboxBookBtn) {
-                    lightboxBookBtn.textContent = `Book similar ${tag} shoot`;
+                const currentBookBtn = document.getElementById('lightboxBookBtn');
+                if (currentBookBtn) {
+                    currentBookBtn.textContent = `Book similar ${tag} shoot`;
                     
                     // Remove existing event listeners by replacing the node (avoids stack accumulations)
-                    const newBookBtn = lightboxBookBtn.cloneNode(true);
-                    lightboxBookBtn.parentNode.replaceChild(newBookBtn, lightboxBookBtn);
+                    const newBookBtn = currentBookBtn.cloneNode(true);
+                    currentBookBtn.parentNode.replaceChild(newBookBtn, currentBookBtn);
                     
                     newBookBtn.addEventListener('click', (e) => {
                         e.preventDefault();
@@ -556,12 +559,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (blogModalBody) blogModalBody.innerHTML = fullContentHtml;
 
                 // Setup CTA button
-                if (blogModalBookBtn) {
-                    blogModalBookBtn.textContent = `Book a Session (Inspired by: ${tag})`;
+                const currentBlogBookBtn = document.getElementById('blogModalBookBtn');
+                if (currentBlogBookBtn) {
+                    currentBlogBookBtn.textContent = `Book a Session (Inspired by: ${tag})`;
                     
                     // Replace to remove previous listeners
-                    const newBookBtn = blogModalBookBtn.cloneNode(true);
-                    blogModalBookBtn.parentNode.replaceChild(newBookBtn, blogModalBookBtn);
+                    const newBookBtn = currentBlogBookBtn.cloneNode(true);
+                    currentBlogBookBtn.parentNode.replaceChild(newBookBtn, currentBlogBookBtn);
                     
                     newBookBtn.addEventListener('click', (e) => {
                         e.preventDefault();
