@@ -136,6 +136,17 @@ ul {
     color: var(--white);
 }
 
+.btn-outline-white {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-outline-white:hover {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
 .btn-large {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
