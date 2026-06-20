@@ -346,13 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectLightbox && portfolioCards.length > 0) {
         portfolioCards.forEach(card => {
             card.addEventListener('click', (e) => {
-                // Check if card has a direct external link to open in new tab
-                const directLink = card.getAttribute('data-link');
-                if (directLink) {
-                    window.open(directLink, '_blank');
-                    return;
-                }
-
                 // Get data attributes from clicked card
                 const title = card.getAttribute('data-title');
                 const tag = card.querySelector('.portfolio-tag').textContent;
@@ -365,29 +358,100 @@ document.addEventListener('DOMContentLoaded', () => {
                 const videoUrl = card.getAttribute('data-video');
                 const container = projectLightbox.querySelector('.lightbox-container');
 
-                // Clear any existing iframe first
-                const existingIframe = projectLightbox.querySelector('.lightbox-media iframe');
-                if (existingIframe) {
-                    existingIframe.remove();
+                // Clear any existing iframe or custom video overlay first
+                const lightboxMedia = projectLightbox.querySelector('.lightbox-media');
+                if (lightboxMedia) {
+                    const existingIframe = lightboxMedia.querySelector('iframe');
+                    if (existingIframe) {
+                        existingIframe.remove();
+                    }
+                    const existingOverlay = lightboxMedia.querySelector('.lightbox-video-overlay');
+                    if (existingOverlay) {
+                        existingOverlay.remove();
+                    }
                 }
 
-                    if (videoUrl) {
-                    if (lightboxImg) lightboxImg.style.display = 'none';
+                if (videoUrl) {
                     if (container) container.classList.add('has-video');
                     
-                    const iframe = document.createElement('iframe');
-                    iframe.src = videoUrl;
-                    iframe.setAttribute('allowtransparency', 'true');
-                    iframe.setAttribute('allow', 'encrypted-media');
-                    iframe.setAttribute('scrolling', 'no');
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.border = 'none';
-                    // Sandbox to prevent third-party embeds (like Instagram) from hijacking/redirecting the parent window
-                    iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
-                    
-                    const lightboxMedia = projectLightbox.querySelector('.lightbox-media');
-                    if (lightboxMedia) lightboxMedia.appendChild(iframe);
+                    const directLink = card.getAttribute('data-link');
+                    if (directLink) {
+                        // If directLink exists (Umarul and Desert Dirt Bike), show cover photo + play button overlay
+                        if (lightboxImg) lightboxImg.style.display = 'none';
+                        
+                        const overlayDiv = document.createElement('div');
+                        overlayDiv.className = 'lightbox-video-overlay';
+                        overlayDiv.style.position = 'relative';
+                        overlayDiv.style.width = '100%';
+                        overlayDiv.style.height = '100%';
+                        overlayDiv.style.cursor = 'pointer';
+                        overlayDiv.style.display = 'flex';
+                        overlayDiv.style.alignItems = 'center';
+                        overlayDiv.style.justifyContent = 'center';
+                        overlayDiv.style.background = '#000';
+                        
+                        const thumbImg = document.createElement('img');
+                        thumbImg.src = imgUrl;
+                        thumbImg.style.width = '100%';
+                        thumbImg.style.height = '100%';
+                        thumbImg.style.objectFit = 'cover';
+                        thumbImg.style.opacity = '0.75';
+                        thumbImg.style.transition = 'opacity 0.3s ease';
+                        
+                        const playBtn = document.createElement('div');
+                        playBtn.className = 'custom-play-btn';
+                        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+                        playBtn.style.position = 'absolute';
+                        playBtn.style.width = '80px';
+                        playBtn.style.height = '80px';
+                        playBtn.style.borderRadius = '50%';
+                        playBtn.style.background = 'rgba(255, 255, 255, 0.9)';
+                        playBtn.style.color = '#121212';
+                        playBtn.style.display = 'flex';
+                        playBtn.style.alignItems = 'center';
+                        playBtn.style.justifyContent = 'center';
+                        playBtn.style.fontSize = '2rem';
+                        playBtn.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+                        playBtn.style.transition = 'transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease';
+                        playBtn.style.paddingLeft = '6px';
+                        
+                        overlayDiv.appendChild(thumbImg);
+                        overlayDiv.appendChild(playBtn);
+                        
+                        overlayDiv.addEventListener('mouseenter', () => {
+                            playBtn.style.transform = 'scale(1.1)';
+                            playBtn.style.background = '#FFFFFF';
+                            playBtn.style.boxShadow = '0 12px 30px rgba(164, 214, 94, 0.4)';
+                            thumbImg.style.opacity = '0.85';
+                        });
+                        overlayDiv.addEventListener('mouseleave', () => {
+                            playBtn.style.transform = 'scale(1)';
+                            playBtn.style.background = 'rgba(255, 255, 255, 0.9)';
+                            playBtn.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+                            thumbImg.style.opacity = '0.75';
+                        });
+                        
+                        overlayDiv.addEventListener('click', () => {
+                            window.open(directLink, '_blank');
+                        });
+                        
+                        if (lightboxMedia) lightboxMedia.appendChild(overlayDiv);
+                    } else {
+                        // Standard iframe embed for other video projects
+                        if (lightboxImg) lightboxImg.style.display = 'none';
+                        
+                        const iframe = document.createElement('iframe');
+                        iframe.src = videoUrl;
+                        iframe.setAttribute('allowtransparency', 'true');
+                        iframe.setAttribute('allow', 'encrypted-media');
+                        iframe.setAttribute('scrolling', 'no');
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        iframe.style.border = 'none';
+                        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+                        
+                        if (lightboxMedia) lightboxMedia.appendChild(iframe);
+                    }
                 } else {
                     if (lightboxImg) {
                         lightboxImg.style.display = 'block';
@@ -458,12 +522,16 @@ document.addEventListener('DOMContentLoaded', () => {
             projectLightbox.classList.remove('active');
             document.body.style.overflow = ''; // Restore body scroll
             
-            // Clear iframe if present to stop video audio
+            // Clear iframe or video overlay if present to stop video audio
             const lightboxMedia = projectLightbox.querySelector('.lightbox-media');
             if (lightboxMedia) {
                 const iframe = lightboxMedia.querySelector('iframe');
                 if (iframe) {
                     iframe.remove();
+                }
+                const overlay = lightboxMedia.querySelector('.lightbox-video-overlay');
+                if (overlay) {
+                    overlay.remove();
                 }
             }
             const container = projectLightbox.querySelector('.lightbox-container');
