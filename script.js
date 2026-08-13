@@ -694,6 +694,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideBlogModal();
             }
         });
+    // Ensure WhatsApp floating button is present on the page
+    if (!document.querySelector('.whatsapp-float')) {
+        const waBtn = document.createElement('a');
+        waBtn.href = 'https://wa.me/971585511617';
+        waBtn.className = 'whatsapp-float';
+        waBtn.target = '_blank';
+        waBtn.rel = 'noopener noreferrer';
+        waBtn.setAttribute('aria-label', 'Contact us on WhatsApp');
+        waBtn.innerHTML = '<i class="fa-brands fa-whatsapp"></i>';
+        document.body.appendChild(waBtn);
     }
-
 });
+
