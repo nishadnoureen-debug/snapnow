@@ -436,13 +436,18 @@ a.hero-slide-side {
     }
 }
 
-.package-card.reveal.active {
+.package-card.reveal.active,
+.package-card.reveal.reveal-active {
     animation: packagePopUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
-.package-card.reveal.active:nth-child(3n+1) { animation-delay: 0s; }
-.package-card.reveal.active:nth-child(3n+2) { animation-delay: 0.15s; }
-.package-card.reveal.active:nth-child(3n+3) { animation-delay: 0.3s; }
+.package-card.reveal.active:nth-child(3n+1),
+.package-card.reveal.reveal-active:nth-child(3n+1) { animation-delay: 0s; }
+.package-card.reveal.active:nth-child(3n+2),
+.package-card.reveal.reveal-active:nth-child(3n+2) { animation-delay: 0.15s; }
+.package-card.reveal.active:nth-child(3n+3),
+.package-card.reveal.reveal-active:nth-child(3n+3) { animation-delay: 0.3s; }
+
 
 .package-card:hover {
     transform: scale(1.03);
