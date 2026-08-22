@@ -289,10 +289,9 @@ ul {
 
 /* ---- Google Flow Sideways Hero Animation ---- */
 .hero-slide-side {
-    opacity: 0;
-    transform: translateX(-60px);
-    filter: blur(5px);
-    /* Google Material Design Easing (Decelerated curve) */
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
     transition: opacity 1.2s cubic-bezier(0.4, 0.0, 0.2, 1),
                 transform 1.2s cubic-bezier(0.4, 0.0, 0.2, 1),
                 filter 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -408,30 +407,25 @@ a.hero-slide-side {
     min-width: 280px;
 }
 
-/* Apple/Google-style slow pop-up animation for package cards */
+/* Package card smooth entrance */
 @keyframes packagePopUp {
     0% {
-        opacity: 0;
-        transform: translateY(60px) scale(0.88);
-        filter: blur(4px);
-    }
-    60% {
-        filter: blur(0);
+        opacity: 0.7;
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
+        transform: translateY(0);
     }
 }
 
 .package-card.reveal.active {
-    animation: packagePopUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) both;
+    animation: packagePopUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
 .package-card.reveal.active:nth-child(3n+1) { animation-delay: 0s; }
-.package-card.reveal.active:nth-child(3n+2) { animation-delay: 0.15s; }
-.package-card.reveal.active:nth-child(3n+3) { animation-delay: 0.3s; }
+.package-card.reveal.active:nth-child(3n+2) { animation-delay: 0.1s; }
+.package-card.reveal.active:nth-child(3n+3) { animation-delay: 0.2s; }
 
 .package-card:hover {
     transform: scale(1.03);
@@ -797,8 +791,8 @@ a.hero-slide-side {
    Animations (Scroll Reveal)
    ========================================= */
 .reveal {
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -945,23 +939,25 @@ a.hero-slide-side {
    Reveal Animations
    ========================================= */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.reveal-active {
+.reveal.reveal-active,
+.reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
 .reveal-zoom {
-    opacity: 0;
-    transform: scale(0.9);
+    opacity: 1;
+    transform: scale(1);
     transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-zoom.reveal-active {
+.reveal-zoom.reveal-active,
+.reveal-zoom.active {
     opacity: 1;
     transform: scale(1);
 }
