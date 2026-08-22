@@ -2,20 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const hamburgerIcon = document.querySelector('.hamburger i');
     
+    function updateHamburgerColor() {
+        if (!hamburger) return;
+        if (navLinks && navLinks.classList.contains('active')) {
+            hamburger.style.color = 'var(--white)';
+        } else if (navbar && navbar.classList.contains('scrolled')) {
+            hamburger.style.color = 'var(--dark)';
+        } else {
+            hamburger.style.color = 'var(--white)';
+        }
+    }
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+        updateHamburgerColor();
     });
 
     // Mobile Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const hamburgerIcon = document.querySelector('.hamburger i');
-
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -24,18 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navLinks.classList.contains('active')) {
                 hamburgerIcon.classList.remove('fa-bars');
                 hamburgerIcon.classList.add('fa-xmark');
-                // Ensure hamburger is visible against dark menu background
-                hamburger.style.color = 'var(--white)';
             } else {
                 hamburgerIcon.classList.remove('fa-xmark');
                 hamburgerIcon.classList.add('fa-bars');
-                // Reset color based on scroll state
-                if (!navbar.classList.contains('scrolled')) {
-                    hamburger.style.color = 'var(--white)';
-                } else {
-                    hamburger.style.color = '';
-                }
             }
+            updateHamburgerColor();
         });
     }
 
@@ -46,12 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.classList.remove('active');
                 hamburgerIcon.classList.remove('fa-xmark');
                 hamburgerIcon.classList.add('fa-bars');
-                
-                if (!navbar.classList.contains('scrolled')) {
-                    hamburger.style.color = 'var(--white)';
-                } else {
-                    hamburger.style.color = '';
-                }
+                updateHamburgerColor();
             }
         });
     });
@@ -340,21 +339,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
             }
 
-            fetch(googleFormUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: urlParams.toString()
-            })
+            // Build PHP mailer form data
+            const phpFormData = new FormData();
+            phpFormData.append('name', fullName);
+            phpFormData.append('email', email);
+            phpFormData.append('phone', phone);
+            phpFormData.append('date', date || '');
+            phpFormData.append('service', pkg || 'General Enquiry');
+
+            // Send to both Google Forms and PHP mailer simultaneously
+            Promise.allSettled([
+                fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: urlParams.toString()
+                }),
+                fetch('send_mail.php', {
+                    method: 'POST',
+                    body: phpFormData
+                })
+            ])
             .then(() => {
-                closeBookingModal();
-                showModal(fullName, pkg, email, phone, date);
-                popupBookingForm.reset();
-            })
-            .catch((err) => {
-                console.error("Submission error:", err);
                 closeBookingModal();
                 showModal(fullName, pkg, email, phone, date);
                 popupBookingForm.reset();
@@ -396,20 +402,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
             }
 
-            fetch(googleFormUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: urlParams.toString()
-            })
+            // Build PHP mailer form data
+            const phpFormData = new FormData();
+            phpFormData.append('name', fullName);
+            phpFormData.append('email', email);
+            phpFormData.append('phone', phone);
+            phpFormData.append('date', date || '');
+            phpFormData.append('service', pkg || 'General Enquiry');
+
+            // Send to both Google Forms and PHP mailer simultaneously
+            Promise.allSettled([
+                fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: urlParams.toString()
+                }),
+                fetch('send_mail.php', {
+                    method: 'POST',
+                    body: phpFormData
+                })
+            ])
             .then(() => {
-                showModal(fullName, pkg, email, phone, date);
-                bookingForm.reset();
-            })
-            .catch((err) => {
-                console.error("Submission error:", err);
                 showModal(fullName, pkg, email, phone, date);
                 bookingForm.reset();
             })

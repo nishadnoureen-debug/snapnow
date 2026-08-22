@@ -409,18 +409,18 @@
                 <h3 id="bookingFormTitle" style="color: var(--white); margin-bottom: 0.5rem;">Get Started with SnapNow</h3>
                 <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Fill out the form below to enquire about our retainer packages or request a custom proposal.</p>
                 <form id="bookingForm" class="footer-form">
-                    <input type="hidden" id="selectedPackage" name="selectedPackage" value="">
+                    <input type="hidden" id="selectedPackage" name="service" value="">
                     <div class="form-group">
-                        <input type="text" id="name" required placeholder="Full Name">
+                        <input type="text" id="name" name="name" required placeholder="Full Name">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" required placeholder="Email Address">
+                        <input type="email" id="email" name="email" required placeholder="Email Address">
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" required placeholder="Phone Number">
+                        <input type="tel" id="phone" name="phone" required placeholder="Phone Number">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="date" placeholder="Event Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                        <input type="text" id="date" name="date" placeholder="Event Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
                 </form>
@@ -440,21 +440,21 @@
                 <p class="modal-subtitle">Tell us about your project goals and we'll get back to you within 24 hours.</p>
             </div>
             <form id="popupBookingForm" class="popup-form">
-                <input type="hidden" id="popupSelectedPackage" name="selectedPackage" value="">
+                <input type="hidden" id="popupSelectedPackage" name="service" value="">
                 <div class="form-group">
-                    <input type="text" id="popupName" required placeholder="Full Name">
+                    <input type="text" id="popupName" name="name" required placeholder="Full Name">
                 </div>
                 <div class="form-group">
-                    <input type="email" id="popupEmail" required placeholder="Email Address">
+                    <input type="email" id="popupEmail" name="email" required placeholder="Email Address">
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="popupPhone" required placeholder="Phone Number / WhatsApp">
+                    <input type="tel" id="popupPhone" name="phone" required placeholder="Phone Number / WhatsApp">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="popupDate" placeholder="Preferred Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                    <input type="text" id="popupDate" name="date" placeholder="Preferred Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
                 </div>
                 <div class="form-group">
-                    <select id="popupServiceSelect" class="form-select">
+                    <select id="popupServiceSelect" name="service" class="form-select">
                         <option value="">Select Package / Service (Optional)</option>
                         <optgroup label="Services Offered">
                             <option value="Brand Strategy & Consulting">Brand Strategy & Consulting</option>
