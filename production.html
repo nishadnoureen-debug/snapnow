@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Npj2iIyK9BXOpkyh7dpwZ5RSkDf8o-2MVKx0CajNPow" />
-    <title>SnapNow | Professional Visual Storytelling</title>
-    <meta name="description" content="Professional visual storytelling tailored for every moment. From cinematic drone shots to intimate photography, we provide the lens; you provide the memory.">
+    <title>Photo & Video Production Packages | SnapNow Dubai</title>
+    <meta name="description" content="Explore SnapNow's full photo and video production packages in Dubai. Express shoots, cinema reels, brand portraits, hybrid event coverage, pre-weddings, and drone cinematography.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,13 +20,13 @@
     <!-- Vercel Web Analytics -->
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
-<body>
+<body class="production-page">
     
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-content">
             <div class="logo">
-                <a href="#home" class="logo-text">
+                <a href="index.html#home" class="logo-text">
                     <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white">
                     <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black">
                 </a>
@@ -36,197 +35,30 @@
                 <i class="fa-solid fa-bars"></i>
             </div>
             <div class="nav-links">
-                <a href="index.html#home">Home</a>
+                <a href="index.html">Home</a>
                 <a href="projects.html">Our Portfolio</a>
                 <a href="blogs.html">Blogs</a>
                 <a href="retainers.html">Retainers</a>
-                <a href="production.html">Production Shoots</a>
+                <a href="production.html" class="active">Production Shoots</a>
                 <a href="#bookingModal" class="btn btn-primary open-booking-modal">Book Now</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Floating Typography) -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 class="floating-text hero-slide-side">MARKETING AGENCY<br><span class="highlight">IN DUBAI</span></h1>
-            <p class="sub-headline hero-slide-side">
-                Snapnow is a creative marketing agency in Dubai helping businesses grow through digital marketing, social media, branding, content creation, photography, video production, and podcast production.
-                <br><br>
-                From building your brand to creating engaging content and reaching the right audience, we bring strategy and creativity together to drive real growth.
-            </p>
-            <div class="hero-cta-group hero-slide-side">
-                <a href="#bookingModal" class="btn btn-primary btn-large open-booking-modal" data-package="Marketing Retainer Consultation">Get Started</a>
-                <a href="retainers.html" class="btn btn-outline-white btn-large">Explore Retainers</a>
-            </div>
+    <!-- Production Hero Section -->
+    <section class="production-hero">
+        <div class="production-hero-bg"></div>
+        <div class="container production-hero-content">
+            <h1 class="reveal">Photo & Video <span class="highlight">Production</span></h1>
+            <p class="reveal delay-1">Cinematic visual storytelling tailored for events, commercial campaigns, portraits, and brand reels with transparent on-demand packages.</p>
         </div>
     </section>
 
-    <!-- Core Pillars / Services -->
-    <section class="pillars section-padding" id="pillars">
+    <!-- Photo & Video Production Packages -->
+    <section class="packages section-padding bg-light" id="production-packages">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Our Core <span class="highlight">Pillars</span></h2>
-                <p>Strategic, creative, and technical excellence driving measurable results.</p>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-card reveal delay-1">
-                    <div class="pillar-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Digital Marketing & SEO</h3>
-                    <p>Targeted performance marketing, SEO, SEM, and data-driven growth strategies.</p>
-                </div>
-                <div class="pillar-card reveal delay-2">
-                    <div class="pillar-icon"><i class="fa-solid fa-hashtag"></i></div>
-                    <h3>Social Media & Content</h3>
-                    <p>High-converting static creatives, reels, copywriting, and active platform management.</p>
-                </div>
-                <div class="pillar-card reveal delay-3">
-                    <div class="pillar-icon"><i class="fa-solid fa-video"></i></div>
-                    <h3>Photo & Video Production</h3>
-                    <p>Cinematic visuals, commercial photography, and full-scale podcast production.</p>
-                </div>
-                <div class="pillar-card reveal delay-4">
-                    <div class="pillar-icon"><i class="fa-solid fa-bullhorn"></i></div>
-                    <h3>Branding & Strategy</h3>
-                    <p>Comprehensive brand identities, creative direction, and campaign lead generation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Monthly Marketing Retainer Packages -->
-    <section class="packages section-padding bg-light" id="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>MONTHLY MARKETING <span class="highlight">RETAINER PACKAGES</span></h2>
-                <h3 class="section-subtitle">Marketing Packages That Fit Your Business</h3>
-                <p>Every business has different marketing needs. Our monthly packages are designed to give you the right mix of content, social media, digital marketing, SEO, and creative support based on your business stage and goals.</p>
-            </div>
-            
-            <div class="packages-grid">
-                
-                <!-- Package 1 - ESSENTIAL -->
-                <div class="package-card reveal delay-1">
-                    <div class="package-header">
-                        <span class="package-number">01</span>
-                        <div>
-                            <h3>Essential</h3>
-                            <span class="package-subtitle">For Startups & New Businesses</span>
-                        </div>
-                    </div>
-                    <div class="package-price">AED 4,999 <span class="price-period">/ Month</span></div>
-                    <div class="package-best-for">
-                        <strong>Best for:</strong> Startups and new businesses that want to build a consistent online presence.
-                    </div>
-                    
-                    <ul class="package-highlights">
-                        <li><i class="fa-solid fa-check"></i> 8 Posters / Static Creatives</li>
-                        <li><i class="fa-solid fa-check"></i> 4 Short-Form Videos / Reels</li>
-                        <li><i class="fa-solid fa-check"></i> Digital Marketing Strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Content Calendar</li>
-                        <li><i class="fa-solid fa-check"></i> Instagram & Facebook Management</li>
-                        <li><i class="fa-solid fa-check"></i> Basic Copywriting & Creative Direction</li>
-                        <li><i class="fa-solid fa-check"></i> Basic Audience Interaction</li>
-                        <li><i class="fa-solid fa-check"></i> Google Business Profile Management</li>
-                        <li><i class="fa-solid fa-check"></i> Monthly Performance Report</li>
-                    </ul>
-
-                    <a href="#contact" class="btn btn-outline" data-package="Essential">Get Essential</a>
-                </div>
-
-                <!-- Package 2 - SIGNATURE (Most Popular) -->
-                <div class="package-card popular reveal delay-2">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="package-header">
-                        <span class="package-number">02</span>
-                        <div>
-                            <h3>Signature</h3>
-                            <span class="package-subtitle">For Growing Businesses</span>
-                        </div>
-                    </div>
-                    <div class="package-price">AED 7,999 <span class="price-period">/ Month</span></div>
-                    <div class="package-best-for">
-                        <strong>Best for:</strong> Growing businesses that want better online visibility, engagement, and more enquiries.
-                    </div>
-                    
-                    <ul class="package-highlights">
-                        <li><i class="fa-solid fa-check"></i> 12 Posters / Static Creatives</li>
-                        <li><i class="fa-solid fa-check"></i> 8 Short-Form Videos / Reels</li>
-                        <li><i class="fa-solid fa-check"></i> Digital & Social Media Strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Content Calendar & Platform Management</li>
-                        <li><i class="fa-solid fa-check"></i> Copywriting & Creative Direction</li>
-                        <li><i class="fa-solid fa-check"></i> Audience Interaction</li>
-                        <li><i class="fa-solid fa-check"></i> Basic SEO</li>
-                        <li><i class="fa-solid fa-check"></i> Google Business Profile Management</li>
-                        <li><i class="fa-solid fa-check"></i> Lead Generation Support</li>
-                        <li><i class="fa-solid fa-check"></i> Monthly Performance Report</li>
-                        <li><i class="fa-solid fa-check"></i> Instagram, Facebook, TikTok, LinkedIn & YouTube Management</li>
-                    </ul>
-
-                    <a href="#contact" class="btn btn-primary" data-package="Signature">Get Signature</a>
-                </div>
-
-                <!-- Package 3 - EXECUTIVE -->
-                <div class="package-card executive-card reveal delay-3">
-                    <div class="executive-badge">⭐ Comprehensive Solution</div>
-                    <div class="package-header">
-                        <span class="package-number">03</span>
-                        <div>
-                            <h3>Executive</h3>
-                            <span class="package-subtitle">For Established & Personal Brands</span>
-                        </div>
-                    </div>
-                    <div class="package-price">AED 9,999 <span class="price-period">/ Month</span></div>
-                    <div class="package-best-for">
-                        <strong>Best for:</strong> Established businesses and personal brands looking for a complete marketing solution focused on growth and performance.
-                    </div>
-                    
-                    <ul class="package-highlights">
-                        <li><i class="fa-solid fa-check"></i> 16 Posters / Static Creatives</li>
-                        <li><i class="fa-solid fa-check"></i> 12 Short-Form Videos / Reels</li>
-                        <li><i class="fa-solid fa-check"></i> Digital & Brand Growth Strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Multi-Platform Content & Management</li>
-                        <li><i class="fa-solid fa-check"></i> Advanced Copywriting & Creative Direction</li>
-                        <li><i class="fa-solid fa-check"></i> Audience Interaction</li>
-                        <li><i class="fa-solid fa-check"></i> SEO + SEM</li>
-                        <li><i class="fa-solid fa-check"></i> Google Business Profile Management</li>
-                        <li><i class="fa-solid fa-check"></i> Email & WhatsApp Marketing</li>
-                        <li><i class="fa-solid fa-check"></i> Campaign-Based Lead Generation</li>
-                        <li><i class="fa-solid fa-check"></i> Advanced Performance Reporting</li>
-                        <li><i class="fa-solid fa-check"></i> Monthly Strategy Review</li>
-                        <li><i class="fa-solid fa-check"></i> Instagram, Facebook, TikTok, LinkedIn & YouTube Management</li>
-                    </ul>
-
-                    <a href="#contact" class="btn btn-primary" data-package="Executive">Get Executive</a>
-                </div>
-            </div>
-
-            <!-- Customise Your Package Section -->
-            <div class="customise-package-card reveal delay-2">
-                <div class="customise-content">
-                    <div class="customise-badge">Tailored Marketing</div>
-                    <h3>CUSTOMISE YOUR PACKAGE</h3>
-                    <h4>Need something different?</h4>
-                    <p>Our packages can be customised based on your business needs, goals, platforms, and budget. <strong>Let’s create the right package for you.</strong></p>
-                    <p class="customise-disclaimer"><i class="fa-solid fa-circle-info"></i> Paid advertising budgets, additional production costs, specialist services, and third-party costs are charged separately where applicable.</p>
-                </div>
-                <div class="customise-actions">
-                    <a href="https://wa.me/971585511617?text=Hi%20SnapNow%2C%20I%20would%20like%20to%20customise%20a%20monthly%20marketing%20retainer%20package." class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Photo & Video Production Packages (Individual / Event Shoots) -->
-    <section class="packages section-padding" id="production" style="background-color: #fafafa; border-top: 1px solid rgba(0,0,0,0.05);">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>PHOTO & VIDEO <span class="highlight">PRODUCTION PACKAGES</span></h2>
-                <h3 class="section-subtitle">On-Demand Shoots & Event Visuals</h3>
+                <h2>ON-DEMAND & EVENT <span class="highlight">PRODUCTION PACKAGES</span></h2>
                 <p>Transparent pricing for every scale of production — from social reels and brand portraits to multi-camera full event coverage.</p>
             </div>
             <div class="packages-grid">
@@ -252,7 +84,7 @@
                         <li><i class="fa-solid fa-check"></i> Social Media Ready Delivery</li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-primary" data-package="Express Shoot">Book Express</a>
+                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Express Shoot">Book Express</a>
                 </div>
 
                 <!-- Package 2 - Mobile Pro -->
@@ -271,7 +103,7 @@
                         <li><i class="fa-solid fa-check"></i> Vertical reels & stories</li>
                         <li><i class="fa-solid fa-check"></i> Fast turnaround delivery</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-package="Mobile Pro Shoot">Book Mobile Pro</a>
+                    <a href="#bookingModal" class="btn btn-outline open-booking-modal" data-package="Mobile Pro Shoot">Book Mobile Pro</a>
                 </div>
 
                 <!-- Package 3 - Essential Shoot -->
@@ -290,7 +122,7 @@
                         <li><i class="fa-solid fa-check"></i> Professional cinema camera setup</li>
                         <li><i class="fa-solid fa-check"></i> Raw footage coverage</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-package="Essential Shoot">Book Essential</a>
+                    <a href="#bookingModal" class="btn btn-outline open-booking-modal" data-package="Essential Shoot">Book Essential</a>
                 </div>
 
                 <!-- Package 4 - Signature Reel -->
@@ -311,7 +143,7 @@
                         <li><i class="fa-solid fa-check"></i> Edited cinematic reel</li>
                         <li><i class="fa-solid fa-check"></i> Professional color grading</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary" data-package="Signature Shoot">Book Signature</a>
+                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Signature Shoot">Book Signature</a>
                 </div>
 
                 <!-- Package 5 - Elite Photography -->
@@ -330,7 +162,7 @@
                         <li><i class="fa-solid fa-check"></i> 20-25 high-quality edited photos</li>
                         <li><i class="fa-solid fa-check"></i> Professional color correction & retouch</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-package="Elite Shoot">Book Elite</a>
+                    <a href="#bookingModal" class="btn btn-outline open-booking-modal" data-package="Elite Shoot">Book Elite</a>
                 </div>
 
                 <!-- Package 6 - Prestige Hybrid -->
@@ -349,7 +181,7 @@
                         <li><i class="fa-solid fa-check"></i> Full event visual coverage</li>
                         <li><i class="fa-solid fa-check"></i> Edited cinematic reel & high-res photos</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-package="Prestige Shoot">Book Prestige</a>
+                    <a href="#bookingModal" class="btn btn-outline open-booking-modal" data-package="Prestige Shoot">Book Prestige</a>
                 </div>
 
                 <!-- Package 7 - Royal Production -->
@@ -369,7 +201,7 @@
                         <li><i class="fa-solid fa-check"></i> Full edited event video & curated gallery</li>
                         <li><i class="fa-solid fa-check"></i> Teaser / highlight cinematic video</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary" data-package="Royal Shoot">Book Royal</a>
+                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Royal Shoot">Book Royal</a>
                 </div>
 
                 <!-- Package 8 - Forever -->
@@ -388,7 +220,7 @@
                         <li><i class="fa-solid fa-check"></i> Romantic cinematic reel</li>
                         <li><i class="fa-solid fa-check"></i> 1 Videographer + 1 Photographer</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-package="Forever Shoot">Book Forever</a>
+                    <a href="#bookingModal" class="btn btn-outline open-booking-modal" data-package="Forever Shoot">Book Forever</a>
                 </div>
 
                 <!-- Package 9 - Aerial Elite -->
@@ -407,29 +239,38 @@
                         <li><i class="fa-solid fa-check"></i> High-quality aerials</li>
                         <li><i class="fa-solid fa-check"></i> Cinematic aerial shots</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-package="Aerial Shoot">Book Aerial</a>
+                    <a href="#bookingModal" class="btn btn-outline open-booking-modal" data-package="Aerial Shoot">Book Aerial</a>
+                </div>
+            </div>
+
+            <!-- Custom Production Inquiry Banner -->
+            <div class="customise-package-card reveal delay-2">
+                <div class="customise-content">
+                    <div class="customise-badge">Custom Shoot</div>
+                    <h3>NEED A TAILORED PRODUCTION?</h3>
+                    <h4>Large Scale or Bespoke Projects</h4>
+                    <p>Have a specialized shoot, multi-day commercial campaign, or overseas production? <strong>Let’s build the exact crew and gear setup you need.</strong></p>
+                </div>
+                <div class="customise-actions">
+                    <a href="https://wa.me/971585511617?text=Hi%20SnapNow%2C%20I%20would%20like%20to%20inquire%20about%20a%20custom%20photo%20or%20video%20production." class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
-
-
 
     <!-- Footer / Contact Section -->
     <footer class="footer" id="contact">
         <div class="container footer-content reveal">
             <div class="footer-brand" style="flex: 1; min-width: 300px;">
                 <div class="logo">
-                    <a href="#home" class="logo-text">
+                    <a href="index.html#home" class="logo-text">
                         <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white">
                         <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black">
                     </a>
                 </div>
-                <p>Creative marketing agency in Dubai helping businesses grow through strategy, content, and high-impact digital marketing.</p>
+                <p>Professional visual storytelling and cinematic media production in Dubai.</p>
                 <div style="margin-top: 2rem;">
                     <h3 style="color: var(--white);">Contact Us Directly</h3>
                     <ul class="contact-list" style="margin-top: 1rem;">
@@ -441,24 +282,9 @@
             </div>
             
             <div class="footer-booking" style="flex: 1; min-width: 300px;">
-                <h3 id="bookingFormTitle" style="color: var(--white); margin-bottom: 0.5rem;">Get Started with SnapNow</h3>
-                <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Fill out the form below to enquire about our retainer packages or request a custom proposal.</p>
-                <form id="bookingForm" class="footer-form">
-                    <input type="hidden" id="selectedPackage" name="selectedPackage" value="">
-                    <div class="form-group">
-                        <input type="text" id="name" required placeholder="Full Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" required placeholder="Email Address">
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" required placeholder="Phone Number">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="date" placeholder="Event Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
-                </form>
+                <h3 style="color: var(--white); margin-bottom: 0.5rem;">Book a Shoot Session</h3>
+                <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Click below to submit your shoot request and secure your date.</p>
+                <button class="btn btn-primary open-booking-modal" style="width: 100%;" data-package="Photo & Video Production">Open Booking Form</button>
             </div>
         </div>
         <div class="footer-bottom">
@@ -471,8 +297,8 @@
         <div class="modal-content modal-form-content">
             <div class="modal-close-btn" id="closeBookingModal">&times;</div>
             <div class="modal-header-section">
-                <h3 class="modal-title" id="popupBookingTitle">Book Your Session</h3>
-                <p class="modal-subtitle">Tell us about your project goals and we'll get back to you within 24 hours.</p>
+                <h3 class="modal-title" id="popupBookingTitle">Book Your Production Shoot</h3>
+                <p class="modal-subtitle">Tell us about your shoot requirements and we'll confirm within 24 hours.</p>
             </div>
             <form id="popupBookingForm" class="popup-form">
                 <input type="hidden" id="popupSelectedPackage" name="selectedPackage" value="">
@@ -486,17 +312,11 @@
                     <input type="tel" id="popupPhone" required placeholder="Phone Number / WhatsApp">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="popupDate" placeholder="Preferred Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                    <input type="text" id="popupDate" placeholder="Event / Shoot Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
                 </div>
                 <div class="form-group">
                     <select id="popupServiceSelect" class="form-select">
                         <option value="">Select Package / Service (Optional)</option>
-                        <optgroup label="Monthly Marketing Retainers">
-                            <option value="Essential Retainer">Essential (AED 4,999/mo)</option>
-                            <option value="Signature Retainer">Signature (AED 7,999/mo)</option>
-                            <option value="Executive Retainer">Executive (AED 9,999/mo)</option>
-                            <option value="Customised Marketing Retainer">Customised Retainer</option>
-                        </optgroup>
                         <optgroup label="Photo & Video Production">
                             <option value="Express Shoot">Express Shoot (AED 2,799)</option>
                             <option value="Mobile Pro Shoot">Mobile Pro Shoot (AED 599)</option>
@@ -507,6 +327,12 @@
                             <option value="Royal Production Shoot">Royal Production Shoot (AED 4,899)</option>
                             <option value="Forever Pre-Wedding Shoot">Forever Pre-Wedding (AED 2,299)</option>
                             <option value="Aerial Elite Drone Shoot">Aerial Elite Drone (AED 2,499+)</option>
+                        </optgroup>
+                        <optgroup label="Monthly Marketing Retainers">
+                            <option value="Essential Retainer">Essential Retainer (AED 4,999/mo)</option>
+                            <option value="Signature Retainer">Signature Retainer (AED 7,999/mo)</option>
+                            <option value="Executive Retainer">Executive Retainer (AED 9,999/mo)</option>
+                            <option value="Customised Marketing Retainer">Customised Retainer</option>
                         </optgroup>
                     </select>
                 </div>

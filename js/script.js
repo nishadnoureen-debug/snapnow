@@ -127,6 +127,88 @@ document.addEventListener('DOMContentLoaded', () => {
             const dataPkg = btn.getAttribute('data-package');
             const text = btn.textContent.trim();
             
+    // =========================================
+    // Booking Popup Modal & Selection Logic
+    // =========================================
+    const bookingModal = document.getElementById('bookingModal');
+    const closeBookingModalBtn = document.getElementById('closeBookingModal');
+    const popupBookingForm = document.getElementById('popupBookingForm');
+    const popupBookingTitle = document.getElementById('popupBookingTitle');
+    const popupSelectedPackage = document.getElementById('popupSelectedPackage');
+    const popupServiceSelect = document.getElementById('popupServiceSelect');
+
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingFormTitle = document.getElementById('bookingFormTitle');
+    const selectedPackageInput = document.getElementById('selectedPackage');
+
+    function openBookingModal(pkgName) {
+        if (bookingModal) {
+            if (pkgName) {
+                if (popupBookingTitle) {
+                    popupBookingTitle.textContent = 'Enquire for ' + pkgName;
+                }
+                if (popupSelectedPackage) {
+                    popupSelectedPackage.value = pkgName;
+                }
+                if (popupServiceSelect) {
+                    let matched = false;
+                    for (let i = 0; i < popupServiceSelect.options.length; i++) {
+                        const optVal = popupServiceSelect.options[i].value.toLowerCase();
+                        const pLow = pkgName.toLowerCase();
+                        if (optVal && (optVal.includes(pLow) || pLow.includes(optVal))) {
+                            popupServiceSelect.selectedIndex = i;
+                            matched = true;
+                            break;
+                        }
+                    }
+                    if (!matched) popupServiceSelect.selectedIndex = 0;
+                }
+            } else {
+                if (popupBookingTitle) {
+                    popupBookingTitle.textContent = 'Book Your Session';
+                }
+                if (popupSelectedPackage) {
+                    popupSelectedPackage.value = '';
+                }
+                if (popupServiceSelect) popupServiceSelect.selectedIndex = 0;
+            }
+            
+            bookingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                const nameInput = document.getElementById('popupName');
+                if (nameInput) nameInput.focus();
+            }, 300);
+        }
+    }
+
+    function closeBookingModal() {
+        if (bookingModal) {
+            bookingModal.classList.remove('active');
+            if (!confirmationModal || !confirmationModal.classList.contains('active')) {
+                document.body.style.overflow = '';
+            }
+        }
+    }
+
+    if (closeBookingModalBtn) {
+        closeBookingModalBtn.addEventListener('click', closeBookingModal);
+    }
+    if (bookingModal) {
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+    }
+
+    // Attach open modal listener to all Book Now & Package CTA buttons
+    document.querySelectorAll('.open-booking-modal, a[href="#bookingModal"], a[href="#contact"], a[href$="#contact"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const dataPkg = btn.getAttribute('data-package');
+            const text = btn.textContent.trim();
+            
             let packageName = '';
             if (dataPkg) {
                 packageName = dataPkg;
@@ -135,39 +217,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (packageName === 'Started') packageName = 'Marketing Retainer';
             } else if (text.startsWith('Book ')) {
                 packageName = text.replace('Book ', '').trim();
-                if (packageName === 'Now') packageName = 'Marketing Retainer';
+                if (packageName === 'Now') packageName = 'a Session';
             } else if (text.toLowerCase().includes('customise')) {
                 packageName = 'Customised Retainer';
             }
 
-            if (packageName) {
-                if (bookingFormTitle) {
-                    bookingFormTitle.textContent = 'Enquire for ' + packageName;
+            if (bookingModal) {
+                openBookingModal(packageName);
+            } else {
+                // Fallback to footer scroll if popup is not on page
+                if (packageName) {
+                    if (bookingFormTitle) bookingFormTitle.textContent = 'Enquire for ' + packageName;
+                    if (selectedPackageInput) selectedPackageInput.value = packageName;
                 }
-                if (selectedPackageInput) {
-                    selectedPackageInput.value = packageName;
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    window.scrollTo({
+                        top: contactSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(() => {
+                        const nameInput = document.getElementById('name');
+                        if (nameInput) nameInput.focus();
+                    }, 800);
                 }
-            }
-            
-            // Scroll to footer contact section smoothly
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: contactSection.offsetTop,
-                    behavior: 'smooth'
-                });
-                
-                // Focus on the first input
-                setTimeout(() => {
-                    const nameInput = document.getElementById('name');
-                    if (nameInput) nameInput.focus();
-                }, 800);
             }
         });
     });
 
-    // Modal Selectors
+    // Sync select dropdown with selectedPackage input inside popup
+    if (popupServiceSelect) {
+        popupServiceSelect.addEventListener('change', () => {
+            if (popupSelectedPackage) {
+                popupSelectedPackage.value = popupServiceSelect.value;
+            }
+            if (popupServiceSelect.value && popupBookingTitle) {
+                popupBookingTitle.textContent = 'Enquire for ' + popupServiceSelect.value;
+            }
+        });
+    }
+
+    // Modal Selectors for Confirmation
     const confirmationModal = document.getElementById('confirmationModal');
     const closeModalBtn = document.getElementById('closeModal');
     const modalOkBtn = document.getElementById('modalOkBtn');
@@ -181,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showModal(name, pkg, email, phone, date) {
         if (modalName) modalName.textContent = name;
         if (modalPackage) {
-            modalPackage.textContent = pkg ? pkg + ' Package' : 'a Session';
+            modalPackage.textContent = pkg ? (pkg.toLowerCase().includes('package') || pkg.toLowerCase().includes('retainer') || pkg.toLowerCase().includes('shoot') ? pkg : pkg + ' Package') : 'a Session';
         }
         if (modalEmail) modalEmail.textContent = email;
         if (modalPhone) modalPhone.textContent = phone;
@@ -223,6 +313,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Submission logic for Popup Booking Form
+    if (popupBookingForm) {
+        popupBookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('popupName').value.trim();
+            const email = document.getElementById('popupEmail').value.trim();
+            const phone = document.getElementById('popupPhone').value.trim();
+            const date = document.getElementById('popupDate').value.trim();
+            const serviceVal = popupServiceSelect ? popupServiceSelect.value : '';
+            const pkg = (popupSelectedPackage && popupSelectedPackage.value) ? popupSelectedPackage.value : serviceVal;
+            
+            const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
+
+            const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
+            
+            const urlParams = new URLSearchParams();
+            urlParams.append('entry.720595420', fullNameWithPackage);
+            urlParams.append('entry.190919875', email);
+            urlParams.append('entry.992756748', phone);
+            urlParams.append('entry.494052433', date || 'Not Specified');
+            
+            const submitBtn = popupBookingForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Booking Request';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
+            }
+
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: urlParams.toString()
+            })
+            .then(() => {
+                closeBookingModal();
+                showModal(fullName, pkg, email, phone, date);
+                popupBookingForm.reset();
+            })
+            .catch((err) => {
+                console.error("Submission error:", err);
+                closeBookingModal();
+                showModal(fullName, pkg, email, phone, date);
+                popupBookingForm.reset();
+            })
+            .finally(() => {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            });
+        });
+    }
+
+    // Submission logic for Footer Booking Form (if present)
     if (bookingForm) {
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -233,10 +381,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const date = document.getElementById('date').value.trim();
             const pkg = selectedPackageInput ? selectedPackageInput.value : '';
             
-            // Format name with package if chosen, e.g. "John Doe [Package: Signature]"
             const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
 
-            // Submit using fetch in x-www-form-urlencoded
             const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
             
             const urlParams = new URLSearchParams();
@@ -245,7 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
             urlParams.append('entry.992756748', phone);
             urlParams.append('entry.494052433', date || 'Not Specified');
             
-            // Change submit button state to loading
             const submitBtn = bookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Request';
             if (submitBtn) {
@@ -262,23 +407,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: urlParams.toString()
             })
             .then(() => {
-                // Show custom popup modal with form values
                 showModal(fullName, pkg, email, phone, date);
-                
-                // Reset form
                 bookingForm.reset();
-                if (bookingFormTitle) {
-                    bookingFormTitle.textContent = 'Book a Package';
-                }
             })
             .catch((err) => {
                 console.error("Submission error:", err);
-                // Fallback (e.g. offline/network blocked): trigger success since opaque redirects may trigger errors on certain environments
                 showModal(fullName, pkg, email, phone, date);
                 bookingForm.reset();
             })
             .finally(() => {
-                // Reset button state
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalBtnText;
