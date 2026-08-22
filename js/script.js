@@ -125,16 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Booking Form Logic
-    const bookingForm = document.getElementById('bookingForm');
-    const bookingFormTitle = document.getElementById('bookingFormTitle');
-    const selectedPackageInput = document.getElementById('selectedPackage');
-
-    document.querySelectorAll('a[href="#contact"]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const dataPkg = btn.getAttribute('data-package');
-            const text = btn.textContent.trim();
-            
     // =========================================
     // Booking Popup Modal & Selection Logic
     // =========================================
