@@ -9,7 +9,7 @@
     --light-grey: #FFFFFF;
     --white: #FFFFFF;
     --text-main: #333333;
-    --text-muted: #666666;
+    --text-muted: #555555;
     
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -37,10 +37,13 @@ html {
 
 body {
     font-family: var(--font-body);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* Responsive base font */
     color: var(--text-main);
     background-color: var(--white);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,7 +90,7 @@ ul {
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 1.5rem + 2.5vw, 2.75rem); /* Fluid Heading */
     font-weight: 800;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -95,16 +98,19 @@ ul {
 }
 
 .section-header p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
     color: var(--text-muted);
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
 }
 
 /* Buttons */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     padding: 0.8rem 1.8rem;
+    min-height: 48px; /* Minimum touch target size */
     border-radius: 50px;
     font-weight: 600;
     font-family: var(--font-heading);
@@ -193,7 +199,8 @@ ul {
 
 .btn-large {
     padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    min-height: 56px;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
 }
 
 /* =========================================
@@ -333,7 +340,7 @@ ul {
 }
 
 .floating-text {
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size: clamp(3rem, 7vw, 6rem);
     font-weight: 900;
     color: var(--white);
     line-height: 1.1;
@@ -401,6 +408,7 @@ a.hero-slide-side {
     box-shadow: var(--shadow-soft);
     transition: var(--transition);
     border: 1px solid rgba(0,0,0,0.03);
+    will-change: transform, box-shadow;
 }
 
 .pillar-card:hover {
@@ -455,11 +463,12 @@ a.hero-slide-side {
     box-shadow: var(--shadow-soft);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-top: 4px solid var(--primary);
-    transition: var(--transition);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-top-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    will-change: transform, box-shadow;
 }
 
 .service-card:hover {
@@ -580,12 +589,13 @@ a.hero-slide-side {
     padding: 2.5rem 2rem;
     position: relative;
     box-shadow: var(--shadow-soft);
-    transition: var(--transition);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-top-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     border-top: 4px solid transparent;
     width: calc(33.333% - 1.34rem);
     min-width: 280px;
+    will-change: transform, box-shadow;
 }
 
 /* Package card smooth entrance */
@@ -1000,9 +1010,13 @@ a.hero-slide-side {
     text-align: left;
 }
 
-.footer-form input {
+.footer-form input,
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 0.8rem 1rem;
+    min-height: 48px; /* Touch target size */
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.05);
     color: var(--white);
@@ -1012,11 +1026,16 @@ a.hero-slide-side {
     transition: var(--transition);
 }
 
-.footer-form input::placeholder {
+.footer-form input::placeholder,
+.form-group input::placeholder,
+.form-group textarea::placeholder {
     color: rgba(255,255,255,0.5);
 }
 
-.footer-form input:focus {
+.footer-form input:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
     background: rgba(255,255,255,0.1);
@@ -2464,6 +2483,7 @@ a.hero-slide-side {
 .popup-form .form-group select {
     width: 100%;
     padding: 0.85rem 1rem;
+    min-height: 48px;
     border: 1px solid rgba(0,0,0,0.12);
     border-radius: 10px;
     font-family: var(--font-body);

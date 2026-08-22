@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll Reveal Animation (Intersection Observer)
     const revealOptions = {
         threshold: 0,
-        rootMargin: "0px 0px 0px 0px"
+        rootMargin: "0px 0px -30px 0px"
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
