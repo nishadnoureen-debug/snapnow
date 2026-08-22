@@ -139,33 +139,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('a[href="#contact"]').forEach(btn => {
         btn.addEventListener('click', (e) => {
+            const dataPkg = btn.getAttribute('data-package');
             const text = btn.textContent.trim();
-            if (text.startsWith('Book ')) {
-                e.preventDefault();
-                let packageName = text.replace('Book ', '').trim();
-                if (packageName === 'Now') packageName = 'a Session';
-                
+            
+            let packageName = '';
+            if (dataPkg) {
+                packageName = dataPkg;
+            } else if (text.startsWith('Get ')) {
+                packageName = text.replace('Get ', '').trim();
+                if (packageName === 'Started') packageName = 'Marketing Retainer';
+            } else if (text.startsWith('Book ')) {
+                packageName = text.replace('Book ', '').trim();
+                if (packageName === 'Now') packageName = 'Marketing Retainer';
+            } else if (text.toLowerCase().includes('customise')) {
+                packageName = 'Customised Retainer';
+            }
+
+            if (packageName) {
                 if (bookingFormTitle) {
-                    bookingFormTitle.textContent = 'Book ' + packageName;
+                    bookingFormTitle.textContent = 'Enquire for ' + packageName;
                 }
                 if (selectedPackageInput) {
                     selectedPackageInput.value = packageName;
                 }
+            }
+            
+            // Scroll to footer contact section smoothly
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: contactSection.offsetTop,
+                    behavior: 'smooth'
+                });
                 
-                // Scroll to footer contact section smoothly
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    window.scrollTo({
-                        top: contactSection.offsetTop,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Focus on the first input
-                    setTimeout(() => {
-                        const nameInput = document.getElementById('name');
-                        if (nameInput) nameInput.focus();
-                    }, 800);
-                }
+                // Focus on the first input
+                setTimeout(() => {
+                    const nameInput = document.getElementById('name');
+                    if (nameInput) nameInput.focus();
+                }, 800);
             }
         });
     });
