@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll Reveal Animation (Intersection Observer)
     const revealOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0,
+        rootMargin: "0px 0px 0px 0px"
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -79,6 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal, .reveal-zoom').forEach(el => {
         revealObserver.observe(el);
+    });
+
+    // Immediately activate any .reveal elements already in the viewport on load
+    document.querySelectorAll('.reveal, .reveal-zoom').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('reveal-active', 'active');
+        }
     });
 
     // Parallax Effect for Hero
