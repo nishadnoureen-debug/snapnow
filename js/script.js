@@ -828,6 +828,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dynamic Hero Button Text & Destination Rotator (Retainers <-> Production Shoots)
+    const heroDynamicBtn = document.getElementById('heroDynamicBtn');
+    if (heroDynamicBtn) {
+        const destinations = [
+            { text: 'Explore Retainers', href: 'retainers.html', icon: 'fa-arrow-right' },
+            { text: 'Explore Production Shoots', href: 'production.html', icon: 'fa-video' }
+        ];
+        let currentIndex = 0;
+
+        setInterval(() => {
+            heroDynamicBtn.classList.add('changing');
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % destinations.length;
+                const nextDest = destinations[currentIndex];
+                
+                heroDynamicBtn.href = nextDest.href;
+                const textSpan = heroDynamicBtn.querySelector('.dynamic-text-container');
+                const iconElem = heroDynamicBtn.querySelector('.dynamic-btn-icon');
+                
+                if (textSpan) textSpan.textContent = nextDest.text;
+                if (iconElem) {
+                    iconElem.className = `fa-solid ${nextDest.icon} dynamic-btn-icon`;
+                }
+                
+                heroDynamicBtn.classList.remove('changing');
+            }, 350);
+        }, 3200);
+    }
+
     // Ensure WhatsApp floating button is present on the page
     if (!document.querySelector('.whatsapp-float')) {
         const waBtn = document.createElement('a');
