@@ -1054,7 +1054,7 @@ a.hero-slide-side {
 }
 
 .navbar.scrolled .hamburger {
-    color: var(--dark);
+    color: var(--dark) !important;
 }
 
 @media (max-width: 992px) {
