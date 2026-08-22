@@ -1252,10 +1252,16 @@ a.hero-slide-side {
 /* =========================================
    Dedicated Projects Page Styles
    ========================================= */
-.projects-hero {
+/* =========================================
+   Dedicated Subpage Hero Styles (Portfolio, Retainers, Production)
+   ========================================= */
+.projects-hero,
+.retainers-hero,
+.production-hero,
+.subpage-hero {
     position: relative;
-    height: 40vh;
-    min-height: 300px;
+    height: 42vh;
+    min-height: 320px;
     display: flex;
     align-items: center;
     background-color: var(--dark);
@@ -1263,7 +1269,10 @@ a.hero-slide-side {
     padding-top: 5rem;
 }
 
-.projects-hero-bg {
+.projects-hero-bg,
+.retainers-hero-bg,
+.production-hero-bg,
+.subpage-hero-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -1272,18 +1281,24 @@ a.hero-slide-side {
     background-image: url('../assets/Gemini_Generated_Image_b85y2db85y2db85y.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.25;
+    opacity: 0.32;
     z-index: 1;
 }
 
-.projects-hero-content {
+.projects-hero-content,
+.retainers-hero-content,
+.production-hero-content,
+.subpage-hero-content {
     position: relative;
     z-index: 10;
     text-align: center;
     width: 100%;
 }
 
-.projects-hero h1 {
+.projects-hero h1,
+.retainers-hero h1,
+.production-hero h1,
+.subpage-hero h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
     color: var(--white);
@@ -1292,11 +1307,15 @@ a.hero-slide-side {
     margin-bottom: 1rem;
 }
 
-.projects-hero p {
+.projects-hero p,
+.retainers-hero p,
+.production-hero p,
+.subpage-hero p {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 600px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 650px;
     margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* Portfolio Filters */
@@ -2284,68 +2303,6 @@ a.hero-slide-side {
 .form-select {
     appearance: none;
     cursor: pointer;
-}
-
-/* =========================================
-   Subpage Hero — Retainers & Production
-   ========================================= */
-.subpage-hero {
-    position: relative;
-    height: 55vh;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    background-color: var(--dark);
-    overflow: hidden;
-}
-
-.subpage-hero-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-    opacity: 0.3;
-}
-
-.retainers-hero-bg {
-    background-image: url('../assets/Gemini_Generated_Image_b85y2db85y2db85y.png');
-}
-
-.production-hero-bg {
-    background-image: url('../assets/project_gym.jpg');
-}
-
-.subpage-hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    width: 100%;
-    padding-top: 4rem;
-}
-
-.subpage-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
-    color: var(--white);
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-bottom: 1rem;
-}
-
-.subpage-hero p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.82);
-    max-width: 680px;
-    margin: 0 auto;
-    font-weight: 300;
-    line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-    .subpage-hero { height: 50vh; min-height: 320px; }
-    .subpage-hero h1 { font-size: 2.2rem; }
-    .subpage-hero p { font-size: 0.97rem; }
 }
 
 /* =========================================
