@@ -880,10 +880,17 @@ a.hero-slide-side {
 }
 
 @media (max-width: 992px) {
-    .floating-text { font-size: 4rem; }
+    .floating-text { font-size: 3.2rem; }
+    .sub-headline { font-size: 1.05rem; }
+    .section-header h2 { font-size: 2.1rem; }
+    .projects-hero h1 { font-size: 2.6rem; }
+    .projects-hero p { font-size: 1.0rem; }
+    .blogs-hero h1 { font-size: 2.7rem; }
+    .blogs-hero p { font-size: 1.05rem; }
+    .package-card h3 { font-size: 1.5rem; }
     .packages-grid { justify-content: center; }
     .package-card { width: calc(50% - 1rem); }
-    .section-padding { padding: 4rem 0; }
+    .section-padding { padding: 3.5rem 0; }
 
     /* Show hamburger and use drawer menu on tablet & mobile */
     .hamburger { display: block; z-index: 1001; }
@@ -903,7 +910,7 @@ a.hero-slide-side {
         z-index: 1000;
     }
     .nav-links.active { right: 0; }
-    .nav-links a:not(.btn) { color: var(--white); font-size: 1.4rem; margin: 1rem 0; }
+    .nav-links a:not(.btn) { color: var(--white); font-size: 1.2rem; margin: 0.8rem 0; }
     .nav-links .btn { margin-top: 1rem; }
 
     /* Keep text white when navbar is scrolled inside mobile menu */
@@ -916,8 +923,23 @@ a.hero-slide-side {
 @media (max-width: 768px) {
     .hero { background-attachment: scroll; }
     .hero-content { text-align: center; }
-    p.hero-slide-side { margin: 0 auto 2rem; }
-    .floating-text { font-size: 2.8rem; }
+    p.hero-slide-side { margin: 0 auto 1.5rem; }
+    .floating-text { font-size: 2.3rem; line-height: 1.1; }
+    .sub-headline { font-size: 0.95rem; line-height: 1.5; }
+    .section-header h2 { font-size: 1.75rem; }
+    .section-header p { font-size: 0.92rem; }
+    .projects-hero h1 { font-size: 2.0rem; }
+    .projects-hero p { font-size: 0.92rem; }
+    .blogs-hero h1 { font-size: 2.1rem; }
+    .blogs-hero p { font-size: 0.95rem; }
+    .package-card h3 { font-size: 1.35rem; }
+    .package-price .price { font-size: 1.75rem; }
+    .package-features li { font-size: 0.9rem; }
+    .project-card-title { font-size: 1.1rem; }
+    .project-card-description { font-size: 0.85rem; }
+    .blog-card-title { font-size: 1.15rem; }
+    .blog-card-excerpt { font-size: 0.88rem; }
+    .lightbox-title { font-size: 1.4rem; }
 
     .packages-grid { flex-direction: column; align-items: center; }
     .package-card { width: 100%; max-width: 480px; }
@@ -944,18 +966,27 @@ a.hero-slide-side {
     .gear-item img {
         height: 280px;
     }
-
-    .section-header h2 { font-size: 2rem; }
 }
 
 @media (max-width: 480px) {
     .container { padding: 0 1rem; }
-    .floating-text { font-size: 2.2rem; }
-    .section-header h2 { font-size: 1.8rem; }
-    .package-card { padding: 2rem 1.5rem; }
+    .floating-text { font-size: 1.85rem; line-height: 1.15; }
+    .sub-headline { font-size: 0.88rem; line-height: 1.45; }
+    .section-header h2 { font-size: 1.45rem; }
+    .section-header p { font-size: 0.85rem; }
+    .projects-hero h1 { font-size: 1.65rem; }
+    .projects-hero p { font-size: 0.85rem; }
+    .blogs-hero h1 { font-size: 1.7rem; }
+    .blogs-hero p { font-size: 0.88rem; }
+    .package-card h3 { font-size: 1.2rem; }
+    .package-price .price { font-size: 1.5rem; }
+    .package-card { padding: 1.75rem 1.25rem; }
+    .project-card-title { font-size: 1.0rem; }
+    .blog-card-title { font-size: 1.05rem; }
+    .lightbox-title { font-size: 1.25rem; }
     .gear-item { width: 100%; max-width: 100%; }
     .pillars-grid { grid-template-columns: 1fr; }
-    .section-padding { padding: 3rem 0; }
+    .section-padding { padding: 2.5rem 0; }
 }
 /* =========================================
    Reveal Animations

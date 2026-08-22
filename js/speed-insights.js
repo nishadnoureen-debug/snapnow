@@ -1,5 +1,5 @@
 // Vercel Speed Insights initialization
-import { injectSpeedInsights } from './node_modules/@vercel/speed-insights/dist/index.mjs';
+import { injectSpeedInsights } from '../node_modules/@vercel/speed-insights/dist/index.mjs';
 
 // Initialize Speed Insights with default options
 injectSpeedInsights({
