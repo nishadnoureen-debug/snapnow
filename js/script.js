@@ -91,22 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Horizontal Scroll for Gear Section (Optional enhancement)
-    // We let the native CSS scroll do the work for touch, 
-    // but we can add wheel event listener for horizontal scrolling on desktop
-    const scrollContainer = document.querySelector('.horizontal-scroll-container');
-    
-    if (scrollContainer) {
-        scrollContainer.addEventListener('wheel', (evt) => {
-            // Prevent default vertical scroll and scroll horizontally instead
-            // Only if we are hovering over the gear track and it overflows
-            if (scrollContainer.scrollWidth > scrollContainer.clientWidth) {
-                evt.preventDefault();
-                scrollContainer.scrollLeft += evt.deltaY;
-            }
-        }, { passive: false });
-    }
-    
+
     // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
