@@ -646,6 +646,97 @@ p.hero-slide-side {
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
+/* Premium Full Production Card (Dark Theme) */
+.package-card.premium {
+    background: var(--dark);
+    color: var(--white);
+    border-top: 4px solid var(--primary);
+}
+
+.package-card.premium:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 50px rgba(164, 214, 94, 0.4);
+    z-index: 10;
+}
+
+.package-card.premium h3,
+.package-card.premium .package-best-for {
+    color: var(--white);
+}
+
+.package-card.premium .package-price {
+    color: var(--primary);
+}
+
+.package-card.premium .package-highlights i {
+    color: var(--primary);
+}
+
+/* Express / Same-Day Delivery Card */
+.package-card.express {
+    background: linear-gradient(135deg, #0e0e1e 0%, #15152a 100%);
+    color: var(--white);
+    border: 1px solid rgba(245, 166, 35, 0.25);
+    border-top: 4px solid #f5a623;
+    box-shadow: 0 15px 35px rgba(245, 166, 35, 0.15), 0 0 20px rgba(245, 166, 35, 0.1);
+    position: relative;
+}
+
+.package-card.express:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(245, 166, 35, 0.4), 0 0 30px rgba(245, 166, 35, 0.2);
+    border-color: #f5a623;
+    z-index: 10;
+}
+
+.package-card.express h3,
+.package-card.express .package-number {
+    color: #f5a623;
+    text-shadow: 0 0 10px rgba(245, 166, 35, 0.3);
+}
+
+.package-card.express .package-price {
+    color: #f5a623;
+    text-shadow: 0 0 15px rgba(245, 166, 35, 0.4);
+}
+
+.package-card.express .package-best-for {
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom-color: rgba(245, 166, 35, 0.25);
+}
+
+.package-card.express .package-highlights i {
+    color: #f5a623;
+}
+
+.package-card.express .package-highlights li {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+}
+
+.express-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f5a623, #f7c948);
+    color: #1a1a2e;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(245, 166, 35, 0.5);
+    animation: expressGlow 2s ease-in-out infinite;
+}
+
+@keyframes expressGlow {
+    0%, 100% { box-shadow: 0 4px 12px rgba(245, 166, 35, 0.5); }
+    50%       { box-shadow: 0 4px 22px rgba(245, 166, 35, 0.9); }
+}
+
 /* Customise Your Package Section */
 .customise-package-card {
     margin-top: 4rem;
