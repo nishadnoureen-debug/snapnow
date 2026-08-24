@@ -311,10 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Submission logic for Popup Booking Form
-    // Unified Booking Data Dispatcher (FormSubmit email + Google Form backup + PHP mailer)
+    // Unified Booking Data Dispatcher (FormSubmit direct email + PHP mailer fallback)
     async function dispatchBookingRequest(formData) {
         const { fullName, email, phone, date, pkg } = formData;
-        const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
 
         // 1. Direct Email Delivery via FormSubmit to snapnowuae@gmail.com (CC: info@snapnow.ae)
         const emailPromise = fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
@@ -336,22 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }).catch(err => console.warn("Email service notice:", err));
 
-        // 2. Google Form Submission (Cloud Spreadsheet Backup)
-        const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
-        const urlParams = new URLSearchParams();
-        urlParams.append('entry.720595420', fullNameWithPackage);
-        urlParams.append('entry.190919875', email);
-        urlParams.append('entry.992756748', phone);
-        urlParams.append('entry.494052433', date || 'Not Specified');
-        
-        const googlePromise = fetch(googleFormUrl, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: urlParams.toString()
-        }).catch(err => console.warn("Google Form notice:", err));
-
-        // 3. Local PHP Mailer (if hosting environment supports PHP)
+        // 2. Local PHP Mailer (if hosting environment supports PHP)
         const phpFormData = new FormData();
         phpFormData.append('name', fullName);
         phpFormData.append('email', email);
@@ -364,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body: phpFormData
         }).catch(err => console.warn("PHP mailer notice:", err));
 
-        return Promise.allSettled([emailPromise, googlePromise, phpPromise]);
+        return Promise.allSettled([emailPromise, phpPromise]);
     }
 
     // Submission logic for Popup Booking Form
