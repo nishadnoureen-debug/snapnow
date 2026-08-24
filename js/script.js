@@ -311,27 +311,81 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Submission logic for Popup Booking Form
+    // Unified Booking Data Dispatcher (FormSubmit email + Google Form backup + PHP mailer)
+    async function dispatchBookingRequest(formData) {
+        const { fullName, email, phone, date, pkg } = formData;
+        const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
+
+        // 1. Direct Email Delivery via FormSubmit to nishadnoureen@gmail.com (CC: info@snapnow.ae)
+        const emailPromise = fetch("https://formsubmit.co/ajax/nishadnoureen@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "Name": fullName,
+                "Email": email,
+                "Phone": phone,
+                "Event Date": date || 'Not Specified',
+                "Package / Service": pkg || 'General Enquiry',
+                "_subject": `New SnapNow Booking Request: ${pkg || 'General Enquiry'} from ${fullName}`,
+                "_cc": "info@snapnow.ae",
+                "_template": "table",
+                "_captcha": "false"
+            })
+        }).catch(err => console.warn("Email service notice:", err));
+
+        // 2. Google Form Submission (Cloud Spreadsheet Backup)
+        const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
+        const urlParams = new URLSearchParams();
+        urlParams.append('entry.720595420', fullNameWithPackage);
+        urlParams.append('entry.190919875', email);
+        urlParams.append('entry.992756748', phone);
+        urlParams.append('entry.494052433', date || 'Not Specified');
+        
+        const googlePromise = fetch(googleFormUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: urlParams.toString()
+        }).catch(err => console.warn("Google Form notice:", err));
+
+        // 3. Local PHP Mailer (if hosting environment supports PHP)
+        const phpFormData = new FormData();
+        phpFormData.append('name', fullName);
+        phpFormData.append('email', email);
+        phpFormData.append('phone', phone);
+        phpFormData.append('date', date || '');
+        phpFormData.append('service', pkg || 'General Enquiry');
+
+        const phpPromise = fetch('send_mail.php', {
+            method: 'POST',
+            body: phpFormData
+        }).catch(err => console.warn("PHP mailer notice:", err));
+
+        return Promise.allSettled([emailPromise, googlePromise, phpPromise]);
+    }
+
+    // Submission logic for Popup Booking Form
     if (popupBookingForm) {
         popupBookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const fullName = document.getElementById('popupName').value.trim();
-            const email = document.getElementById('popupEmail').value.trim();
-            const phone = document.getElementById('popupPhone').value.trim();
-            const date = document.getElementById('popupDate').value.trim();
-            const serviceVal = popupServiceSelect ? popupServiceSelect.value : '';
-            const pkg = (popupSelectedPackage && popupSelectedPackage.value) ? popupSelectedPackage.value : serviceVal;
-            
-            const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
+            const nameEl = popupBookingForm.querySelector('[name="name"]') || document.getElementById('popupName');
+            const emailEl = popupBookingForm.querySelector('[name="email"]') || document.getElementById('popupEmail');
+            const phoneEl = popupBookingForm.querySelector('[name="phone"]') || document.getElementById('popupPhone');
+            const dateEl = popupBookingForm.querySelector('[name="date"]') || document.getElementById('popupDate');
+            const serviceSelect = popupBookingForm.querySelector('select') || popupServiceSelect;
+            const selectedPkgInput = popupBookingForm.querySelector('[name="service"], [name="selectedPackage"]') || popupSelectedPackage;
 
-            const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
-            
-            const urlParams = new URLSearchParams();
-            urlParams.append('entry.720595420', fullNameWithPackage);
-            urlParams.append('entry.190919875', email);
-            urlParams.append('entry.992756748', phone);
-            urlParams.append('entry.494052433', date || 'Not Specified');
-            
+            const fullName = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const phone = phoneEl ? phoneEl.value.trim() : '';
+            const date = dateEl ? dateEl.value.trim() : '';
+            const serviceVal = serviceSelect ? serviceSelect.value : '';
+            const pkg = (selectedPkgInput && selectedPkgInput.value) ? selectedPkgInput.value : serviceVal;
+
             const submitBtn = popupBookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Booking Request';
             if (submitBtn) {
@@ -339,38 +393,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
             }
 
-            // Build PHP mailer form data
-            const phpFormData = new FormData();
-            phpFormData.append('name', fullName);
-            phpFormData.append('email', email);
-            phpFormData.append('phone', phone);
-            phpFormData.append('date', date || '');
-            phpFormData.append('service', pkg || 'General Enquiry');
-
-            // Send to both Google Forms and PHP mailer simultaneously
-            Promise.allSettled([
-                fetch(googleFormUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: urlParams.toString()
-                }),
-                fetch('send_mail.php', {
-                    method: 'POST',
-                    body: phpFormData
+            dispatchBookingRequest({ fullName, email, phone, date, pkg })
+                .then(() => {
+                    closeBookingModal();
+                    showModal(fullName, pkg, email, phone, date);
+                    popupBookingForm.reset();
                 })
-            ])
-            .then(() => {
-                closeBookingModal();
-                showModal(fullName, pkg, email, phone, date);
-                popupBookingForm.reset();
-            })
-            .finally(() => {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalBtnText;
-                }
-            });
+                .finally(() => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    }
+                });
         });
     }
 
@@ -379,22 +413,18 @@ document.addEventListener('DOMContentLoaded', () => {
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const fullName = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const date = document.getElementById('date').value.trim();
-            const pkg = selectedPackageInput ? selectedPackageInput.value : '';
-            
-            const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
+            const nameEl = bookingForm.querySelector('[name="name"]') || document.getElementById('name');
+            const emailEl = bookingForm.querySelector('[name="email"]') || document.getElementById('email');
+            const phoneEl = bookingForm.querySelector('[name="phone"]') || document.getElementById('phone');
+            const dateEl = bookingForm.querySelector('[name="date"]') || document.getElementById('date');
+            const selectedPkgInput = bookingForm.querySelector('[name="service"], [name="selectedPackage"]') || selectedPackageInput;
 
-            const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdZs3GCTo7OOiBdftRbOMFAvH-RSJj8HkKHxmmGusbWvJNkcw/formResponse";
-            
-            const urlParams = new URLSearchParams();
-            urlParams.append('entry.720595420', fullNameWithPackage);
-            urlParams.append('entry.190919875', email);
-            urlParams.append('entry.992756748', phone);
-            urlParams.append('entry.494052433', date || 'Not Specified');
-            
+            const fullName = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const phone = phoneEl ? phoneEl.value.trim() : '';
+            const date = dateEl ? dateEl.value.trim() : '';
+            const pkg = selectedPkgInput ? selectedPkgInput.value : '';
+
             const submitBtn = bookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Request';
             if (submitBtn) {
@@ -402,37 +432,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
             }
 
-            // Build PHP mailer form data
-            const phpFormData = new FormData();
-            phpFormData.append('name', fullName);
-            phpFormData.append('email', email);
-            phpFormData.append('phone', phone);
-            phpFormData.append('date', date || '');
-            phpFormData.append('service', pkg || 'General Enquiry');
-
-            // Send to both Google Forms and PHP mailer simultaneously
-            Promise.allSettled([
-                fetch(googleFormUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: urlParams.toString()
-                }),
-                fetch('send_mail.php', {
-                    method: 'POST',
-                    body: phpFormData
+            dispatchBookingRequest({ fullName, email, phone, date, pkg })
+                .then(() => {
+                    showModal(fullName, pkg, email, phone, date);
+                    bookingForm.reset();
                 })
-            ])
-            .then(() => {
-                showModal(fullName, pkg, email, phone, date);
-                bookingForm.reset();
-            })
-            .finally(() => {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalBtnText;
-                }
-            });
+                .finally(() => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    }
+                });
         });
     }
 

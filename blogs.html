@@ -265,16 +265,20 @@
                 <form id="bookingForm" class="footer-form">
                     <input type="hidden" id="selectedPackage" name="selectedPackage" value="">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder="Full Name">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="e.g. Ahmed Al Rashid">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder="Email Address">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="e.g. hello@yourbrand.com">
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" required placeholder="Phone Number">
+                        <label for="phone">Phone / WhatsApp Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="e.g. +971 50 000 0000">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="date" name="date" placeholder="Event Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                        <label for="date">Event Date (Optional)</label>
+                        <input type="text" id="date" name="date" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
                 </form>
@@ -296,18 +300,23 @@
             <form id="popupBookingForm" class="popup-form">
                 <input type="hidden" id="popupSelectedPackage" name="selectedPackage" value="">
                 <div class="form-group">
-                    <input type="text" id="popupName" name="popupName" required placeholder="Full Name">
+                    <label for="popupName">Full Name</label>
+                    <input type="text" id="popupName" name="popupName" required placeholder="e.g. Ahmed Al Rashid">
                 </div>
                 <div class="form-group">
-                    <input type="email" id="popupEmail" name="popupEmail" required placeholder="Email Address">
+                    <label for="popupEmail">Email Address</label>
+                    <input type="email" id="popupEmail" name="popupEmail" required placeholder="e.g. hello@yourbrand.com">
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="popupPhone" name="popupPhone" required placeholder="Phone Number / WhatsApp">
+                    <label for="popupPhone">Phone / WhatsApp Number</label>
+                    <input type="tel" id="popupPhone" name="popupPhone" required placeholder="e.g. +971 50 000 0000">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="popupDate" name="popupDate" placeholder="Preferred Date (Optional)" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                    <label for="popupDate">Preferred Date (Optional)</label>
+                    <input type="text" id="popupDate" name="popupDate" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
                 </div>
                 <div class="form-group">
+                    <label for="popupServiceSelect">Package / Service</label>
                     <select id="popupServiceSelect" class="form-select">
                         <option value="">Select Package / Service (Optional)</option>
                         <optgroup label="Services Offered">
