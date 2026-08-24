@@ -473,7 +473,7 @@ a.hero-slide-side {
 
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.32), 0 8px 20px rgba(164, 214, 94, 0.25);
     border-top-color: var(--primary-dark);
 }
 
