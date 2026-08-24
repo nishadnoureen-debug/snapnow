@@ -6,7 +6,7 @@
     --primary-dark: #8cbb4c;
     --dark: #121212;
     --dark-grey: #1E1E1E;
-    --light-grey: #FFFFFF;
+    --light-grey: #F4F5F7;
     --white: #FFFFFF;
     --text-main: #333333;
     --text-muted: #555555;
@@ -449,6 +449,10 @@ a.hero-slide-side {
 /* =========================================
    15 Services Grid & Cards
    ========================================= */
+#services {
+    background-color: var(--light-grey);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
