@@ -450,7 +450,19 @@ a.hero-slide-side {
    15 Services Grid & Cards
    ========================================= */
 #services {
-    background-color: #E4E7EB; /* Perfectly balanced light grey: clean, crisp, neither too dark nor too light */
+    background-color: var(--dark-grey); /* Premium Dark Grey Section Background */
+}
+
+#services .section-header h2 {
+    color: var(--white);
+}
+
+#services .section-header .section-subtitle {
+    color: var(--primary);
+}
+
+#services .section-header p {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .services-grid {
@@ -461,11 +473,11 @@ a.hero-slide-side {
 }
 
 .service-card {
-    background: var(--white);
+    background: #141417;
     border-radius: var(--radius);
     padding: 2.2rem 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-top: 4px solid var(--primary);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
@@ -477,7 +489,7 @@ a.hero-slide-side {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45), 0 0 35px rgba(164, 214, 94, 0.75);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(164, 214, 94, 0.65);
     border-color: var(--primary);
     border-top: 4px solid var(--primary);
 }
@@ -501,7 +513,7 @@ a.hero-slide-side {
     width: 48px;
     height: 48px;
     background: rgba(164, 214, 94, 0.12);
-    color: var(--primary-dark);
+    color: var(--primary);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -519,7 +531,7 @@ a.hero-slide-side {
 .service-card h3 {
     font-size: 1.25rem;
     font-weight: 800;
-    color: var(--dark);
+    color: var(--white);
     margin-bottom: 1.2rem;
     line-height: 1.35;
     min-height: 2.7rem;
@@ -535,7 +547,7 @@ a.hero-slide-side {
 
 .service-tags li {
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 0.6rem;
     display: flex;
     align-items: flex-start;
@@ -555,12 +567,14 @@ a.hero-slide-side {
     margin-top: auto;
     font-size: 0.9rem;
     padding: 0.75rem 1.2rem;
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .service-card .btn:hover {
-    background: var(--dark);
-    color: var(--white);
-    border-color: var(--dark);
+    background: var(--primary);
+    color: var(--dark);
+    border-color: var(--primary);
 }
 
 @media (max-width: 1100px) {
