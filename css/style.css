@@ -388,10 +388,18 @@ a.hero-slide-side {
 .pillars {
     position: relative;
     z-index: 20;
-    background: var(--white);
+    background: var(--dark-grey);
     margin-top: -3rem;
     border-radius: 30px 30px 0 0;
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.pillars .section-header h2 {
+    color: var(--white);
+}
+
+.pillars .section-header p {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .pillars-grid {
@@ -401,26 +409,29 @@ a.hero-slide-side {
 }
 
 .pillar-card {
-    background: var(--white);
+    background: #141416;
     padding: 2.5rem 2rem;
     border-radius: var(--radius);
     text-align: center;
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 3px solid var(--primary);
     will-change: transform, box-shadow;
 }
 
 .pillar-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(164, 214, 94, 0.65);
+    border-color: var(--primary);
+    border-top: 3px solid var(--primary);
 }
 
 .pillar-icon {
     width: 70px;
     height: 70px;
-    background: rgba(164, 214, 94, 0.1);
-    color: var(--primary-dark);
+    background: rgba(164, 214, 94, 0.12);
+    color: var(--primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -439,10 +450,11 @@ a.hero-slide-side {
 .pillar-card h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: var(--white);
 }
 
 .pillar-card p {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 0.95rem;
 }
 
