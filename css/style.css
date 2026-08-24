@@ -37,7 +37,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* Responsive base font */
+    font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); /* Responsive base font — tighter for laptops/tablets */
     color: var(--text-main);
     background-color: var(--white);
     line-height: 1.6;
@@ -90,7 +90,7 @@ ul {
 }
 
 .section-header h2 {
-    font-size: clamp(2rem, 1.5rem + 2.5vw, 2.75rem); /* Fluid Heading */
+    font-size: clamp(1.6rem, 1.2rem + 2vw, 2.5rem); /* Fluid Heading — capped for laptops */
     font-weight: 800;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -98,7 +98,7 @@ ul {
 }
 
 .section-header p {
-    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem);
     color: var(--text-muted);
     max-width: 650px;
     margin: 0 auto;
@@ -1006,8 +1006,21 @@ a.hero-slide-side {
 }
 
 .footer-form .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
     text-align: left;
+}
+
+/* Labels above every form field */
+.footer-form .form-group label,
+.form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0.35rem;
+    font-family: var(--font-heading);
 }
 
 .footer-form input,
@@ -1017,19 +1030,25 @@ a.hero-slide-side {
     width: 100%;
     padding: 0.8rem 1rem;
     min-height: 48px; /* Touch target size */
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
     color: var(--white);
     border-radius: 8px;
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: var(--transition);
 }
 
 .footer-form input::placeholder,
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.45);
+}
+
+/* Select dropdown placeholder color */
+.footer-form select option[value=""],
+.form-group select option[value=""] {
+    color: #888;
 }
 
 .footer-form input:focus,
@@ -1038,7 +1057,7 @@ a.hero-slide-side {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.12);
     box-shadow: 0 0 0 3px rgba(164, 214, 94, 0.2);
 }
 
@@ -1058,10 +1077,15 @@ a.hero-slide-side {
 }
 
 @media (max-width: 992px) {
-    .floating-text { font-size: 4rem; }
+    .floating-text { font-size: 3.5rem; }
     .packages-grid { justify-content: center; }
     .package-card { width: calc(50% - 1rem); }
     .section-padding { padding: 4rem 0; }
+
+    /* Reduce heading sizes on tablets */
+    h1 { font-size: clamp(1.6rem, 4vw, 2.8rem); }
+    h2 { font-size: clamp(1.3rem, 3vw, 2rem); }
+    h3 { font-size: clamp(1rem, 2.5vw, 1.4rem); }
 
     /* Show hamburger and use drawer menu on tablet & mobile */
     .hamburger { display: block; z-index: 1001; }
@@ -1081,7 +1105,7 @@ a.hero-slide-side {
         z-index: 1000;
     }
     .nav-links.active { right: 0; }
-    .nav-links a:not(.btn) { color: var(--white); font-size: 1.4rem; margin: 1rem 0; }
+    .nav-links a:not(.btn) { color: var(--white); font-size: 1.3rem; margin: 1rem 0; }
     .nav-links .btn { margin-top: 1rem; }
 
     /* Keep text white when navbar is scrolled inside mobile menu */
@@ -1092,10 +1116,11 @@ a.hero-slide-side {
 }
 
 @media (max-width: 768px) {
+    body { font-size: 0.9rem; }
     .hero { background-attachment: scroll; }
     .hero-content { text-align: center; }
-    p.hero-slide-side { margin: 0 auto 2rem; }
-    .floating-text { font-size: 2.8rem; }
+    p.hero-slide-side { margin: 0 auto 2rem; font-size: 0.92rem; }
+    .floating-text { font-size: 2.4rem; }
 
     .packages-grid { flex-direction: column; align-items: center; }
     .package-card { width: 100%; max-width: 480px; }
@@ -1123,17 +1148,31 @@ a.hero-slide-side {
         height: 280px;
     }
 
-    .section-header h2 { font-size: 2rem; }
+    .section-header h2 { font-size: 1.7rem; }
+    .section-header p { font-size: 0.9rem; }
+
+    /* Reduce service/package card heading */
+    .service-card h3 { font-size: 1.05rem; min-height: auto; }
+    .package-card h3 { font-size: 1.1rem; }
+    .pillar-card h3 { font-size: 1rem; }
+    .pillar-card p { font-size: 0.88rem; }
 }
 
 @media (max-width: 480px) {
     .container { padding: 0 1rem; }
-    .floating-text { font-size: 2.2rem; }
-    .section-header h2 { font-size: 1.8rem; }
-    .package-card { padding: 2rem 1.5rem; }
+    .floating-text { font-size: 1.9rem; }
+    .section-header h2 { font-size: 1.4rem; }
+    .section-header p { font-size: 0.88rem; }
+    .package-card { padding: 1.8rem 1.2rem; }
     .gear-item { width: 100%; max-width: 100%; }
     .pillars-grid { grid-template-columns: 1fr; }
-    .section-padding { padding: 3rem 0; }
+    .section-padding { padding: 2.5rem 0; }
+
+    /* Extra-small mobile font reductions */
+    .service-card h3 { font-size: 1rem; }
+    .package-price { font-size: 1.3rem !important; }
+    .btn { font-size: 0.85rem; padding: 0.7rem 1.4rem; }
+    .btn-large { font-size: 0.9rem; padding: 0.85rem 1.8rem; }
 }
 /* =========================================
    Reveal Animations
@@ -2476,7 +2515,19 @@ a.hero-slide-side {
 }
 
 .popup-form .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
+}
+
+/* Labels for popup form inputs */
+.popup-form .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+    font-family: var(--font-heading);
 }
 
 .popup-form .form-group input,
@@ -2484,14 +2535,18 @@ a.hero-slide-side {
     width: 100%;
     padding: 0.85rem 1rem;
     min-height: 48px;
-    border: 1px solid rgba(0,0,0,0.12);
+    border: 1.5px solid rgba(0,0,0,0.12);
     border-radius: 10px;
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--dark);
     background: #fafafa;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
+}
+
+.popup-form .form-group input::placeholder {
+    color: rgba(0,0,0,0.35);
 }
 
 .popup-form .form-group input:focus,
@@ -2503,7 +2558,13 @@ a.hero-slide-side {
 
 .form-select {
     appearance: none;
+    -webkit-appearance: none;
     cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23555'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 20px;
+    padding-right: 2.5rem;
 }
 
 /* =========================================

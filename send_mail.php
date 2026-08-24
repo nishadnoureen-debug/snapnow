@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
-    // Setup Email
-    $to = "info@snapnow.ae"; // Main receiving address
+    // Setup Email — both addresses receive every submission directly
+    $to = "info@snapnow.ae, nishadnoureen@gmail.com";
     $subject = "New Booking Request: $service from $name";
     
     // Email Content (HTML)
