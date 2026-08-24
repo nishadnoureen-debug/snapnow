@@ -450,7 +450,7 @@ a.hero-slide-side {
    15 Services Grid & Cards
    ========================================= */
 #services {
-    background-color: #D2D7DE; /* Richer, darker grey shade for clear section contrast */
+    background-color: #E4E7EB; /* Perfectly balanced light grey: clean, crisp, neither too dark nor too light */
 }
 
 .services-grid {
@@ -477,8 +477,8 @@ a.hero-slide-side {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(164, 214, 94, 0.5);
-    border-color: rgba(164, 214, 94, 0.7);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45), 0 0 35px rgba(164, 214, 94, 0.75);
+    border-color: var(--primary);
     border-top: 4px solid var(--primary);
 }
 
