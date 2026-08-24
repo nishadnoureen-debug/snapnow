@@ -316,8 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const { fullName, email, phone, date, pkg } = formData;
         const fullNameWithPackage = pkg ? `${fullName} [Package: ${pkg}]` : fullName;
 
-        // 1. Direct Email Delivery via FormSubmit to nishadnoureen@gmail.com (CC: info@snapnow.ae)
-        const emailPromise = fetch("https://formsubmit.co/ajax/nishadnoureen@gmail.com", {
+        // 1. Direct Email Delivery via FormSubmit to snapnowuae@gmail.com (CC: info@snapnow.ae)
+        const emailPromise = fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

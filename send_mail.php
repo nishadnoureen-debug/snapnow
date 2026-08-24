@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // Setup Email
-    $to = "nishadnoureen@gmail.com";
+    $to = "snapnowuae@gmail.com";
     $subject = "New Booking Request: $service from $name";
     
     // Email Content (HTML)
