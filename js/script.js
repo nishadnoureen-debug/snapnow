@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.querySelectorAll('.hero-slide-side').forEach(el => el.classList.add('visible'));
         document.querySelectorAll('.hero-fade').forEach(el => el.classList.add('visible'));
-    }, 100);
+    }, 120);
 
-    // Scroll Reveal Animation (Intersection Observer)
+    // Scroll Reveal Animation Flow (Intersection Observer)
     const revealOptions = {
-        threshold: 0,
-        rootMargin: "0px 0px -30px 0px"
+        threshold: 0.08,
+        rootMargin: "0px 0px -20px 0px"
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -76,12 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, revealOptions);
 
-    document.querySelectorAll('.reveal, .reveal-zoom').forEach(el => {
+    const revealSelectors = '.reveal, .reveal-zoom, .reveal-left, .reveal-right';
+    document.querySelectorAll(revealSelectors).forEach(el => {
         revealObserver.observe(el);
     });
 
-    // Immediately activate any .reveal elements already in the viewport on load
-    document.querySelectorAll('.reveal, .reveal-zoom').forEach(el => {
+    // Immediately activate any reveal elements already in the viewport on initial load
+    document.querySelectorAll(revealSelectors).forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
             el.classList.add('reveal-active', 'active');

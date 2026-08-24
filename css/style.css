@@ -349,28 +349,96 @@ ul {
     letter-spacing: -2px;
 }
 
-/* ---- Google Flow Sideways Hero Animation ---- */
+/* =========================================
+   Hero Dynamic Flow Animations & Ambient Orbs
+   ========================================= */
+.hero-glow-flow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.hero-flow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.28;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+}
+
+.hero-flow-orb.orb-1 {
+    top: 15%;
+    right: 8%;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(164, 214, 94, 0.8) 0%, rgba(140, 187, 76, 0.2) 60%, transparent 80%);
+    animation: flowOrbOne 14s ease-in-out infinite alternate;
+}
+
+.hero-flow-orb.orb-2 {
+    bottom: 10%;
+    left: -5%;
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(164, 214, 94, 0.5) 0%, rgba(30, 80, 40, 0.2) 60%, transparent 80%);
+    animation: flowOrbTwo 18s ease-in-out infinite alternate;
+}
+
+@keyframes flowOrbOne {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.25;
+    }
+    50% {
+        transform: translate(-60px, 40px) scale(1.15);
+        opacity: 0.38;
+    }
+    100% {
+        transform: translate(40px, -50px) scale(0.95);
+        opacity: 0.28;
+    }
+}
+
+@keyframes flowOrbTwo {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translate(80px, -40px) scale(1.18);
+        opacity: 0.32;
+    }
+    100% {
+        transform: translate(-40px, 60px) scale(0.9);
+        opacity: 0.22;
+    }
+}
+
+/* Hero Content Kinetic Entrance Flow */
 .hero-slide-side {
-    opacity: 1;
-    transform: translateX(0);
-    filter: blur(0);
-    transition: opacity 1.2s cubic-bezier(0.4, 0.0, 0.2, 1),
-                transform 1.2s cubic-bezier(0.4, 0.0, 0.2, 1),
-                filter 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-slide-side.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
     filter: blur(0);
 }
 
 h1.hero-slide-side {
-    transition-delay: 0.2s;
+    transition-delay: 0.15s;
 }
 
 p.hero-slide-side {
-    transition-delay: 0.4s;
+    transition-delay: 0.35s;
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: rgba(255, 255, 255, 0.85);
     max-width: 600px;
@@ -378,8 +446,95 @@ p.hero-slide-side {
     font-weight: 300;
 }
 
-a.hero-slide-side {
-    transition-delay: 0.6s;
+.hero-cta-group.hero-slide-side {
+    transition-delay: 0.55s;
+}
+
+/* Hero Scroll Flow Indicator */
+.hero-scroll-flow {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+.hero-scroll-flow:hover {
+    color: var(--primary);
+    transform: translateX(-50%) translateY(3px);
+}
+
+.scroll-flow-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    opacity: 0.8;
+}
+
+.scroll-flow-mouse {
+    width: 22px;
+    height: 34px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    transition: border-color 0.35s ease;
+}
+
+.hero-scroll-flow:hover .scroll-flow-mouse {
+    border-color: var(--primary);
+}
+
+.scroll-flow-wheel {
+    width: 4px;
+    height: 7px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    position: absolute;
+    top: 5px;
+    animation: scrollWheelFlow 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scrollWheelFlow {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+.scroll-flow-arrow {
+    font-size: 0.8rem;
+    animation: scrollArrowBounce 2s ease-in-out infinite;
+    color: var(--primary);
+}
+
+@keyframes scrollArrowBounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(4px);
+        opacity: 1;
+    }
 }
 
 /* =========================================
@@ -1031,20 +1186,6 @@ a.hero-slide-side {
 }
 
 /* =========================================
-   Animations (Scroll Reveal)
-   ========================================= */
-.reveal {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================================
    Floating / Badge Contact Buttons
    ========================================= */
 .direct-contact-buttons {
@@ -1376,35 +1517,138 @@ a.hero-slide-side {
     .nav-links a:not(.btn) { font-size: 1.1rem; margin: 0.7rem 0; }
 }
 /* =========================================
-   Reveal Animations
+   Reveal Animations & Fluid Flow System
    ========================================= */
 .reveal {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(4px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
 }
 
 .reveal.reveal-active,
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-35px);
+    filter: blur(4px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+}
+
+.reveal-left.reveal-active,
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(35px);
+    filter: blur(4px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+}
+
+.reveal-right.reveal-active,
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
 }
 
 .reveal-zoom {
-    opacity: 1;
-    transform: scale(1);
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(4px);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
 }
 
 .reveal-zoom.reveal-active,
 .reveal-zoom.active {
     opacity: 1;
     transform: scale(1);
+    filter: blur(0);
 }
 
 .delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
+.delay-2 { transition-delay: 0.18s; }
+.delay-3 { transition-delay: 0.26s; }
+.delay-4 { transition-delay: 0.34s; }
+.delay-5 { transition-delay: 0.42s; }
+
+/* Micro-Flows: Card & Button Animations */
+.service-number {
+    position: relative;
+    transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.service-card:hover .service-number {
+    color: var(--primary);
+    transform: scale(1.08);
+}
+
+/* Primary Button Shimmer Flow */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: rotate(25deg);
+    transition: none;
+    pointer-events: none;
+}
+
+.btn-primary:hover::after {
+    animation: btnShimmerFlow 0.85s ease forwards;
+}
+
+@keyframes btnShimmerFlow {
+    0% {
+        left: -60%;
+    }
+    100% {
+        left: 140%;
+    }
+}
+
+/* Customise Solution Badge Glow Pulse */
+.customise-badge {
+    animation: badgeFlowGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes badgeFlowGlow {
+    0% {
+        box-shadow: 0 0 0 rgba(164, 214, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 16px rgba(164, 214, 94, 0.45);
+    }
+}
 
 /* Floating Animation */
 @keyframes float {
