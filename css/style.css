@@ -2078,12 +2078,13 @@ a.hero-slide-side {
 
 .blogs-hero {
     position: relative;
-    height: 60vh;
-    min-height: 450px;
+    height: 42vh;
+    min-height: 320px;
     display: flex;
     align-items: center;
     background-color: var(--dark);
     overflow: hidden;
+    padding-top: 5rem;
 }
 
 .blogs-hero-bg {
@@ -2978,7 +2979,29 @@ a.hero-slide-side {
     }
 }
 
+/* =========================================
+   Retainers Page – Package Section Header (White)
+   ========================================= */
+#retainers .section-header h2,
+#retainers .section-header h3,
+#retainers .section-header .section-subtitle {
+    color: var(--white) !important;
+}
 
+#retainers .section-header p {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
 
+/* =========================================
+   Production Page – Package Section Header (White)
+   ========================================= */
+#production-packages .section-header h2,
+#production-packages .section-header h3,
+#production-packages .section-header .section-subtitle {
+    color: var(--white) !important;
+}
 
+#production-packages .section-header p {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
 
