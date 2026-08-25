@@ -61,6 +61,37 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.hero-fade').forEach(el => el.classList.add('visible'));
     }, 120);
 
+    // Dynamic Hero CTA Button — cycles between Retainers and Production Shoots
+    const heroDynamicBtn = document.getElementById('heroDynamicBtn');
+    if (heroDynamicBtn) {
+        const dynamicStates = [
+            { text: 'Explore Retainers',         href: 'retainers.html' },
+            { text: 'Explore Production Shoots', href: 'production.html' }
+        ];
+        let dynIndex = 0;
+        const textEl = heroDynamicBtn.querySelector('.dynamic-text-container');
+
+        setInterval(() => {
+            // Fade out
+            textEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+            textEl.style.opacity = '0';
+            textEl.style.transform = 'translateY(-8px)';
+
+            setTimeout(() => {
+                dynIndex = (dynIndex + 1) % dynamicStates.length;
+                textEl.textContent = dynamicStates[dynIndex].text;
+                heroDynamicBtn.href = dynamicStates[dynIndex].href;
+
+                // Fade in from below
+                textEl.style.transform = 'translateY(8px)';
+                requestAnimationFrame(() => {
+                    textEl.style.opacity = '1';
+                    textEl.style.transform = 'translateY(0)';
+                });
+            }, 370);
+        }, 3200);
+    }
+
     // Scroll Reveal Animation Flow (Intersection Observer)
     const revealOptions = {
         threshold: 0.08,

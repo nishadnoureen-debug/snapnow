@@ -329,6 +329,38 @@ ul {
     transition: transform 0.1s ease-out;
 }
 
+/* Responsive hero image positioning */
+@media (max-width: 480px) {
+    /* Mobile phones: show right side of image where faces are */
+    .hero-bg {
+        background-position: 75% center;
+        background-size: cover;
+    }
+    .hero { min-height: 600px; height: 100svh; }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Tablets portrait: shift right slightly */
+    .hero-bg {
+        background-position: 65% center;
+        background-size: cover;
+    }
+    .hero { min-height: 650px; }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+    /* Laptops / tablets landscape */
+    .hero-bg {
+        background-position: center center;
+        background-size: cover;
+    }
+}
+@media (min-width: 1201px) {
+    /* Large desktops */
+    .hero-bg {
+        background-position: center top;
+        background-size: cover;
+    }
+}
+
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -342,12 +374,22 @@ ul {
     z-index: 3;
 }
 
+/* Hero container override: push text to left edge of screen */
+.hero .container {
+    margin-left: 0;          /* Unset auto centering */
+    margin-right: auto;
+    padding-left: clamp(1.5rem, 5vw, 7rem); /* Responsive left padding from screen edge */
+    padding-right: 2rem;
+    max-width: none;         /* Allow full width */
+    width: 100%;
+}
+
 .hero-content {
     position: relative;
     z-index: 10;
-    text-align: left;      /* Left-align all text */
-    max-width: 700px;      /* Constrain content width so text doesn't span full width */
-    padding-top: 0;        /* Remove top offset — parent flexbox centres vertically */
+    text-align: left;
+    max-width: 640px;        /* Cap text width so it doesn't run into the image */
+    padding-top: 0;
     margin-top: 0;
 }
 
@@ -2775,6 +2817,32 @@ p.hero-slide-side {
     gap: 1.2rem;
     align-items: center;
     flex-wrap: wrap;
+}
+
+/* Dynamic cycling CTA button */
+.hero-dynamic-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    min-width: 220px;
+    justify-content: center;
+}
+
+.dynamic-text-container {
+    display: inline-block;
+    white-space: nowrap;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dynamic-btn-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.hero-dynamic-cta:hover .dynamic-btn-icon {
+    transform: translateX(4px);
 }
 
 /* =========================================
