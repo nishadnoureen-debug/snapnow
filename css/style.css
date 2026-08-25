@@ -234,11 +234,16 @@ ul {
     display: flex;
     align-items: center;
     text-decoration: none;
+    line-height: 1;
 }
 
 .logo-img {
-    height: 35px;
+    height: 32px;
+    max-height: 32px;
     width: auto;
+    max-width: 190px;
+    object-fit: contain;
+    display: block;
     transition: var(--transition);
 }
 
@@ -254,6 +259,12 @@ ul {
     display: block;
 }
 
+.navbar.scrolled .logo-img {
+    height: 27px;
+    max-height: 27px;
+    max-width: 160px;
+}
+
 /* Footer always shows white logo */
 .footer-brand .logo-white {
     display: block !important;
@@ -264,7 +275,9 @@ ul {
 }
 
 .footer-brand .logo-img {
-    height: 50px;
+    height: 38px;
+    max-height: 38px;
+    max-width: 220px;
 }
 
 
@@ -1400,6 +1413,10 @@ p.hero-slide-side {
    Tablet: ≤992px
    ========================================= */
 @media (max-width: 992px) {
+    .logo-img { height: 26px; max-height: 26px; max-width: 155px; }
+    .navbar.scrolled .logo-img { height: 23px; max-height: 23px; max-width: 135px; }
+    .footer-brand .logo-img { height: 32px; max-height: 32px; max-width: 190px; }
+
     .floating-text { font-size: 3.2rem; }
     .packages-grid { justify-content: center; }
     .package-card { width: calc(50% - 1rem); }
@@ -1442,6 +1459,10 @@ p.hero-slide-side {
    Mobile: ≤768px
    ========================================= */
 @media (max-width: 768px) {
+    .logo-img { height: 22px; max-height: 22px; max-width: 130px; }
+    .navbar.scrolled .logo-img { height: 19px; max-height: 19px; max-width: 115px; }
+    .footer-brand .logo-img { height: 28px; max-height: 28px; max-width: 160px; }
+
     body { font-size: 0.85rem; line-height: 1.55; }
 
     .container { padding: 0 1.2rem; }
@@ -1509,6 +1530,10 @@ p.hero-slide-side {
    Small Mobile: ≤480px
    ========================================= */
 @media (max-width: 480px) {
+    .logo-img { height: 19px; max-height: 19px; max-width: 110px; }
+    .navbar.scrolled .logo-img { height: 17px; max-height: 17px; max-width: 100px; }
+    .footer-brand .logo-img { height: 25px; max-height: 25px; max-width: 145px; }
+
     body { font-size: 0.82rem; }
     .container { padding: 0 0.9rem; }
     .floating-text { font-size: 1.6rem; letter-spacing: -0.5px; }
@@ -1547,6 +1572,10 @@ p.hero-slide-side {
    Extra Small Mobile: ≤360px
    ========================================= */
 @media (max-width: 360px) {
+    .logo-img { height: 17px; max-height: 17px; max-width: 95px; }
+    .navbar.scrolled .logo-img { height: 15px; max-height: 15px; max-width: 85px; }
+    .footer-brand .logo-img { height: 22px; max-height: 22px; max-width: 125px; }
+
     body { font-size: 0.78rem; }
     .container { padding: 0 0.75rem; }
     .floating-text { font-size: 1.4rem; }

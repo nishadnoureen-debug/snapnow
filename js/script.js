@@ -918,6 +918,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideBlogModal();
             }
         });
+    }
+
     // Ensure WhatsApp floating button is present on the page
     if (!document.querySelector('.whatsapp-float')) {
         const waBtn = document.createElement('a');
