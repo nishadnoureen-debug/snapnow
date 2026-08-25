@@ -1569,6 +1569,12 @@ p.hero-slide-side {
                 transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
                 filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
+    /* Safety: auto-reveal after 2s in case JS is blocked */
+    animation: revealFallback 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+}
+
+@keyframes revealFallback {
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 .reveal.reveal-active,
@@ -1586,6 +1592,11 @@ p.hero-slide-side {
                 transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
                 filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
+    animation: revealLeftFallback 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+}
+
+@keyframes revealLeftFallback {
+    to { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
 
 .reveal-left.reveal-active,
@@ -1593,6 +1604,7 @@ p.hero-slide-side {
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
+    animation: none;
 }
 
 .reveal-right {
@@ -1603,6 +1615,11 @@ p.hero-slide-side {
                 transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
                 filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
+    animation: revealRightFallback 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+}
+
+@keyframes revealRightFallback {
+    to { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
 
 .reveal-right.reveal-active,
@@ -1610,6 +1627,7 @@ p.hero-slide-side {
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
+    animation: none;
 }
 
 .reveal-zoom {
@@ -1620,6 +1638,11 @@ p.hero-slide-side {
                 transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
                 filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
+    animation: revealZoomFallback 0.95s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+}
+
+@keyframes revealZoomFallback {
+    to { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
 .reveal-zoom.reveal-active,
@@ -1627,6 +1650,7 @@ p.hero-slide-side {
     opacity: 1;
     transform: scale(1);
     filter: blur(0);
+    animation: none;
 }
 
 .delay-1 { transition-delay: 0.1s; }

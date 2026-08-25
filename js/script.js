@@ -62,34 +62,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 120);
 
     // Dynamic Hero CTA Button — cycles between Retainers and Production Shoots
-    const heroDynamicBtn = document.getElementById('heroDynamicBtn');
-    if (heroDynamicBtn) {
-        const dynamicStates = [
-            { text: 'Explore Retainers',         href: 'retainers.html' },
-            { text: 'Explore Production Shoots', href: 'production.html' }
-        ];
-        let dynIndex = 0;
-        const textEl = heroDynamicBtn.querySelector('.dynamic-text-container');
+    try {
+        const heroDynamicBtn = document.getElementById('heroDynamicBtn');
+        if (heroDynamicBtn) {
+            const dynamicStates = [
+                { text: 'Explore Retainers',         href: 'retainers.html' },
+                { text: 'Explore Production Shoots', href: 'production.html' }
+            ];
+            let dynIndex = 0;
+            const textEl = heroDynamicBtn.querySelector('.dynamic-text-container');
 
-        setInterval(() => {
-            // Fade out
-            textEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-            textEl.style.opacity = '0';
-            textEl.style.transform = 'translateY(-8px)';
+            if (textEl) {
+                setInterval(() => {
+                    // Fade out
+                    textEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+                    textEl.style.opacity = '0';
+                    textEl.style.transform = 'translateY(-8px)';
 
-            setTimeout(() => {
-                dynIndex = (dynIndex + 1) % dynamicStates.length;
-                textEl.textContent = dynamicStates[dynIndex].text;
-                heroDynamicBtn.href = dynamicStates[dynIndex].href;
+                    setTimeout(() => {
+                        dynIndex = (dynIndex + 1) % dynamicStates.length;
+                        textEl.textContent = dynamicStates[dynIndex].text;
+                        heroDynamicBtn.href = dynamicStates[dynIndex].href;
 
-                // Fade in from below
-                textEl.style.transform = 'translateY(8px)';
-                requestAnimationFrame(() => {
-                    textEl.style.opacity = '1';
-                    textEl.style.transform = 'translateY(0)';
-                });
-            }, 370);
-        }, 3200);
+                        // Fade in from below
+                        textEl.style.transform = 'translateY(8px)';
+                        requestAnimationFrame(() => {
+                            textEl.style.opacity = '1';
+                            textEl.style.transform = 'translateY(0)';
+                        });
+                    }, 370);
+                }, 3200);
+            }
+        }
+    } catch(e) {
+        console.warn('Dynamic CTA button error:', e);
     }
 
     // Scroll Reveal Animation Flow (Intersection Observer)
