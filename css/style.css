@@ -332,9 +332,9 @@ ul {
     left: 0;
     width: 100%;
     height: 120%; /* Extra height for parallax */
-    background-image: url('../assets/Gemini_Generated_Image_b85y2db85y2db85y.png');
+    background-image: url('../assets/hero_bg.jpg');
     background-size: cover;
-    background-position: center top; /* Show top-center for better composition */
+    background-position: right center; /* Show cameraman and rig on right side */
     background-repeat: no-repeat;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -344,17 +344,17 @@ ul {
 
 /* Responsive hero image positioning */
 @media (max-width: 480px) {
-    /* Mobile phones: show right side of image where faces are */
+    /* Mobile phones: focus on the camera and subject */
     .hero-bg {
-        background-position: 75% center;
+        background-position: 65% center;
         background-size: cover;
     }
     .hero { min-height: 600px; height: 100svh; }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-    /* Tablets portrait: shift right slightly */
+    /* Tablets portrait: shift slightly right */
     .hero-bg {
-        background-position: 65% center;
+        background-position: 70% center;
         background-size: cover;
     }
     .hero { min-height: 650px; }
@@ -362,14 +362,14 @@ ul {
 @media (min-width: 769px) and (max-width: 1200px) {
     /* Laptops / tablets landscape */
     .hero-bg {
-        background-position: center center;
+        background-position: right center;
         background-size: cover;
     }
 }
 @media (min-width: 1201px) {
     /* Large desktops */
     .hero-bg {
-        background-position: center top;
+        background-position: right center;
         background-size: cover;
     }
 }
@@ -377,12 +377,13 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* Lighter left-side overlay so content is readable but image breathes */
+    /* Lighter left-side overlay so text is crisp and cinematic rig on right is clear */
     background: linear-gradient(
         to right,
-        rgba(18, 18, 18, 0.82) 0%,
-        rgba(18, 18, 18, 0.60) 55%,
-        rgba(18, 18, 18, 0.40) 100%
+        rgba(10, 10, 10, 0.90) 0%,
+        rgba(10, 10, 10, 0.65) 45%,
+        rgba(10, 10, 10, 0.20) 80%,
+        rgba(10, 10, 10, 0.05) 100%
     );
     z-index: 3;
 }
