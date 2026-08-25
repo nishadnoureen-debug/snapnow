@@ -308,7 +308,7 @@ ul {
     height: 100vh;
     min-height: 700px;
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically center content */
     background-color: var(--dark);
     overflow: hidden;
 }
@@ -321,7 +321,10 @@ ul {
     height: 120%; /* Extra height for parallax */
     background-image: url('../assets/Gemini_Generated_Image_b85y2db85y2db85y.png');
     background-size: cover;
-    background-position: center;
+    background-position: center top; /* Show top-center for better composition */
+    background-repeat: no-repeat;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
     z-index: 1;
     transition: transform 0.1s ease-out;
 }
@@ -329,14 +332,23 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(18, 18, 18, 0.93) 0%, rgba(18, 18, 18, 0.75) 100%);
+    /* Lighter left-side overlay so content is readable but image breathes */
+    background: linear-gradient(
+        to right,
+        rgba(18, 18, 18, 0.82) 0%,
+        rgba(18, 18, 18, 0.60) 55%,
+        rgba(18, 18, 18, 0.40) 100%
+    );
+    z-index: 3;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-    text-align: left;
-    padding-top: 5rem;
+    text-align: left;      /* Left-align all text */
+    max-width: 700px;      /* Constrain content width so text doesn't span full width */
+    padding-top: 0;        /* Remove top offset — parent flexbox centres vertically */
+    margin-top: 0;
 }
 
 .floating-text {
@@ -356,7 +368,7 @@ ul {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 2;
+    z-index: 4;
     overflow: hidden;
 }
 
@@ -439,11 +451,13 @@ h1.hero-slide-side {
 
 p.hero-slide-side {
     transition-delay: 0.35s;
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 600px;
-    margin-bottom: 1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.90);
+    max-width: 580px;
+    margin-bottom: 2rem;
     font-weight: 300;
+    line-height: 1.75;
+    text-align: left;
 }
 
 .hero-cta-group.hero-slide-side {
