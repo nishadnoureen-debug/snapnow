@@ -98,10 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Dynamic CTA button error:', e);
     }
 
-    // Scroll Reveal Animation Flow (Intersection Observer)
+    // Immediately activate any elements in or near viewport for zero-delay rendering
+    const revealSelectors = '.reveal, .reveal-zoom, .reveal-left, .reveal-right';
+    const initialElements = document.querySelectorAll(revealSelectors);
+    const windowH = window.innerHeight || document.documentElement.clientHeight;
+    
+    initialElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowH * 1.15) {
+            el.classList.add('reveal-active', 'active');
+        }
+    });
+
+    // Scroll Reveal Animation Flow for below-the-fold elements (Intersection Observer)
     const revealOptions = {
-        threshold: 0.08,
-        rootMargin: "0px 0px -20px 0px"
+        threshold: 0.02,
+        rootMargin: "50px 0px"
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -113,18 +125,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, revealOptions);
 
-    const revealSelectors = '.reveal, .reveal-zoom, .reveal-left, .reveal-right';
-    document.querySelectorAll(revealSelectors).forEach(el => {
-        revealObserver.observe(el);
-    });
-
-    // Immediately activate any reveal elements already in the viewport on initial load
-    document.querySelectorAll(revealSelectors).forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('reveal-active', 'active');
+    initialElements.forEach(el => {
+        if (!el.classList.contains('reveal-active')) {
+            revealObserver.observe(el);
         }
     });
+
+    // =========================================
+    // Instant Link Prefetching for Ultra-Fast Page Transitions
+    // =========================================
+    const prefetchedUrls = new Set();
+    function prefetchPage(url) {
+        if (!url || prefetchedUrls.has(url) || url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('http') && !url.includes(window.location.host)) {
+            return;
+        }
+        prefetchedUrls.add(url);
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+    }
+
+    // Prefetch on hover / touchstart
+    document.addEventListener('mouseover', (e) => {
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href && anchor.origin === window.location.origin) {
+            prefetchPage(anchor.getAttribute('href'));
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchstart', (e) => {
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href && anchor.origin === window.location.origin) {
+            prefetchPage(anchor.getAttribute('href'));
+        }
+    }, { passive: true });
+
+    // Idle prefetch of primary site pages
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            ['projects.html', 'retainers.html', 'production.html', 'blogs.html', 'index.html'].forEach(p => prefetchPage(p));
+        });
+    } else {
+        setTimeout(() => {
+            ['projects.html', 'retainers.html', 'production.html', 'blogs.html', 'index.html'].forEach(p => prefetchPage(p));
+        }, 1200);
+    }
 
     // Parallax Effect for Hero
     const heroBg = document.querySelector('.hero-bg');
@@ -872,38 +918,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideBlogModal();
             }
         });
-    }
-
-    // Dynamic Hero Button Text & Destination Rotator (Retainers <-> Production Shoots)
-    const heroDynamicBtn = document.getElementById('heroDynamicBtn');
-    if (heroDynamicBtn) {
-        const destinations = [
-            { text: 'Explore Retainers', href: 'retainers.html', icon: 'fa-arrow-right' },
-            { text: 'Explore Production Shoots', href: 'production.html', icon: 'fa-video' }
-        ];
-        let currentIndex = 0;
-
-        setInterval(() => {
-            heroDynamicBtn.classList.add('changing');
-            
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % destinations.length;
-                const nextDest = destinations[currentIndex];
-                
-                heroDynamicBtn.href = nextDest.href;
-                const textSpan = heroDynamicBtn.querySelector('.dynamic-text-container');
-                const iconElem = heroDynamicBtn.querySelector('.dynamic-btn-icon');
-                
-                if (textSpan) textSpan.textContent = nextDest.text;
-                if (iconElem) {
-                    iconElem.className = `fa-solid ${nextDest.icon} dynamic-btn-icon`;
-                }
-                
-                heroDynamicBtn.classList.remove('changing');
-            }, 350);
-        }, 3200);
-    }
-
     // Ensure WhatsApp floating button is present on the page
     if (!document.querySelector('.whatsapp-float')) {
         const waBtn = document.createElement('a');

@@ -1563,14 +1563,14 @@ p.hero-slide-side {
    ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(32px);
-    filter: blur(4px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(24px);
+    filter: blur(3px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    /* Safety: auto-reveal after 2s in case JS is blocked */
-    animation: revealFallback 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+    /* Fast safety fallback: auto-reveal after 400ms */
+    animation: revealFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 @keyframes revealFallback {
@@ -1582,17 +1582,18 @@ p.hero-slide-side {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+    animation: none;
 }
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-35px);
-    filter: blur(4px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-25px);
+    filter: blur(3px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    animation: revealLeftFallback 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+    animation: revealLeftFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 @keyframes revealLeftFallback {
@@ -1609,13 +1610,13 @@ p.hero-slide-side {
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(35px);
-    filter: blur(4px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(25px);
+    filter: blur(3px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    animation: revealRightFallback 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+    animation: revealRightFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 @keyframes revealRightFallback {
@@ -1632,13 +1633,13 @@ p.hero-slide-side {
 
 .reveal-zoom {
     opacity: 0;
-    transform: scale(0.92);
-    filter: blur(4px);
-    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.95);
+    filter: blur(3px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    animation: revealZoomFallback 0.95s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+    animation: revealZoomFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 @keyframes revealZoomFallback {
