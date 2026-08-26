@@ -172,15 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
-    // Parallax Effect for Hero
-    const heroBg = document.querySelector('.hero-bg');
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        if (heroBg && scrolled < window.innerHeight) {
-            // Move background slightly slower than scroll
-            heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
-    });
 
 
     // Smooth Scrolling for Anchor Links
