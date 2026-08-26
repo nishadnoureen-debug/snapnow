@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Npj2iIyK9BXOpkyh7dpwZ5RSkDf8o-2MVKx0CajNPow" />
+    <title>Our Projects | SnapNow</title>
+    <meta name="description" content="Explore SnapNow's professional projects and visual storytelling. Browse our weddings, corporate campaigns, event coverage, and cinematic reels.">
+    
+    <!-- DNS-Prefetch and Preconnect for CDN & Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <!-- Vercel Web Analytics -->
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</head>
+<body class="projects-page">
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="index.html#home" class="logo-text">
+                    <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white" decoding="async">
+                    <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black" decoding="async">
+                </a>
+            </div>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Our Projects</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="retainers.html">Retainers</a>
+                <a href="production.html">Production Shoots</a>
+                <a href="#bookingModal" class="btn btn-primary open-booking-modal">Lets Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero Section -->
+    <section class="projects-hero">
+        <div class="projects-hero-bg"></div>
+        <div class="container projects-hero-content">
+            <h1>Our Projects</h1>
+            <p>Explore our latest visual creations. From intimate weddings to high-end corporate campaigns, we make every frame tell a story.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section section-padding bg-light">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="portfolio-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="portfolio-grid reveal delay-1">
+                
+                <!-- Project 1: Prima Ballet -->
+                <div class="portfolio-card" data-category="dance" 
+                     data-title="Prima Ballet: Grace in Motion"
+                     data-client="Prima Ballet Studio"
+                     data-location="Dubai, UAE"
+                     data-date="May 2026"
+                     data-gear="Sony FX3, 85mm f/1.4 Lens"
+                     data-desc="Grace in every movement. Elegance in every frame. A beautiful day capturing timeless memories with Prima Ballet. From tiny ballet slippers to confident first poses — every moment was pure magic."
+                     data-video="https://www.instagram.com/reel/DYzNJ3EMiaj/embed"
+                     data-img="assets/project_ballet.jpg"
+                     data-link="https://www.instagram.com/reel/DYzNJ3EMiaj/">
+                    <div class="portfolio-img-wrapper">
+                        <img src="assets/project_ballet.jpg" alt="Prima Ballet: Grace in Motion" loading="lazy" decoding="async">
+                        <span class="portfolio-tag">Ballet & Dance</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>Prima Ballet: Grace in Motion</h3>
+                            <p>An elegant showcase capturing the dedication, form, and pure magic of ballet dancers.</p>
+                        </div>
+                        <div class="portfolio-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                            <span>Watch Reel <i class="fa-solid fa-play" style="font-size: 0.8rem; margin-left: 4px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Desert Dirt Bike -->
+                <div class="portfolio-card" data-category="action" 
+                     data-title="Desert Dirt Bike Adventure"
+                     data-client="Dirt Bike Adventure UAE"
+                     data-location="Al Qudra Desert, Dubai"
+                     data-date="June 2026"
+                     data-gear="RED Komodo & FPV Chase Drone"
+                     data-desc="Capturing the thrill of the Dubai desert. Snapnow had the pleasure of covering an epic dirt bike adventure, turning every ride into a cinematic story."
+                     data-video="https://www.instagram.com/reel/DZCNn0aSzMv/embed"
+                     data-img="assets/project_bike.jpg"
+                     data-link="https://www.instagram.com/reel/DZCNn0aSzMv/?igsh=NXNqYWsxenpiZjk4">
+                    <div class="portfolio-img-wrapper">
+                        <img src="assets/project_bike.jpg" alt="Desert Dirt Bike Adventure" loading="lazy" decoding="async">
+                        <span class="portfolio-tag">Action Sports</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>Desert Dirt Bike Adventure</h3>
+                            <p>High-adrenaline desert tracking session following dirt bike riders carving dunes.</p>
+                        </div>
+                        <div class="portfolio-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Al Qudra Desert</span>
+                            <span>Watch Reel <i class="fa-solid fa-play" style="font-size: 0.8rem; margin-left: 4px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Umarul Gym -->
+                <div class="portfolio-card" data-category="fitness" 
+                     data-title="Umarul: Elite Fitness Journey"
+                     data-client="Trainer Umarul"
+                     data-location="Fit Republik, Dubai"
+                     data-date="June 2026"
+                     data-gear="Sony FX3 & Gimbal Stabilization"
+                     data-desc="Had a great time capturing content for an incredible fitness journey with the amazing trainer Umarul. Your passion, energy, and dedication to fitness truly stand out. Thank you for trusting Snapnow to bring your vision to life."
+                     data-video="https://www.instagram.com/reel/DZHVBlIy9qX/embed"
+                     data-img="assets/project_gym.jpg"
+                     data-link="https://www.instagram.com/reel/DZHVBlIy9qX/?igsh=c2poMWk5Nm9jejk0">
+                    <div class="portfolio-img-wrapper">
+                        <img src="assets/project_gym.jpg" alt="Umarul: Elite Fitness Journey" loading="lazy" decoding="async">
+                        <span class="portfolio-tag">Fitness & Gym</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>Umarul: Elite Fitness Journey</h3>
+                            <p>Dynamic commercial fitness content showcasing intense gym workouts and training motivation.</p>
+                        </div>
+                        <div class="portfolio-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Fit Republik</span>
+                            <span>Watch Reel <i class="fa-solid fa-play" style="font-size: 0.8rem; margin-left: 4px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Diya Gold -->
+                <div class="portfolio-card" data-category="promo" 
+                     data-title="Diya Gold & Diamonds Giveaway"
+                     data-client="Diya Gold & Diamonds UAE"
+                     data-location="Gold Souk, Dubai"
+                     data-date="June 2026"
+                     data-gear="Sony FX3 & Macro Cine Lenses"
+                     data-desc="If this reel reaches 20,000 shares, Diya Gold & Diamonds is giving away a beautiful Diamond Ring to ONE lucky winner! The comment with the most likes takes home the prize! Tag everyone you know. Let's break the internet. Collaborated by Snapnow X Diya Gold & Diamonds."
+                     data-video="https://www.instagram.com/reel/DZH381wyyQn/embed"
+                     data-img="assets/project_diya.jpg"
+                     data-link="https://www.instagram.com/reel/DZH381wyyQn/">
+                    <div class="portfolio-img-wrapper">
+                        <img src="assets/project_diya.jpg" alt="Diya Gold & Diamonds Giveaway" loading="lazy" decoding="async">
+                        <span class="portfolio-tag">Commercial Promo</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>Diya Gold & Diamonds Giveaway</h3>
+                            <p>Viral promotional luxury campaign showcasing high-end jewelry and an exclusive giveaway offer.</p>
+                        </div>
+                        <div class="portfolio-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Gold Souk, Dubai</span>
+                            <span>Watch Reel <i class="fa-solid fa-play" style="font-size: 0.8rem; margin-left: 4px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer class="footer" id="contact">
+        <div class="container footer-content reveal">
+            <div class="footer-brand" style="flex: 1; min-width: 300px;">
+                <div class="logo">
+                    <a href="index.html#home" class="logo-text">
+                        <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white">
+                    </a>
+                </div>
+                <p>Professional visual storytelling tailored for every moment.</p>
+                <div style="margin-top: 2rem;">
+                    <h3 style="color: var(--white);">Contact Us Directly</h3>
+                    <ul class="contact-list" style="margin-top: 1rem;">
+                        <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/971585511617" target="_blank">+971 58 551 1617</a></li>
+                        <li><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/snapnow.ae?igsh=MTJpZjJqNW93Mm8zNg==" target="_blank">snapnow.ae</a></li>
+                        <li><i class="fa-regular fa-envelope"></i> <a href="mailto:info@snapnow.ae">info@snapnow.ae</a></li>
+                    </ul>
+                    <div class="direct-contact-buttons">
+                        <a href="https://wa.me/971585511617" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                        <a href="https://www.instagram.com/snapnow.ae?igsh=MTJpZjJqNW93Mm8zNg==" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                            <span>Follow on Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-booking" style="flex: 1; min-width: 300px;">
+                <h3 id="bookingFormTitle" style="color: var(--white); margin-bottom: 0.5rem;">Get Started with SnapNow</h3>
+                <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Fill out the form below to enquire about our packages or request a custom proposal.</p>
+                <form id="bookingForm" class="footer-form">
+                    <input type="hidden" id="selectedPackage" name="selectedPackage" value="">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="e.g. Ahmed Al Rashid">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="e.g. hello@yourbrand.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone / WhatsApp Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="e.g. +971 50 000 0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Event Date (Optional)</label>
+                        <input type="text" id="date" name="date" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SnapNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Booking Popup Form Modal -->
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content modal-form-content">
+            <div class="modal-close-btn" id="closeBookingModal">&times;</div>
+            <div class="modal-header-section">
+                <h3 class="modal-title" id="popupBookingTitle">Book Your Session</h3>
+                <p class="modal-subtitle">Tell us about your shoot requirements and we'll confirm within 24 hours.</p>
+            </div>
+            <form id="popupBookingForm" class="popup-form">
+                <input type="hidden" id="popupSelectedPackage" name="selectedPackage" value="">
+                <div class="form-group">
+                    <label for="popupName">Full Name</label>
+                    <input type="text" id="popupName" name="popupName" required placeholder="e.g. Ahmed Al Rashid">
+                </div>
+                <div class="form-group">
+                    <label for="popupEmail">Email Address</label>
+                    <input type="email" id="popupEmail" name="popupEmail" required placeholder="e.g. hello@yourbrand.com">
+                </div>
+                <div class="form-group">
+                    <label for="popupPhone">Phone / WhatsApp Number</label>
+                    <input type="tel" id="popupPhone" name="popupPhone" required placeholder="e.g. +971 50 000 0000">
+                </div>
+                <div class="form-group">
+                    <label for="popupDate">Shoot / Event Date (Optional)</label>
+                    <input type="text" id="popupDate" name="popupDate" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                </div>
+                <div class="form-group">
+                    <label for="popupServiceSelect">Package / Service</label>
+                    <select id="popupServiceSelect" class="form-select">
+                        <option value="">Select Package / Service (Optional)</option>
+                        <optgroup label="Services Offered">
+                            <option value="Brand Strategy & Consulting">Brand Strategy & Consulting</option>
+                            <option value="Branding & Creative Design">Branding & Creative Design</option>
+                            <option value="Social Media Management">Social Media Management</option>
+                            <option value="Content Creation">Content Creation</option>
+                            <option value="Concept Video">Concept Video</option>
+                            <option value="Podcast Video">Podcast Video</option>
+                            <option value="Photography & Videography">Photography & Videography</option>
+                            <option value="Performance Marketing">Performance Marketing</option>
+                            <option value="Influencer & Celebrity Marketing">Influencer / Celebrity Marketing</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Website & Digital Solutions">Website & Digital Solutions</option>
+                            <option value="Public Relations & Communications">Public Relations & Communications</option>
+                            <option value="Personal Branding">Personal Branding</option>
+                            <option value="Events & Experiences">Events & Experiences</option>
+                            <option value="Offline Marketing">Offline Marketing</option>
+                        </optgroup>
+                        <optgroup label="Photo & Video Production">
+                            <option value="Express Shoot">Express Shoot (AED 2,799)</option>
+                            <option value="Mobile Pro Shoot">Mobile Pro Shoot (AED 599)</option>
+                            <option value="Essential Shoot">Essential Shoot (AED 999)</option>
+                            <option value="Signature Reel Shoot">Signature Reel Shoot (AED 1,299)</option>
+                            <option value="Elite Photography Shoot">Elite Photography (AED 1,099)</option>
+                            <option value="Prestige Hybrid Shoot">Prestige Hybrid Shoot (AED 2,299)</option>
+                            <option value="Royal Production Shoot">Royal Production Shoot (AED 4,899)</option>
+                            <option value="Forever Pre-Wedding Shoot">Forever Pre-Wedding (AED 2,299)</option>
+                            <option value="Aerial Elite Drone Shoot">Aerial Elite Drone (AED 2,499+)</option>
+                        </optgroup>
+                        <optgroup label="Monthly Marketing Retainers">
+                            <option value="Essential Retainer">Essential (AED 4,999/mo)</option>
+                            <option value="Signature Retainer">Signature (AED 7,999/mo)</option>
+                            <option value="Executive Retainer">Executive (AED 9,999/mo)</option>
+                            <option value="Customised Marketing Retainer">Customised Retainer</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Submit Booking Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Popup / Modal -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close-btn" id="closeModal">&times;</div>
+            <div class="modal-success-icon">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h3 class="modal-title">Booking Received!</h3>
+            <p class="modal-message">Thank you, <strong id="modalName">Name</strong>. Your request for <strong id="modalPackage">Package</strong> is successfully sent.</p>
+            <div class="modal-details">
+                <p><strong>Email:</strong> <span id="modalEmail">email@example.com</span></p>
+                <p><strong>Phone:</strong> <span id="modalPhone">+971...</span></p>
+                <p id="modalDateContainer"><strong>Event Date:</strong> <span id="modalDate">TBD</span></p>
+            </div>
+            <p class="modal-subtext">Our team will contact you within 24 hours to confirm your session.</p>
+            <button id="modalOkBtn" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Perfect, Thank You!</button>
+        </div>
+    </div>
+
+    <!-- Project Lightbox Modal -->
+    <div id="projectLightbox" class="lightbox">
+        <div class="lightbox-container">
+            <div class="lightbox-close" id="closeLightbox">&times;</div>
+            <div class="lightbox-media">
+                <img id="lightboxImg" src="" alt="Project Image">
+            </div>
+            <div class="lightbox-details">
+                <div>
+                    <span id="lightboxTag" class="lightbox-tag">Tag</span>
+                    <h2 id="lightboxTitle" class="lightbox-title">Project Title</h2>
+                    <p id="lightboxDesc" class="lightbox-desc">Full description of the project goes here...</p>
+                    
+                    <div class="lightbox-meta-box">
+                        <div class="lightbox-meta-item">
+                            <strong>Client:</strong>
+                            <span id="lightboxClient">Client Name</span>
+                        </div>
+                        <div class="lightbox-meta-item">
+                            <strong>Location:</strong>
+                            <span id="lightboxLocation">Location</span>
+                        </div>
+                        <div class="lightbox-meta-item">
+                            <strong>Date:</strong>
+                            <span id="lightboxDate">Date</span>
+                        </div>
+                        <div class="lightbox-meta-item">
+                            <strong>Gear Used:</strong>
+                            <span id="lightboxGear">Gear</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lightbox-actions" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" id="lightboxBookBtn" style="width: 100%;" data-package="Custom Production Shoot">Book a Similar Session</a>
+                    <a href="https://www.instagram.com/snapnow.ae?igsh=MTJpZjJqNW93Mm8zNg==" target="_blank" class="btn btn-outline-white" id="lightboxProfileBtn" style="width: 100%;">
+                        <i class="fa-brands fa-instagram" style="margin-right: 8px;"></i>View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/971585511617" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="js/script.js"></script>
+    
+    <!-- Vercel Speed Insights -->
+    <script type="module" src="js/speed-insights.js"></script>
+</body>
+</html>
