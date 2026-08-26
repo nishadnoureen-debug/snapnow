@@ -861,22 +861,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         e.preventDefault();
                         hideBlogModal();
                         
+                        // Prefill footer form
                         const selectedPackageInput = document.getElementById('selectedPackage');
                         const bookingFormTitle = document.getElementById('bookingFormTitle');
-                        if (selectedPackageInput) selectedPackageInput.value = `Blog: ${title}`;
-                        if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session`;
+                        if (selectedPackageInput) selectedPackageInput.value = `Blog Enquiry: ${title}`;
+                        if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session: ${title}`;
                         
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                            window.scrollTo({
-                                top: contactSection.offsetTop,
-                                behavior: 'smooth'
-                            });
-                            setTimeout(() => {
-                                const nameInput = document.getElementById('name');
-                                if (nameInput) nameInput.focus();
-                            }, 800);
-                        }
+                        // Open interactive popup booking modal directly
+                        setTimeout(() => {
+                            openBookingModal(`Blog Enquiry: ${title}`);
+                        }, 200);
                     });
                 }
 
