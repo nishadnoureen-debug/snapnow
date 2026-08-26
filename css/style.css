@@ -357,13 +357,13 @@ ul {
 @media (min-width: 769px) and (max-width: 1200px) {
     .hero-bg {
         background-position: right center;
-        background-size: auto 100%;
+        background-size: cover;
     }
 }
 @media (min-width: 1201px) {
     .hero-bg {
         background-position: right center;
-        background-size: auto 100%;
+        background-size: cover;
     }
 }
 
