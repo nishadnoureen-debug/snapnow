@@ -34,9 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
             updateHamburgerColor();
         }
 
-        // Parallax Effect for Hero (GPU accelerated via translate3d)
-        if (heroBg && scrolled < window.innerHeight) {
-            heroBg.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+        // Parallax Effect for Hero (Only on desktop/laptop, GPU accelerated via translate3d)
+        if (heroBg) {
+            if (window.innerWidth > 768 && scrolled < window.innerHeight) {
+                heroBg.style.transform = `translate3d(0, ${scrolled * 0.25}px, 0)`;
+            } else if (window.innerWidth <= 768) {
+                heroBg.style.transform = 'none';
+            }
         }
 
         isScrollTicking = false;
