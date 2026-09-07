@@ -351,6 +351,8 @@ ul {
     z-index: 10;
     text-align: left;
     padding-top: 5rem;
+    margin-left: 0;        /* Push content flush to left edge */
+    margin-right: auto;
 }
 
 .floating-text {
@@ -1461,11 +1463,11 @@ p.hero-slide-side {
 
     /* Hero */
     .hero { background-attachment: scroll; }
-    .hero-content { text-align: center; padding-top: 3.5rem; }
-    p.hero-slide-side { margin: 0 auto 1.5rem; font-size: 0.85rem; }
+    .hero-content { text-align: left; padding-top: 3.5rem; margin-left: 0; }
+    p.hero-slide-side { margin: 0 0 1.5rem; font-size: 0.85rem; }
     .floating-text { font-size: 2rem; letter-spacing: -1px; }
-    .hero-cta-group { flex-direction: column; align-items: center; gap: 0.8rem; }
-    .hero-dynamic-cta { min-width: unset; width: 100%; justify-content: center; }
+    .hero-cta-group { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .hero-dynamic-cta { min-width: unset; width: 100%; justify-content: flex-start; }
 
     /* Section headers */
     .section-header { margin-bottom: 2rem; }
