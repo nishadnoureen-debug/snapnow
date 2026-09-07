@@ -333,7 +333,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Submission logic for Popup Booking Form
     // Unified Booking Data Dispatcher (FormSubmit direct email + PHP mailer fallback)
     async function dispatchBookingRequest(formData) {
-        const { fullName, email, phone, date, pkg } = formData;
+        const { fullName, email, phone, date, pkg, company, budget, message } = formData;
+
+        const emailPayload = {
+            "Name": fullName,
+            "Email": email,
+            "Phone": phone,
+            "Event Date": date || 'Not Specified',
+            "Package / Service": pkg || 'General Enquiry',
+            "_subject": `New SnapNow Request: ${pkg || 'General Enquiry'} from ${fullName}`,
+            "_cc": "info@snapnow.ae",
+            "_template": "table",
+            "_captcha": "false"
+        };
+        if (company) emailPayload["Company / Brand"] = company;
+        if (budget) emailPayload["Estimated Budget"] = budget;
+        if (message) emailPayload["Message / Brief"] = message;
 
         // 1. Direct Email Delivery via FormSubmit to snapnowuae@gmail.com (CC: info@snapnow.ae)
         const emailPromise = fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
@@ -342,17 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({
-                "Name": fullName,
-                "Email": email,
-                "Phone": phone,
-                "Event Date": date || 'Not Specified',
-                "Package / Service": pkg || 'General Enquiry',
-                "_subject": `New SnapNow Booking Request: ${pkg || 'General Enquiry'} from ${fullName}`,
-                "_cc": "info@snapnow.ae",
-                "_template": "table",
-                "_captcha": "false"
-            })
+            body: JSON.stringify(emailPayload)
         }).catch(err => console.warn("Email service notice:", err));
 
         // 2. Local PHP Mailer (if hosting environment supports PHP)
@@ -445,6 +450,58 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.textContent = originalBtnText;
+                    }
+                });
+        });
+    }
+
+    // Submission logic for Contact Page Form (if present)
+    const contactPageForm = document.getElementById('contactPageForm');
+    if (contactPageForm) {
+        contactPageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nameEl = contactPageForm.querySelector('[name="name"]');
+            const emailEl = contactPageForm.querySelector('[name="email"]');
+            const phoneEl = contactPageForm.querySelector('[name="phone"]');
+            const companyEl = contactPageForm.querySelector('[name="company"]');
+            const serviceEl = contactPageForm.querySelector('[name="service"]');
+            const budgetEl = contactPageForm.querySelector('[name="budget"]');
+            const messageEl = contactPageForm.querySelector('[name="message"]');
+
+            const fullName = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const phone = phoneEl ? phoneEl.value.trim() : '';
+            const company = companyEl ? companyEl.value.trim() : '';
+            const service = serviceEl ? serviceEl.value.trim() : '';
+            const budget = budgetEl ? budgetEl.value.trim() : '';
+            const message = messageEl ? messageEl.value.trim() : '';
+
+            const submitBtn = contactPageForm.querySelector('button[type="submit"]');
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending Message...';
+            }
+
+            dispatchBookingRequest({
+                fullName,
+                email,
+                phone,
+                date: '',
+                pkg: service || 'Contact Page Consultation',
+                company,
+                budget,
+                message
+            })
+                .then(() => {
+                    showModal(fullName, service || 'General Consultation', email, phone, '');
+                    contactPageForm.reset();
+                })
+                .finally(() => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
                     }
                 });
         });
