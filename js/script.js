@@ -17,14 +17,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    // High-performance Consolidated Scroll Handler (Throttled with requestAnimationFrame)
+    const heroBg = document.querySelector('.hero-bg');
+    let isScrollTicking = false;
+
+    function handleScroll() {
+        const scrolled = window.scrollY || window.pageYOffset;
+        
+        // Navbar Scrolled State
+        if (navbar) {
+            if (scrolled > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            updateHamburgerColor();
         }
-        updateHamburgerColor();
-    });
+
+        // Parallax Effect for Hero (GPU accelerated via translate3d)
+        if (heroBg && scrolled < window.innerHeight) {
+            heroBg.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+        }
+
+        isScrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!isScrollTicking) {
+            window.requestAnimationFrame(handleScroll);
+            isScrollTicking = true;
+        }
+    }, { passive: true });
 
     // Mobile Menu Toggle
     if (hamburger) {
@@ -61,59 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.hero-fade').forEach(el => el.classList.add('visible'));
     }, 120);
 
-    // Dynamic Hero CTA Button — cycles between Retainers and Production Shoots
-    try {
-        const heroDynamicBtn = document.getElementById('heroDynamicBtn');
-        if (heroDynamicBtn) {
-            const dynamicStates = [
-                { text: 'Explore Retainers',         href: 'retainers.html' },
-                { text: 'Explore Production Shoots', href: 'production.html' }
-            ];
-            let dynIndex = 0;
-            const textEl = heroDynamicBtn.querySelector('.dynamic-text-container');
-
-            if (textEl) {
-                setInterval(() => {
-                    // Fade out
-                    textEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-                    textEl.style.opacity = '0';
-                    textEl.style.transform = 'translateY(-8px)';
-
-                    setTimeout(() => {
-                        dynIndex = (dynIndex + 1) % dynamicStates.length;
-                        textEl.textContent = dynamicStates[dynIndex].text;
-                        heroDynamicBtn.href = dynamicStates[dynIndex].href;
-
-                        // Fade in from below
-                        textEl.style.transform = 'translateY(8px)';
-                        requestAnimationFrame(() => {
-                            textEl.style.opacity = '1';
-                            textEl.style.transform = 'translateY(0)';
-                        });
-                    }, 370);
-                }, 3200);
-            }
-        }
-    } catch(e) {
-        console.warn('Dynamic CTA button error:', e);
-    }
-
-    // Immediately activate any elements in or near viewport for zero-delay rendering
-    const revealSelectors = '.reveal, .reveal-zoom, .reveal-left, .reveal-right';
-    const initialElements = document.querySelectorAll(revealSelectors);
-    const windowH = window.innerHeight || document.documentElement.clientHeight;
-    
-    initialElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < windowH * 1.15) {
-            el.classList.add('reveal-active', 'active');
-        }
-    });
-
-    // Scroll Reveal Animation Flow for below-the-fold elements (Intersection Observer)
+    // Scroll Reveal Animation Flow (Intersection Observer)
     const revealOptions = {
-        threshold: 0.02,
-        rootMargin: "50px 0px"
+        threshold: 0.08,
+        rootMargin: "0px 0px -20px 0px"
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -125,52 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, revealOptions);
 
-    initialElements.forEach(el => {
-        if (!el.classList.contains('reveal-active')) {
-            revealObserver.observe(el);
+    const revealSelectors = '.reveal, .reveal-zoom, .reveal-left, .reveal-right';
+    document.querySelectorAll(revealSelectors).forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // Immediately activate any reveal elements already in the viewport on initial load
+    document.querySelectorAll(revealSelectors).forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('reveal-active', 'active');
         }
     });
 
-    // =========================================
-    // Instant Link Prefetching for Ultra-Fast Page Transitions
-    // =========================================
-    const prefetchedUrls = new Set();
-    function prefetchPage(url) {
-        if (!url || prefetchedUrls.has(url) || url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('http') && !url.includes(window.location.host)) {
-            return;
-        }
-        prefetchedUrls.add(url);
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = url;
-        document.head.appendChild(link);
-    }
-
-    // Prefetch on hover / touchstart
-    document.addEventListener('mouseover', (e) => {
-        const anchor = e.target.closest('a');
-        if (anchor && anchor.href && anchor.origin === window.location.origin) {
-            prefetchPage(anchor.getAttribute('href'));
-        }
-    }, { passive: true });
-
-    document.addEventListener('touchstart', (e) => {
-        const anchor = e.target.closest('a');
-        if (anchor && anchor.href && anchor.origin === window.location.origin) {
-            prefetchPage(anchor.getAttribute('href'));
-        }
-    }, { passive: true });
-
-    // Idle prefetch of primary site pages
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            ['projects.html', 'retainers.html', 'production.html', 'blogs.html', 'index.html'].forEach(p => prefetchPage(p));
-        });
-    } else {
-        setTimeout(() => {
-            ['projects.html', 'retainers.html', 'production.html', 'blogs.html', 'index.html'].forEach(p => prefetchPage(p));
-        }, 1200);
-    }
 
 
 
@@ -861,16 +802,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         e.preventDefault();
                         hideBlogModal();
                         
-                        // Prefill footer form
                         const selectedPackageInput = document.getElementById('selectedPackage');
                         const bookingFormTitle = document.getElementById('bookingFormTitle');
-                        if (selectedPackageInput) selectedPackageInput.value = `Blog Enquiry: ${title}`;
-                        if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session: ${title}`;
+                        if (selectedPackageInput) selectedPackageInput.value = `Blog: ${title}`;
+                        if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session`;
                         
-                        // Open interactive popup booking modal directly
-                        setTimeout(() => {
-                            openBookingModal(`Blog Enquiry: ${title}`);
-                        }, 200);
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            window.scrollTo({
+                                top: contactSection.offsetTop,
+                                behavior: 'smooth'
+                            });
+                            setTimeout(() => {
+                                const nameInput = document.getElementById('name');
+                                if (nameInput) nameInput.focus();
+                            }, 800);
+                        }
                     });
                 }
 
@@ -903,6 +850,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideBlogModal();
             }
         });
+    }
+
+    // Dynamic Hero Button Text & Destination Rotator (Retainers <-> Production Shoots)
+    const heroDynamicBtn = document.getElementById('heroDynamicBtn');
+    if (heroDynamicBtn) {
+        const destinations = [
+            { text: 'Explore Marketing', href: 'retainers.html', icon: 'fa-arrow-right' },
+            { text: 'Explore Production', href: 'production.html', icon: 'fa-video' }
+        ];
+        let currentIndex = 0;
+
+        setInterval(() => {
+            heroDynamicBtn.classList.add('changing');
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % destinations.length;
+                const nextDest = destinations[currentIndex];
+                
+                heroDynamicBtn.href = nextDest.href;
+                const textSpan = heroDynamicBtn.querySelector('.dynamic-text-container');
+                const iconElem = heroDynamicBtn.querySelector('.dynamic-btn-icon');
+                
+                if (textSpan) textSpan.textContent = nextDest.text;
+                if (iconElem) {
+                    iconElem.className = `fa-solid ${nextDest.icon} dynamic-btn-icon`;
+                }
+                
+                heroDynamicBtn.classList.remove('changing');
+            }, 350);
+        }, 3200);
     }
 
     // Ensure WhatsApp floating button is present on the page

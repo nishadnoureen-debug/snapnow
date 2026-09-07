@@ -6,17 +6,18 @@
     <title>Monthly Marketing Retainer Packages | SnapNow Dubai</title>
     <meta name="description" content="Explore SnapNow's monthly marketing retainer packages in Dubai. Essential, Signature, and Executive packages tailored for startups, growing brands, and established businesses.">
     
-    <!-- DNS-Prefetch and Preconnect for CDN & Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- Google Fonts -->
+    <!-- Preload Critical Hero Banner -->
+    <link rel="preload" as="image" href="assets/hero_banner.png" fetchpriority="high">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome for Icons (Non-blocking) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -31,8 +32,8 @@
         <div class="container nav-content">
             <div class="logo">
                 <a href="index.html#home" class="logo-text">
-                    <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white" decoding="async">
-                    <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black" decoding="async">
+                    <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white" width="225" height="38" decoding="async">
+                    <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black" width="225" height="38" decoding="async">
                 </a>
             </div>
             <div class="hamburger">
@@ -42,9 +43,9 @@
                 <a href="index.html">Home</a>
                 <a href="projects.html">Our Projects</a>
                 <a href="blogs.html">Blogs</a>
-                <a href="retainers.html" class="active">Retainers</a>
-                <a href="production.html">Production Shoots</a>
-                <a href="#bookingModal" class="btn btn-primary open-booking-modal">Lets Talk</a>
+                <a href="retainers.html" class="active">Marketing</a>
+                <a href="production.html">Production</a>
+                <a href="#bookingModal" class="btn btn-primary open-booking-modal">Let's Talk!</a>
             </div>
         </div>
     </nav>
@@ -53,8 +54,8 @@
     <section class="retainers-hero">
         <div class="retainers-hero-bg"></div>
         <div class="container retainers-hero-content">
-            <h1>Monthly Marketing <span class="highlight">Retainers</span></h1>
-            <p>Marketing packages designed to give your business the right mix of content, social media, digital strategy, SEO, and creative direction to drive measurable growth.</p>
+            <h1 class="reveal">Monthly Marketing <span class="highlight">Retainers</span></h1>
+            <p class="reveal delay-1">Marketing packages designed to give your business the right mix of content, social media, digital strategy, SEO, and creative direction to drive measurable growth.</p>
         </div>
     </section>
 
@@ -188,8 +189,8 @@
             <div class="footer-brand" style="flex: 1; min-width: 300px;">
                 <div class="logo">
                     <a href="index.html#home" class="logo-text">
-                        <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white">
-                        <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black">
+                        <img src="assets/logo_white.png" alt="SnapNow Logo" class="logo-img logo-white" width="225" height="38" loading="lazy" decoding="async">
+                        <img src="assets/logo_black.png" alt="SnapNow Logo" class="logo-img logo-black" width="225" height="38" loading="lazy" decoding="async">
                     </a>
                 </div>
                 <p>Creative marketing agency in Dubai helping businesses grow through strategy, content, and high-impact digital marketing.</p>

@@ -237,11 +237,12 @@ ul {
     line-height: 1;
 }
 
+/* Base Desktop Logo Sizing */
 .logo-img {
-    height: 32px;
-    max-height: 32px;
+    height: 38px;
+    max-height: 38px;
     width: auto;
-    max-width: 190px;
+    max-width: 225px;
     object-fit: contain;
     display: block;
     transition: var(--transition);
@@ -260,9 +261,9 @@ ul {
 }
 
 .navbar.scrolled .logo-img {
-    height: 27px;
-    max-height: 27px;
-    max-width: 160px;
+    height: 32px;
+    max-height: 32px;
+    max-width: 190px;
 }
 
 /* Footer always shows white logo */
@@ -275,12 +276,12 @@ ul {
 }
 
 .footer-brand .logo-img {
-    height: 38px;
-    max-height: 38px;
-    max-width: 220px;
+    height: 48px;
+    max-height: 48px;
+    max-width: 260px;
+    width: auto;
+    object-fit: contain;
 }
-
-
 
 .navbar.scrolled .nav-links a:not(.btn) {
     color: var(--dark);
@@ -319,10 +320,10 @@ ul {
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 650px;
+    min-height: 700px;
     display: flex;
-    align-items: center; /* Vertically center content */
-    background-color: #000000;
+    align-items: center;
+    background-color: var(--dark);
     overflow: hidden;
 }
 
@@ -331,74 +332,25 @@ ul {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-image: url('../assets/hero_bg.jpg');
+    height: 120%; /* Extra height for parallax */
+    background-image: url('../assets/hero_banner.png');
     background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
+    background-position: center right;
     z-index: 1;
-}
-
-/* Responsive hero image positioning */
-@media (max-width: 480px) {
-    .hero-bg {
-        background-position: 75% center;
-        background-size: cover;
-    }
-    .hero { min-height: 580px; height: 100svh; }
-}
-@media (min-width: 481px) and (max-width: 768px) {
-    .hero-bg {
-        background-position: 80% center;
-        background-size: cover;
-    }
-    .hero { min-height: 620px; }
-}
-@media (min-width: 769px) and (max-width: 1200px) {
-    .hero-bg {
-        background-position: right center;
-        background-size: cover;
-    }
-}
-@media (min-width: 1201px) {
-    .hero-bg {
-        background-position: right center;
-        background-size: cover;
-    }
+    transition: transform 0.1s ease-out;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* Clean gradient: dark left for text contrast, crystal-clear 100% clarity on right for the team photo */
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.92) 0%,
-        rgba(0, 0, 0, 0.70) 35%,
-        rgba(0, 0, 0, 0.15) 65%,
-        rgba(0, 0, 0, 0) 100%
-    );
-    z-index: 3;
-    pointer-events: none;
-}
-
-/* Hero container override: push text to left edge of screen */
-.hero .container {
-    margin-left: 0;          /* Unset auto centering */
-    margin-right: auto;
-    padding-left: clamp(1.5rem, 5vw, 7rem); /* Responsive left padding from screen edge */
-    padding-right: 2rem;
-    max-width: none;         /* Allow full width */
-    width: 100%;
+    background: linear-gradient(90deg, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.75) 45%, rgba(18, 18, 18, 0.2) 75%, rgba(18, 18, 18, 0.35) 100%);
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
     text-align: left;
-    max-width: 640px;        /* Cap text width so it doesn't run into the image */
-    padding-top: 0;
-    margin-top: 0;
+    padding-top: 5rem;
 }
 
 .floating-text {
@@ -418,7 +370,7 @@ ul {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 4;
+    z-index: 2;
     overflow: hidden;
 }
 
@@ -501,13 +453,11 @@ h1.hero-slide-side {
 
 p.hero-slide-side {
     transition-delay: 0.35s;
-    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-    color: rgba(255, 255, 255, 0.90);
-    max-width: 580px;
-    margin-bottom: 2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin-bottom: 1rem;
     font-weight: 300;
-    line-height: 1.75;
-    text-align: left;
 }
 
 .hero-cta-group.hero-slide-side {
@@ -1405,12 +1355,46 @@ p.hero-slide-side {
 }
 
 /* =========================================
+   Laptop / Small Desktop: ≤1200px
+   ========================================= */
+@media (max-width: 1200px) {
+    .logo-img {
+        height: 34px;
+        max-height: 34px;
+        max-width: 200px;
+    }
+    .navbar.scrolled .logo-img {
+        height: 29px;
+        max-height: 29px;
+        max-width: 175px;
+    }
+    .footer-brand .logo-img {
+        height: 44px;
+        max-height: 44px;
+        max-width: 240px;
+    }
+}
+
+/* =========================================
    Tablet: ≤992px
    ========================================= */
 @media (max-width: 992px) {
-    .logo-img { height: 26px; max-height: 26px; max-width: 155px; }
-    .navbar.scrolled .logo-img { height: 23px; max-height: 23px; max-width: 135px; }
-    .footer-brand .logo-img { height: 32px; max-height: 32px; max-width: 190px; }
+    /* Tablet Logo Optimization */
+    .logo-img {
+        height: 30px;
+        max-height: 30px;
+        max-width: 180px;
+    }
+    .navbar.scrolled .logo-img {
+        height: 26px;
+        max-height: 26px;
+        max-width: 155px;
+    }
+    .footer-brand .logo-img {
+        height: 38px;
+        max-height: 38px;
+        max-width: 215px;
+    }
 
     .floating-text { font-size: 3.2rem; }
     .packages-grid { justify-content: center; }
@@ -1454,9 +1438,22 @@ p.hero-slide-side {
    Mobile: ≤768px
    ========================================= */
 @media (max-width: 768px) {
-    .logo-img { height: 22px; max-height: 22px; max-width: 130px; }
-    .navbar.scrolled .logo-img { height: 19px; max-height: 19px; max-width: 115px; }
-    .footer-brand .logo-img { height: 28px; max-height: 28px; max-width: 160px; }
+    /* Mobile Logo Optimization */
+    .logo-img {
+        height: 26px;
+        max-height: 26px;
+        max-width: 155px;
+    }
+    .navbar.scrolled .logo-img {
+        height: 23px;
+        max-height: 23px;
+        max-width: 140px;
+    }
+    .footer-brand .logo-img {
+        height: 34px;
+        max-height: 34px;
+        max-width: 190px;
+    }
 
     body { font-size: 0.85rem; line-height: 1.55; }
 
@@ -1525,9 +1522,22 @@ p.hero-slide-side {
    Small Mobile: ≤480px
    ========================================= */
 @media (max-width: 480px) {
-    .logo-img { height: 19px; max-height: 19px; max-width: 110px; }
-    .navbar.scrolled .logo-img { height: 17px; max-height: 17px; max-width: 100px; }
-    .footer-brand .logo-img { height: 25px; max-height: 25px; max-width: 145px; }
+    /* Small Mobile Logo Optimization */
+    .logo-img {
+        height: 23px;
+        max-height: 23px;
+        max-width: 130px;
+    }
+    .navbar.scrolled .logo-img {
+        height: 20px;
+        max-height: 20px;
+        max-width: 115px;
+    }
+    .footer-brand .logo-img {
+        height: 30px;
+        max-height: 30px;
+        max-width: 165px;
+    }
 
     body { font-size: 0.82rem; }
     .container { padding: 0 0.9rem; }
@@ -1567,9 +1577,22 @@ p.hero-slide-side {
    Extra Small Mobile: ≤360px
    ========================================= */
 @media (max-width: 360px) {
-    .logo-img { height: 17px; max-height: 17px; max-width: 95px; }
-    .navbar.scrolled .logo-img { height: 15px; max-height: 15px; max-width: 85px; }
-    .footer-brand .logo-img { height: 22px; max-height: 22px; max-width: 125px; }
+    /* Extra Small Mobile Logo Optimization */
+    .logo-img {
+        height: 20px;
+        max-height: 20px;
+        max-width: 115px;
+    }
+    .navbar.scrolled .logo-img {
+        height: 18px;
+        max-height: 18px;
+        max-width: 105px;
+    }
+    .footer-brand .logo-img {
+        height: 26px;
+        max-height: 26px;
+        max-width: 145px;
+    }
 
     body { font-size: 0.78rem; }
     .container { padding: 0 0.75rem; }
@@ -1587,18 +1610,12 @@ p.hero-slide-side {
    ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    filter: blur(3px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(32px);
+    filter: blur(4px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    /* Fast safety fallback: auto-reveal after 400ms */
-    animation: revealFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-
-@keyframes revealFallback {
-    to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 .reveal.reveal-active,
@@ -1606,22 +1623,16 @@ p.hero-slide-side {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
-    animation: none;
 }
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-25px);
-    filter: blur(3px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-35px);
+    filter: blur(4px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    animation: revealLeftFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-
-@keyframes revealLeftFallback {
-    to { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
 
 .reveal-left.reveal-active,
@@ -1629,22 +1640,16 @@ p.hero-slide-side {
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
-    animation: none;
 }
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(25px);
-    filter: blur(3px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(35px);
+    filter: blur(4px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    animation: revealRightFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-
-@keyframes revealRightFallback {
-    to { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
 
 .reveal-right.reveal-active,
@@ -1652,22 +1657,16 @@ p.hero-slide-side {
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
-    animation: none;
 }
 
 .reveal-zoom {
     opacity: 0;
-    transform: scale(0.95);
-    filter: blur(3px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.92);
+    filter: blur(4px);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
-    animation: revealZoomFallback 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-
-@keyframes revealZoomFallback {
-    to { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
 .reveal-zoom.reveal-active,
@@ -1675,7 +1674,6 @@ p.hero-slide-side {
     opacity: 1;
     transform: scale(1);
     filter: blur(0);
-    animation: none;
 }
 
 .delay-1 { transition-delay: 0.1s; }
@@ -2053,9 +2051,9 @@ p.hero-slide-side {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/Gemini_Generated_Image_b85y2db85y2db85y.png');
+    background-image: url('../assets/hero_banner.png');
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     opacity: 0.32;
     z-index: 1;
 }
@@ -2428,9 +2426,9 @@ p.hero-slide-side {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/Gemini_Generated_Image_b85y2db85y2db85y.png');
+    background-image: url('../assets/hero_banner.png');
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     z-index: 1;
     opacity: 0.35;
 }
@@ -2866,32 +2864,6 @@ p.hero-slide-side {
     gap: 1.2rem;
     align-items: center;
     flex-wrap: wrap;
-}
-
-/* Dynamic cycling CTA button */
-.hero-dynamic-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    overflow: hidden;
-    min-width: 220px;
-    justify-content: center;
-}
-
-.dynamic-text-container {
-    display: inline-block;
-    white-space: nowrap;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.dynamic-btn-icon {
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
-}
-
-.hero-dynamic-cta:hover .dynamic-btn-icon {
-    transform: translateX(4px);
 }
 
 /* =========================================
