@@ -10,10 +10,11 @@
     <!-- Preload Critical Hero Banner -->
     <link rel="preload" as="image" href="assets/hero_banner.png" fetchpriority="high">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts & CDN Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons (Non-blocking) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -21,6 +22,9 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <!-- Vercel Web Analytics -->
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body class="blogs-page">
     
@@ -79,7 +83,7 @@
                      data-tag="Tips & Guides"
                      data-img="assets/blog_golden_hour.jpg">
                     <div class="blog-img-wrapper">
-                        <img src="assets/blog_golden_hour.jpg" alt="Mastering the Golden Hour" loading="lazy" decoding="async">
+                        <img src="assets/blog_golden_hour.jpg" alt="Mastering the Golden Hour" width="600" height="350" loading="lazy" decoding="async">
                         <span class="blog-tag">Tips & Guides</span>
                     </div>
                     <div class="blog-info">
@@ -130,7 +134,7 @@
                      data-tag="Behind the Scenes"
                      data-img="assets/gear_drone.png">
                     <div class="blog-img-wrapper">
-                        <img src="assets/gear_drone.png" alt="Drone Chase Scene in Al Qudra" loading="lazy" decoding="async">
+                        <img src="assets/gear_drone.png" alt="Drone Chase Scene in Al Qudra" width="600" height="350" loading="lazy" decoding="async">
                         <span class="blog-tag">Behind the Scenes</span>
                     </div>
                     <div class="blog-info">
@@ -176,7 +180,7 @@
                      data-tag="Gear & Tech"
                      data-img="assets/gear_camera.png">
                     <div class="blog-img-wrapper">
-                        <img src="assets/gear_camera.png" alt="Sony FX3 Cinema Camera" loading="lazy" decoding="async">
+                        <img src="assets/gear_camera.png" alt="Sony FX3 Cinema Camera" width="600" height="350" loading="lazy" decoding="async">
                         <span class="blog-tag">Gear & Tech</span>
                     </div>
                     <div class="blog-info">
@@ -232,7 +236,7 @@
                 </div>
                 
                 <div class="blog-modal-author">
-                    <img src="assets/farhan_fazal.jpg" alt="Farhan Fazal" class="author-img" loading="lazy" decoding="async">
+                    <img src="assets/farhan_fazal.jpg" alt="Farhan Fazal" class="author-img" width="50" height="50" loading="lazy" decoding="async">
                     <div>
                         <span class="author-name">Farhan Fazal</span>
                         <span class="author-title">Creative Team</span>
@@ -405,6 +409,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

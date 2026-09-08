@@ -11,10 +11,11 @@
     <link rel="preload" as="image" href="assets/hero_banner_mobile.jpg" media="(max-width: 768px)" fetchpriority="high">
     <link rel="preload" as="image" href="assets/hero_banner.png" media="(min-width: 769px)" fetchpriority="high">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts & CDN Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons (Non-blocking) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -456,9 +457,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="js/script.js"></script>
-    
-    <!-- Vercel Speed Insights -->
-    <script type="module" src="js/speed-insights.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
