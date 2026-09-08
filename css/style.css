@@ -133,14 +133,18 @@ ul {
 }
 
 .btn-outline {
-    background-color: transparent;
+    background-color: var(--primary);
     color: var(--dark);
-    border: 2px solid var(--dark);
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(164, 214, 94, 0.3);
 }
 
 .btn-outline:hover {
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(164, 214, 94, 0.4);
 }
 
 /* Premium Glassmorphic Outline Button */
