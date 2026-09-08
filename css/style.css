@@ -6,6 +6,7 @@
     --primary-dark: #8cbb4c;
     --dark: #121212;
     --dark-grey: #1E1E1E;
+    --dark-card: #1E1E1E;
     --light-grey: #F4F5F7;
     --white: #FFFFFF;
     --text-main: #333333;
@@ -3621,26 +3622,27 @@ p.hero-slide-side {
 }
 
 .contact-form-card {
-    background: var(--dark-card);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 2.5rem;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .contact-form-header {
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .contact-form-header h2 {
     font-size: 1.85rem;
-    color: var(--white);
+    color: #121212;
     margin-bottom: 0.6rem;
     font-weight: 800;
 }
 
 .contact-form-header p {
-    color: rgba(255, 255, 255, 0.75);
+    color: #121212;
     font-size: 0.9rem;
     line-height: 1.6;
 }
@@ -3657,7 +3659,7 @@ p.hero-slide-side {
 
 .contact-page-form label {
     display: block;
-    color: rgba(255, 255, 255, 0.85);
+    color: #121212;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 0.4rem;
@@ -3668,10 +3670,10 @@ p.hero-slide-side {
 .contact-page-form textarea {
     width: 100%;
     padding: 0.85rem 1.1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #fdfdfd;
+    border: 1px solid #d1d5db;
     border-radius: 10px;
-    color: var(--white);
+    color: #121212;
     font-family: inherit;
     font-size: 0.9rem;
     transition: var(--transition);
@@ -3682,13 +3684,18 @@ p.hero-slide-side {
 .contact-page-form textarea:focus {
     outline: none;
     border-color: var(--primary);
-    background: rgba(164, 214, 94, 0.05);
-    box-shadow: 0 0 15px rgba(164, 214, 94, 0.15);
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(164, 214, 94, 0.25);
+}
+
+.contact-page-form input::placeholder,
+.contact-page-form textarea::placeholder {
+    color: #888888;
 }
 
 .contact-page-form select option {
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: #ffffff;
+    color: #121212;
 }
 
 .contact-submit-btn {
@@ -3702,23 +3709,14 @@ p.hero-slide-side {
     font-weight: 700;
 }
 
-.form-trust-indicator {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.78rem;
-}
-
 /* Location Details Box */
 .location-details-box {
-    background: var(--dark-card);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 2rem;
     margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .location-header {
@@ -3726,7 +3724,7 @@ p.hero-slide-side {
     align-items: center;
     gap: 1rem;
     padding-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     margin-bottom: 1.4rem;
 }
 
@@ -3734,9 +3732,9 @@ p.hero-slide-side {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(164, 214, 94, 0.12);
-    border: 1px solid rgba(164, 214, 94, 0.3);
-    color: var(--primary);
+    background: rgba(164, 214, 94, 0.15);
+    border: 1px solid rgba(164, 214, 94, 0.4);
+    color: var(--primary-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3745,13 +3743,13 @@ p.hero-slide-side {
 
 .location-header h3 {
     font-size: 1.25rem;
-    color: var(--white);
+    color: #121212;
     margin-bottom: 0.2rem;
     font-weight: 700;
 }
 
 .location-sub {
-    color: rgba(255, 255, 255, 0.6);
+    color: #222222;
     font-size: 0.82rem;
 }
 
@@ -3768,7 +3766,7 @@ p.hero-slide-side {
 }
 
 .detail-icon {
-    color: var(--primary);
+    color: var(--primary-dark);
     font-size: 1.05rem;
     margin-top: 0.2rem;
     min-width: 22px;
@@ -3776,23 +3774,24 @@ p.hero-slide-side {
 
 .detail-item strong {
     display: block;
-    color: var(--white);
+    color: #121212;
     font-size: 0.88rem;
     margin-bottom: 0.2rem;
 }
 
 .detail-item p {
-    color: rgba(255, 255, 255, 0.72);
+    color: #222222;
     font-size: 0.82rem;
     line-height: 1.45;
 }
 
 /* Map Frame */
 .map-container-wrapper {
-    background: var(--dark-card);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .map-header-bar {
@@ -3800,15 +3799,19 @@ p.hero-slide-side {
     justify-content: space-between;
     align-items: center;
     padding: 0.85rem 1.4rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: #121212;
     font-weight: 600;
 }
 
+.map-header-bar span {
+    color: #121212;
+}
+
 .map-header-bar a {
-    color: var(--primary);
+    color: var(--primary-dark);
     display: flex;
     align-items: center;
     gap: 0.35rem;
@@ -3821,8 +3824,16 @@ p.hero-slide-side {
 }
 
 /* FAQ Section */
+.contact-faq-section .section-header h2 {
+    color: var(--white);
+}
+
 .contact-faq-section .section-header p {
     color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-page .footer {
+    padding: 2.5rem 0;
 }
 
 .faq-grid {
