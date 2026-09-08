@@ -3708,7 +3708,7 @@ p.hero-slide-side {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 0.78rem;
 }
 
@@ -3821,6 +3821,10 @@ p.hero-slide-side {
 }
 
 /* FAQ Section */
+.contact-faq-section .section-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 .faq-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
