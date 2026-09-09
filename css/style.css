@@ -349,7 +349,7 @@ ul {
     left: 0;
     width: 100%;
     height: 120%; /* Extra height for parallax */
-    background-image: url('../assets/hero_banner.webp');
+    background-image: url('../assets/hero_banner.webp?v=2');
     background-size: cover;
     background-position: center right;
     z-index: 1;
@@ -1451,7 +1451,7 @@ p.hero-slide-side {
     }
     .hero-bg {
         height: 100%;
-        background-image: url('../assets/hero_banner.webp');
+        background-image: url('../assets/hero_banner.webp?v=2');
         background-position: center right;
     }
     .hero-overlay {
@@ -1538,7 +1538,7 @@ p.hero-slide-side {
     }
     .hero-bg {
         height: 100%;
-        background-image: url('../assets/hero_banner_mobile.webp');
+        background-image: url('../assets/hero_banner_mobile.webp?v=2');
         background-position: center bottom;
     }
     .hero-overlay {
@@ -1588,7 +1588,7 @@ p.hero-slide-side {
     .retainers-hero-bg,
     .production-hero-bg,
     .subpage-hero-bg {
-        background-image: url('../assets/hero_banner_mobile.webp');
+        background-image: url('../assets/hero_banner_mobile.webp?v=2');
         background-position: center 25%;
         opacity: 0.28;
     }
@@ -2184,7 +2184,7 @@ p.hero-slide-side {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/hero_banner.webp');
+    background-image: url('../assets/hero_banner.webp?v=2');
     background-size: cover;
     background-position: center right;
     opacity: 0.32;
@@ -2559,7 +2559,7 @@ p.hero-slide-side {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/hero_banner.webp');
+    background-image: url('../assets/hero_banner.webp?v=2');
     background-size: cover;
     background-position: center right;
     z-index: 1;
@@ -3479,7 +3479,7 @@ p.hero-slide-side {
 }
 
 .contact-hero-bg {
-    background-image: url('../assets/hero_banner.webp');
+    background-image: url('../assets/hero_banner.webp?v=2');
     background-position: center 35%;
 }
 
