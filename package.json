@@ -4,7 +4,8 @@
   "description": "Professional visual storytelling website",
   "main": "js/script.js",
   "scripts": {
-    "build": "echo 'Static HTML project - no build required'",
+    "build": "python tools/minify.py",
+    "minify": "python tools/minify.py",
     "lint": "echo 'No linter configured'",
     "test": "echo 'No tests configured'"
   },

@@ -491,92 +491,7 @@ p.hero-slide-side {
     transition-delay: 0.55s;
 }
 
-/* Hero Scroll Flow Indicator */
-.hero-scroll-flow {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 15;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: all 0.35s ease;
-    cursor: pointer;
-}
 
-.hero-scroll-flow:hover {
-    color: var(--primary);
-    transform: translateX(-50%) translateY(3px);
-}
-
-.scroll-flow-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-family: var(--font-heading);
-    opacity: 0.8;
-}
-
-.scroll-flow-mouse {
-    width: 22px;
-    height: 34px;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    border-radius: 14px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    transition: border-color 0.35s ease;
-}
-
-.hero-scroll-flow:hover .scroll-flow-mouse {
-    border-color: var(--primary);
-}
-
-.scroll-flow-wheel {
-    width: 4px;
-    height: 7px;
-    background-color: var(--primary);
-    border-radius: 2px;
-    position: absolute;
-    top: 5px;
-    animation: scrollWheelFlow 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-
-@keyframes scrollWheelFlow {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-    30% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-}
-
-.scroll-flow-arrow {
-    font-size: 0.8rem;
-    animation: scrollArrowBounce 2s ease-in-out infinite;
-    color: var(--primary);
-}
-
-@keyframes scrollArrowBounce {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translateY(4px);
-        opacity: 1;
-    }
-}
 
 /* =========================================
    Core Pillars
@@ -1013,48 +928,6 @@ p.hero-slide-side {
     font-size: 0.95rem;
 }
 
-/* Express Sections & Facilities styling */
-.express-highlights-section {
-    margin-bottom: 1.5rem;
-}
-
-.express-facilities-section {
-    margin-bottom: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px dashed rgba(245, 166, 35, 0.3);
-}
-
-.express-section-title {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #f7c948;
-    margin-bottom: 0.8rem;
-    font-weight: 700;
-    opacity: 0.9;
-}
-
-.express-facilities-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.express-facilities-list li {
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.express-facilities-list i {
-    color: #f5a623;
-    font-size: 0.95rem;
-    width: 20px;
-    text-align: center;
-}
 
 .express-badge {
     position: absolute;
@@ -1098,64 +971,6 @@ p.hero-slide-side {
     display: none; /* Safari and Chrome */
 }
 
-.gear-track {
-    display: flex;
-    gap: 2rem;
-    padding: 0 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.gear-item {
-    width: 350px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    position: relative;
-    box-shadow: var(--shadow-soft);
-    background: var(--dark);
-    border: 1px solid rgba(164, 214, 94, 0.1);
-    transition: var(--transition);
-}
-
-.gear-item:hover {
-    box-shadow: 0 15px 35px rgba(164, 214, 94, 0.2);
-    border-color: var(--primary);
-    transform: translateY(-5px);
-}
-
-.gear-item img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    opacity: 0.8;
-}
-
-.gear-item:hover img {
-    transform: scale(1.05);
-    opacity: 1;
-}
-
-.gear-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem;
-    background: linear-gradient(to top, rgba(18,18,18,0.95), transparent);
-    color: var(--white);
-}
-
-.gear-info h4 {
-    color: var(--primary);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.gear-info p {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.8);
-}
 
 /* =========================================
    Footer / Contact
@@ -1635,10 +1450,7 @@ p.hero-slide-side {
     .btn { font-size: 0.82rem; padding: 0.7rem 1.3rem; min-height: 44px; }
     .btn-large { font-size: 0.88rem; padding: 0.8rem 1.6rem; min-height: 48px; }
 
-    /* Gear */
-    .gear-track { flex-direction: column; align-items: center; padding: 0 0.8rem; }
-    .gear-item { width: 100%; max-width: 460px; }
-    .gear-item img { height: 240px; }
+    
 
     /* Navbar */
     .hamburger { font-size: 1.5rem; }
@@ -1674,8 +1486,7 @@ p.hero-slide-side {
     .package-card h3 { font-size: 0.95rem; }
     .package-price { font-size: 1.25rem !important; }
     .package-highlights li { font-size: 0.78rem; }
-    .gear-item { width: 100%; max-width: 100%; }
-    .gear-item img { height: 200px; }
+    
     .pillars-grid { grid-template-columns: 1fr; gap: 0.8rem; }
     .section-padding { padding: 2.2rem 0; }
     .section-header { margin-bottom: 1.8rem; }
@@ -1894,86 +1705,7 @@ p.hero-slide-side {
     padding-bottom: 10rem;
 }
 
-.moment-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(10, 50px);
-    gap: 1rem;
-    margin-top: 5rem;
-}
 
-.moment-item {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    transition: var(--transition);
-}
-
-.moment-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.moment-item:hover img {
-    transform: scale(1.1);
-}
-
-.item-1 { grid-column: 1 / 6; grid-row: 1 / 7; }
-.item-2 { grid-column: 7 / 13; grid-row: 2 / 8; }
-.item-3 { grid-column: 4 / 9; grid-row: 5 / 11; z-index: 5; }
-
-
-.moment-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: #FFFFFF; /* Explicit white */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.moment-caption h4 {
-    color: #FFFFFF !important;
-    margin-bottom: 0.5rem;
-}
-
-.moment-caption p {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.moment-item:hover .moment-caption {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Specific Alignment for Camera Image (Item 2) */
-.item-2 .moment-caption {
-    bottom: auto;
-    top: 0;
-    text-align: right;
-    background: linear-gradient(rgba(0,0,0,0.8), transparent);
-    transform: translateY(-20px);
-}
-
-.item-2:hover .moment-caption {
-    transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-    .moment-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    .moment-item { height: 300px; }
-}
 
 /* =========================================
    Custom Booking Confirmation Modal / Popup
@@ -3138,7 +2870,7 @@ p.hero-slide-side {
 /* =========================================
    Booking Popup Modal
    ========================================= */
-.modal-overlay.booking-popup {
+.modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(10, 10, 10, 0.7);
@@ -3153,7 +2885,7 @@ p.hero-slide-side {
     transition: opacity 0.4s ease;
 }
 
-.modal-overlay.booking-popup.active {
+.modal-overlay.active {
     opacity: 1;
     pointer-events: auto;
 }
@@ -3172,7 +2904,7 @@ p.hero-slide-side {
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-overlay.booking-popup.active .modal-form-content {
+.modal-overlay.active .modal-form-content {
     transform: scale(1) translateY(0);
 }
 
@@ -3238,30 +2970,6 @@ p.hero-slide-side {
 /* =========================================
    Packages Section Header
    ========================================= */
-.packages-intro {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 4rem;
-}
-
-.packages-intro h2 {
-    font-size: clamp(1.3rem, 3vw, 2.4rem);
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 1rem;
-}
-
-.packages-intro p {
-    font-size: clamp(0.82rem, 0.78rem + 0.3vw, 1rem);
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.7;
-}
-
-.packages-divider {
-    border: none;
-    border-top: 2px solid rgba(255, 255, 255, 0.08);
-    margin: 4rem 0;
-}
 
 /* WhatsApp CTA Button variant */
 .btn-whatsapp {
