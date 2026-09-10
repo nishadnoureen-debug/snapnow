@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // High-performance Consolidated Scroll Handler (Throttled with requestAnimationFrame)
-    const heroBg = document.querySelector('.hero-bg');
     let isScrollTicking = false;
 
     function handleScroll() {
@@ -32,15 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 navbar.classList.remove('scrolled');
             }
             updateHamburgerColor();
-        }
-
-        // Parallax Effect for Hero (Only on desktop/laptop, GPU accelerated via translate3d)
-        if (heroBg) {
-            if (window.innerWidth > 768 && scrolled < window.innerHeight) {
-                heroBg.style.transform = `translate3d(0, ${scrolled * 0.25}px, 0)`;
-            } else if (window.innerWidth <= 768) {
-                heroBg.style.transform = 'none';
-            }
         }
 
         isScrollTicking = false;
