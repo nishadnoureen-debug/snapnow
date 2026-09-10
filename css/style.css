@@ -959,24 +959,7 @@ p.hero-slide-side {
     50%       { box-shadow: 0 4px 22px rgba(245, 166, 35, 0.9); }
 }
 
-/* =========================================
-   Premium Add-Ons & Tech (Horizontal Scroll)
-   ========================================= */
-.gear {
-    overflow: hidden;
-}
 
-.horizontal-scroll-container {
-    width: 100%;
-    padding: 2rem 0 4rem;
-    /* Hide scrollbar for standard browsers */
-    overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-}
-
-.horizontal-scroll-container::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-}
 
 
 /* =========================================
@@ -1004,10 +987,7 @@ p.hero-slide-side {
     max-width: 300px;
 }
 
-.footer-contact h3 {
-    color: var(--white);
-    margin-bottom: 1.5rem;
-}
+
 
 .contact-list li {
     margin-bottom: 1rem;
@@ -1137,10 +1117,7 @@ p.hero-slide-side {
     }
 }
 
-.delay-1 { transition-delay: 0.15s; }
-.delay-2 { transition-delay: 0.3s; }
-.delay-3 { transition-delay: 0.45s; }
-.delay-4 { transition-delay: 0.6s; }
+
 
 /* Footer Booking Card (White Card) */
 .footer-booking {
@@ -1726,27 +1703,7 @@ p.hero-slide-side {
     }
 }
 
-/* Floating Animation */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
-}
 
-.floating {
-    animation: float 6s ease-in-out infinite;
-}
-
-.floating-delayed {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 2s;
-}
-
-/* Photo Grid (Media Mavericks Style) */
-.our-projects {
-    background-color: var(--white);
-    padding-bottom: 10rem;
-}
 
 
 
@@ -1757,15 +1714,15 @@ p.hero-slide-side {
     position: fixed;
     inset: 0;
     background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 2000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 3000;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.4s ease;
 }
 
 .modal-overlay.active {
@@ -2913,25 +2870,6 @@ p.hero-slide-side {
 /* =========================================
    Booking Popup Modal
    ========================================= */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 3000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
 
 .modal-form-content {
     background: var(--white);
@@ -3234,21 +3172,7 @@ p.hero-slide-side {
     background-position: center 35%;
 }
 
-.contact-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(164, 214, 94, 0.12);
-    border: 1px solid rgba(164, 214, 94, 0.35);
-    color: var(--primary);
-    padding: 0.35rem 1.1rem;
-    border-radius: 50px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-bottom: 1.2rem;
-    text-transform: uppercase;
-}
+
 
 /* Contact Cards Grid */
 .contact-cards-section {
