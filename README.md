@@ -1,6 +1,6 @@
-# SnapNow - Professional Photography & Videography
+# Snapnow | Marketing Agency in Dubai
 
-SnapNow is a premium landing page for a professional visual storytelling business, focusing on high-end photography and cinematic videography.
+Snapnow is a creative marketing agency in Dubai offering digital marketing, social media, branding, content creation, photography, video and podcast production.
 
 ## Features
 - **Responsive Design**: Optimized for mobile, tablet, and desktop devices.
