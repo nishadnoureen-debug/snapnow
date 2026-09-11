@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-Upscale and sharpen hero banner images for maximum clarity.
-Desktop: 2048x1152 -> 3840x2160 (4K UHD)
-Mobile:  1080x1920 -> 1440x2560 (QHD portrait)
+Resize and sharpen hero banner images to 2K/QHD resolution.
+Desktop: -> 2560x1440 (2K QHD)
+Mobile:  -> 1080x1920 (FHD portrait)
 """
 import os
 from PIL import Image, ImageEnhance, ImageFilter
@@ -34,28 +34,28 @@ def upscale_and_sharpen(src_path, out_path, new_size, sharpness=1.35, unsharp_ra
     new_size_kb = os.path.getsize(out_path) // 1024
     print(f"  Output:   {new_size[0]}x{new_size[1]} @ {new_size_kb}KB  -> {out_path}")
 
-print("Upscaling desktop hero_banner.webp -> 3840x2160 (4K)...")
+print("Resizing desktop hero_banner.webp -> 2560x1440 (2K QHD)...")
 upscale_and_sharpen(
     src_path=os.path.join(assets, 'hero_banner.webp'),
     out_path=os.path.join(assets, 'hero_banner.webp'),
-    new_size=(3840, 2160),
-    sharpness=1.35,
-    unsharp_radius=1.8,
-    unsharp_percent=140,
-    unsharp_threshold=3,
-    quality=91
+    new_size=(2560, 1440),
+    sharpness=1.25,
+    unsharp_radius=1.2,
+    unsharp_percent=120,
+    unsharp_threshold=2,
+    quality=92
 )
 
-print("\nUpscaling mobile hero_banner_mobile.webp -> 1440x2560 (QHD portrait)...")
+print("\nResizing mobile hero_banner_mobile.webp -> 1080x1920 (FHD portrait)...")
 upscale_and_sharpen(
     src_path=os.path.join(assets, 'hero_banner_mobile.webp'),
     out_path=os.path.join(assets, 'hero_banner_mobile.webp'),
-    new_size=(1440, 2560),
-    sharpness=1.3,
-    unsharp_radius=1.5,
-    unsharp_percent=130,
-    unsharp_threshold=3,
-    quality=90
+    new_size=(1080, 1920),
+    sharpness=1.2,
+    unsharp_radius=1.0,
+    unsharp_percent=110,
+    unsharp_threshold=2,
+    quality=91
 )
 
 print("\nDone! Hero images upscaled and sharpened.")
