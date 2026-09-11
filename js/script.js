@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger Hero Animations on Load
     setTimeout(() => {
         document.querySelectorAll('.hero-slide-side').forEach(el => el.classList.add('visible'));
-        document.querySelectorAll('.hero-fade').forEach(el => el.classList.add('visible'));
     }, 120);
 
     // Scroll Reveal Animation Flow (Intersection Observer)
@@ -340,8 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (budget) emailPayload["Estimated Budget"] = budget;
         if (message) emailPayload["Message / Brief"] = message;
 
-        // 1. Direct Email Delivery via FormSubmit to snapnowuae@gmail.com (CC: info@snapnow.ae)
-        const emailPromise = fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
+        // Direct Email Delivery via FormSubmit to snapnowuae@gmail.com (CC: info@snapnow.ae)
+        return fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -349,21 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(emailPayload)
         }).catch(err => console.warn("Email service notice:", err));
-
-        // 2. Local PHP Mailer (if hosting environment supports PHP)
-        const phpFormData = new FormData();
-        phpFormData.append('name', fullName);
-        phpFormData.append('email', email);
-        phpFormData.append('phone', phone);
-        phpFormData.append('date', date || '');
-        phpFormData.append('service', pkg || 'General Enquiry');
-
-        const phpPromise = fetch('send_mail.php', {
-            method: 'POST',
-            body: phpFormData
-        }).catch(err => console.warn("PHP mailer notice:", err));
-
-        return Promise.allSettled([emailPromise, phpPromise]);
     }
 
     // Submission logic for Popup Booking Form
@@ -932,18 +916,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 350);
         }, 3200);
     }
-
-    // Ensure WhatsApp floating button is present on the page
-    if (!document.querySelector('.whatsapp-float')) {
-        const waBtn = document.createElement('a');
-        waBtn.href = 'https://wa.me/971585511617';
-        waBtn.className = 'whatsapp-float';
-        waBtn.target = '_blank';
-        waBtn.rel = 'noopener noreferrer';
-        waBtn.setAttribute('aria-label', 'Contact us on WhatsApp');
-        waBtn.innerHTML = '<i class="fa-brands fa-whatsapp"></i>';
-        document.body.appendChild(waBtn);
-    }
 });
-
-
