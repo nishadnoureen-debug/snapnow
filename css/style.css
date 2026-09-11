@@ -1025,9 +1025,11 @@ p.hero-slide-side {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    padding: 0.75rem 1.35rem;
-    border-radius: 50px;
+    gap: 0;
+    padding: 0.85rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     font-family: var(--font-heading);
     font-size: 0.88rem;
     font-weight: 700;
@@ -1035,6 +1037,11 @@ p.hero-slide-side {
     color: #FFFFFF !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
     animation: floatButton 3.5s ease-in-out infinite alternate;
+}
+
+/* Icon-only: hide text labels */
+.contact-floating-btn span {
+    display: none;
 }
 
 .btn-float-whatsapp {
@@ -1102,7 +1109,7 @@ p.hero-slide-side {
 }
 
 .contact-floating-btn i {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
 }
 
 @keyframes floatButton {
