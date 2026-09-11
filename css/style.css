@@ -1,4 +1,4 @@
-/* =========================================
+﻿/* =========================================
    Variables & Theme
    ========================================= */
 :root {
@@ -359,17 +359,9 @@ ul {
     object-fit: cover;
     object-position: center right;
     display: block;
-    /* Force GPU compositor layer — eliminates sub-pixel blur */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
-    /* Cross-browser crisp rendering */
-    image-rendering: -webkit-optimize-contrast; /* Safari/Chrome */
-    image-rendering: -moz-crisp-edges;          /* Firefox */
-    image-rendering: crisp-edges;               /* Standard */
-    image-rendering: high-quality;              /* Modern Chrome */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
+    image-rendering: auto;
     filter: none;
 }
 
@@ -1235,7 +1227,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Laptop / Small Desktop: â‰¤1200px
+   Laptop / Small Desktop: Ã¢â€°Â¤1200px
    ========================================= */
 @media (max-width: 1200px) {
     .logo-img {
@@ -1278,7 +1270,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Tablet: â‰¤992px
+   Tablet: Ã¢â€°Â¤992px
    ========================================= */
 @media (max-width: 992px) {
     /* Tablet Logo Optimization */
@@ -1355,7 +1347,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Mobile: â‰¤768px
+   Mobile: Ã¢â€°Â¤768px
    ========================================= */
 @media (max-width: 768px) {
     /* Mobile Logo Optimization */
@@ -1437,7 +1429,7 @@ p.hero-slide-side {
     .retainers-hero-bg,
     .production-hero-bg,
     .subpage-hero-bg {
-        background-image: url('../assets/hero_banner_mobile.webp?v=12');
+        background-image: url('../assets/hero_banner_mobile.webp?v=13');
         background-position: center 25%;
         opacity: 0.28;
     }
@@ -1491,7 +1483,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Small Mobile: â‰¤480px
+   Small Mobile: Ã¢â€°Â¤480px
    ========================================= */
 @media (max-width: 480px) {
     /* Small Mobile Logo Optimization */
@@ -1552,7 +1544,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Extra Small Mobile: â‰¤360px
+   Extra Small Mobile: Ã¢â€°Â¤360px
    ========================================= */
 @media (max-width: 360px) {
     /* Extra Small Mobile Logo Optimization */
@@ -1930,7 +1922,7 @@ p.hero-slide-side {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/hero_banner.webp?v=12');
+    background-image: url('../assets/hero_banner.webp?v=13');
     background-size: cover;
     background-position: center right;
     opacity: 0.32;
@@ -2305,7 +2297,7 @@ p.hero-slide-side {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/hero_banner.webp?v=12');
+    background-image: url('../assets/hero_banner.webp?v=13');
     background-size: cover;
     background-position: center right;
     z-index: 1;
@@ -3149,7 +3141,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Retainers Page â€“ Package Section Header (White)
+   Retainers Page Ã¢â‚¬â€œ Package Section Header (White)
    ========================================= */
 #retainers .section-header h2,
 #retainers .section-header h3,
@@ -3162,7 +3154,7 @@ p.hero-slide-side {
 }
 
 /* =========================================
-   Production Page â€“ Package Section Header (White)
+   Production Page Ã¢â‚¬â€œ Package Section Header (White)
    ========================================= */
 #production-packages .section-header h2,
 #production-packages .section-header h3,
@@ -3182,7 +3174,7 @@ p.hero-slide-side {
 }
 
 .contact-hero-bg {
-    background-image: url('../assets/hero_banner.webp?v=12');
+    background-image: url('../assets/hero_banner.webp?v=13');
     background-position: center 35%;
 }
 
