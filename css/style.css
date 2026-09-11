@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    Variables & Theme
    ========================================= */
 :root {
@@ -359,7 +359,17 @@ ul {
     object-fit: cover;
     object-position: center right;
     display: block;
-    image-rendering: high-quality;
+    /* Force GPU compositor layer — eliminates sub-pixel blur */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+    /* Cross-browser crisp rendering */
+    image-rendering: -webkit-optimize-contrast; /* Safari/Chrome */
+    image-rendering: -moz-crisp-edges;          /* Firefox */
+    image-rendering: crisp-edges;               /* Standard */
+    image-rendering: high-quality;              /* Modern Chrome */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     filter: none;
 }
 
