@@ -247,7 +247,7 @@
                     </div>
                 </div>
                 
-                <a href="#contact" class="btn btn-primary" id="blogModalBookBtn" style="width: 100%; margin-top: 2rem;">Book a Session with Us</a>
+                <a href="#bookingModal" class="btn btn-primary open-booking-modal" id="blogModalBookBtn" style="width: 100%; margin-top: 2rem;">Book a Session with Us</a>
             </div>
         </div>
     </div>
@@ -334,26 +334,26 @@
                 <p class="modal-subtitle">Tell us about your brand or shoot requirements and we'll confirm within 24 hours.</p>
             </div>
             <form id="popupBookingForm" class="popup-form">
-                <input type="hidden" id="popupSelectedPackage" name="selectedPackage" value="">
+                <input type="hidden" id="popupSelectedPackage" name="service" value="">
                 <div class="form-group">
                     <label for="popupName">Full Name</label>
-                    <input type="text" id="popupName" name="popupName" required placeholder="e.g. Ahmed Al Rashid">
+                    <input type="text" id="popupName" name="name" required placeholder="e.g. Ahmed Al Rashid">
                 </div>
                 <div class="form-group">
                     <label for="popupEmail">Email Address</label>
-                    <input type="email" id="popupEmail" name="popupEmail" required placeholder="e.g. hello@yourbrand.com">
+                    <input type="email" id="popupEmail" name="email" required placeholder="e.g. hello@yourbrand.com">
                 </div>
                 <div class="form-group">
                     <label for="popupPhone">Phone / WhatsApp Number</label>
-                    <input type="tel" id="popupPhone" name="popupPhone" required placeholder="e.g. +971 50 000 0000">
+                    <input type="tel" id="popupPhone" name="phone" required placeholder="e.g. +971 50 000 0000">
                 </div>
                 <div class="form-group">
                     <label for="popupDate">Preferred Date (Optional)</label>
-                    <input type="text" id="popupDate" name="popupDate" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                    <input type="text" id="popupDate" name="date" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
                 </div>
                 <div class="form-group">
                     <label for="popupServiceSelect">Package / Service</label>
-                    <select id="popupServiceSelect" class="form-select">
+                    <select id="popupServiceSelect" name="serviceSelect" class="form-select">
                         <option value="">Select Package / Service (Optional)</option>
                         <optgroup label="Services Offered">
                             <option value="Brand Strategy & Consulting">Brand Strategy & Consulting</option>
@@ -423,6 +423,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="js/script.min.js?v=6" defer></script>
+    <script src="js/script.min.js?v=7" defer></script>
 </body>
 </html>

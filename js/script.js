@@ -149,9 +149,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openBookingModal(pkgName) {
         if (bookingModal) {
+            const popupBookingSubtitle = bookingModal.querySelector('.modal-subtitle');
             if (pkgName) {
                 if (popupBookingTitle) {
-                    popupBookingTitle.textContent = 'Enquire for ' + pkgName;
+                    if (pkgName.startsWith('Blog:') || pkgName.length > 30) {
+                        popupBookingTitle.textContent = 'Book Your Session';
+                    } else {
+                        popupBookingTitle.textContent = 'Enquire for ' + pkgName;
+                    }
+                }
+                if (popupBookingSubtitle) {
+                    if (pkgName.startsWith('Blog:')) {
+                        const blogTopic = pkgName.replace('Blog:', '').trim();
+                        popupBookingSubtitle.innerHTML = `Inspired by: <strong style="color: var(--dark);">${blogTopic}</strong>. We'll confirm within 24 hours.`;
+                    } else if (pkgName.includes('(Inspired by:')) {
+                        popupBookingSubtitle.innerHTML = `<strong style="color: var(--dark);">${pkgName}</strong>. We'll confirm within 24 hours.`;
+                    } else {
+                        popupBookingSubtitle.textContent = "Tell us about your brand or shoot requirements and we'll confirm within 24 hours.";
+                    }
                 }
                 if (popupSelectedPackage) {
                     popupSelectedPackage.value = pkgName;
@@ -172,6 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 if (popupBookingTitle) {
                     popupBookingTitle.textContent = 'Book Your Session';
+                }
+                if (popupBookingSubtitle) {
+                    popupBookingSubtitle.textContent = "Tell us about your brand or shoot requirements and we'll confirm within 24 hours.";
                 }
                 if (popupSelectedPackage) {
                     popupSelectedPackage.value = '';
@@ -277,7 +295,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function showModal(name, pkg, email, phone, date) {
         if (modalName) modalName.textContent = name;
         if (modalPackage) {
-            modalPackage.textContent = pkg ? (pkg.toLowerCase().includes('package') || pkg.toLowerCase().includes('retainer') || pkg.toLowerCase().includes('shoot') ? pkg : pkg + ' Package') : 'a Session';
+            const pLow = pkg ? pkg.toLowerCase() : '';
+            if (!pkg) {
+                modalPackage.textContent = 'a Session';
+            } else if (pLow.includes('package') || pLow.includes('retainer') || pLow.includes('shoot') || pLow.includes('blog') || pLow.includes('inspired')) {
+                modalPackage.textContent = pkg;
+            } else {
+                modalPackage.textContent = pkg + ' Package';
+            }
         }
         if (modalEmail) modalEmail.textContent = email;
         if (modalPhone) modalPhone.textContent = phone;
@@ -366,8 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailEl ? emailEl.value.trim() : '';
             const phone = phoneEl ? phoneEl.value.trim() : '';
             const date = dateEl ? dateEl.value.trim() : '';
-            const serviceVal = serviceSelect ? serviceSelect.value : '';
-            const pkg = (selectedPkgInput && selectedPkgInput.value) ? selectedPkgInput.value : serviceVal;
+            let pkg = (selectedPkgInput && selectedPkgInput.value) ? selectedPkgInput.value : serviceVal;
+            if (selectedPkgInput && selectedPkgInput.value && serviceVal && serviceVal !== selectedPkgInput.value) {
+                pkg = `${serviceVal} [${selectedPkgInput.value}]`;
+            }
 
             const submitBtn = popupBookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Booking Request';
@@ -672,25 +699,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     newBookBtn.addEventListener('click', (e) => {
                         e.preventDefault();
-                        // Close lightbox
                         hideLightbox();
                         
-                        // Set selected package and scroll to booking form
-                        const selectedPackageInput = document.getElementById('selectedPackage');
-                        const bookingFormTitle = document.getElementById('bookingFormTitle');
-                        if (selectedPackageInput) selectedPackageInput.value = `${tag} (Inspired by ${title})`;
-                        if (bookingFormTitle) bookingFormTitle.textContent = `Book ${tag} Session`;
-                        
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                            window.scrollTo({
-                                top: contactSection.offsetTop,
-                                behavior: 'smooth'
-                            });
-                            setTimeout(() => {
-                                const nameInput = document.getElementById('name');
-                                if (nameInput) nameInput.focus();
-                            }, 800);
+                        const projectTopic = `${tag} (Inspired by: ${title})`;
+                        if (bookingModal) {
+                            openBookingModal(projectTopic);
+                        } else {
+                            const selectedPackageInput = document.getElementById('selectedPackage');
+                            const bookingFormTitle = document.getElementById('bookingFormTitle');
+                            if (selectedPackageInput) selectedPackageInput.value = projectTopic;
+                            if (bookingFormTitle) bookingFormTitle.textContent = `Book ${tag} Session`;
+                            
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                                window.scrollTo({
+                                    top: contactSection.offsetTop,
+                                    behavior: 'smooth'
+                                });
+                                setTimeout(() => {
+                                    const nameInput = document.getElementById('name');
+                                    if (nameInput) nameInput.focus();
+                                }, 800);
+                            }
                         }
                     });
                 }
@@ -837,21 +867,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         e.preventDefault();
                         hideBlogModal();
                         
-                        const selectedPackageInput = document.getElementById('selectedPackage');
-                        const bookingFormTitle = document.getElementById('bookingFormTitle');
-                        if (selectedPackageInput) selectedPackageInput.value = `Blog: ${title}`;
-                        if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session`;
-                        
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                            window.scrollTo({
-                                top: contactSection.offsetTop,
-                                behavior: 'smooth'
-                            });
-                            setTimeout(() => {
-                                const nameInput = document.getElementById('name');
-                                if (nameInput) nameInput.focus();
-                            }, 800);
+                        const blogTopic = `Blog: ${title} (${tag})`;
+                        if (bookingModal) {
+                            openBookingModal(blogTopic);
+                        } else {
+                            const selectedPackageInput = document.getElementById('selectedPackage');
+                            const bookingFormTitle = document.getElementById('bookingFormTitle');
+                            if (selectedPackageInput) selectedPackageInput.value = blogTopic;
+                            if (bookingFormTitle) bookingFormTitle.textContent = `Book a Session`;
+                            
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                                window.scrollTo({
+                                    top: contactSection.offsetTop,
+                                    behavior: 'smooth'
+                                });
+                                setTimeout(() => {
+                                    const nameInput = document.getElementById('name');
+                                    if (nameInput) nameInput.focus();
+                                }, 800);
+                            }
                         }
                     });
                 }
