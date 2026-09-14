@@ -2112,8 +2112,8 @@ p.hero-slide-side {
     position: fixed;
     inset: 0;
     background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 2100;
     display: flex;
     justify-content: center;
@@ -2121,6 +2121,9 @@ p.hero-slide-side {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;              /* fallback: if container overflows lightbox itself */
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0;               /* give breathing room so close btn is reachable */
 }
 
 .lightbox.active {
@@ -2259,25 +2262,31 @@ p.hero-slide-side {
 @media (max-width: 992px) {
     .lightbox-container {
         flex-direction: column;
-        max-height: 90vh;
+        max-height: 92vh;
         width: 95%;
+        overflow-y: auto;          /* allow entire modal to scroll on mobile */
+        -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
+        overscroll-behavior: contain;      /* prevent page scroll bleed-through */
     }
     
     .lightbox-media {
-        min-height: 250px;
+        min-height: 220px;
         flex: none;
-        height: 250px;
+        height: 220px;
     }
     
     .lightbox-details {
-        padding: 2rem;
-        flex: none;
+        padding: 1.5rem;
+        flex: none;                /* natural height — container scroll handles the rest */
+        overflow-y: visible;       /* don't clip — let container scroll */
+        padding-bottom: 2.5rem;
     }
     
     .lightbox-close {
         top: 1rem;
         right: 1rem;
         background: rgba(0,0,0,0.5);
+        position: sticky;          /* stays visible while scrolling on mobile */
     }
 }
 
