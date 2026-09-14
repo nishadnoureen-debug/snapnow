@@ -15,10 +15,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"></noscript>
     
-    <link rel="stylesheet" href="css/style.min.css?v=17">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <link rel="stylesheet" href="css/style.min.css?v=16">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     
@@ -56,8 +61,8 @@
         <div class="subpage-hero-bg contact-hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="container subpage-hero-content contact-hero-content">
-            <h1>CONTACT <span class="highlight">SNAPNOW</span></h1>
-            <p>Ready to elevate your brand, scale your digital reach, or craft high-impact visual storytelling? Visit our Dubai office or talk directly with our creative strategists.</p>
+            <h1 class="reveal">CONTACT <span class="highlight">SNAPNOW</span></h1>
+            <p class="reveal delay-1">Ready to elevate your brand, scale your digital reach, or craft high-impact visual storytelling? Visit our Dubai office or talk directly with our creative strategists.</p>
         </div>
     </section>
 
@@ -67,7 +72,7 @@
             <div class="contact-cards-grid">
                 
                 
-                <div class="contact-card">
+                <div class="contact-card reveal">
                     <div class="contact-card-icon">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
@@ -87,7 +92,7 @@
                 </div>
 
                 
-                <div class="contact-card">
+                <div class="contact-card reveal delay-1">
                     <div class="contact-card-icon">
                         <i class="fa-solid fa-phone-volume"></i>
                     </div>
@@ -104,7 +109,7 @@
                 </div>
 
                 
-                <div class="contact-card">
+                <div class="contact-card reveal delay-2">
                     <div class="contact-card-icon icon-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
@@ -121,7 +126,7 @@
                 </div>
 
                 
-                <div class="contact-card">
+                <div class="contact-card reveal delay-3">
                     <div class="contact-card-icon">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
@@ -479,6 +484,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="js/script.min.js?v=9" defer></script>
+    <script src="js/script.min.js?v=8" defer></script>
 </body>
 </html>

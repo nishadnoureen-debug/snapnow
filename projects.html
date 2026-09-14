@@ -15,10 +15,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"></noscript>
     
-    <link rel="stylesheet" href="css/style.min.css?v=17">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <link rel="stylesheet" href="css/style.min.css?v=16">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     
@@ -55,8 +60,8 @@
     <section class="projects-hero">
         <div class="projects-hero-bg"></div>
         <div class="container projects-hero-content">
-            <h1>Our Projects</h1>
-            <p>Explore our latest visual creations. From intimate weddings to high-end corporate campaigns, we make every frame tell a story.</p>
+            <h1 class="reveal">Our Projects</h1>
+            <p class="reveal delay-1">Explore our latest visual creations. From intimate weddings to high-end corporate campaigns, we make every frame tell a story.</p>
         </div>
     </section>
 
@@ -65,12 +70,12 @@
         <div class="container">
             
             
-            <div class="portfolio-filters">
+            <div class="portfolio-filters reveal">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
             </div>
 
             
-            <div class="portfolio-grid">
+            <div class="portfolio-grid reveal delay-1">
                 
                 
                 <div class="portfolio-card" data-category="dance" 
@@ -452,6 +457,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="js/script.min.js?v=9" defer></script>
+    <script src="js/script.min.js?v=8" defer></script>
 </body>
 </html>
