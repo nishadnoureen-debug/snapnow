@@ -8,6 +8,10 @@
     
     <!-- Google Fonts -->
     
+    <!-- Hero image preload: fires before CSSOM is built so hero-bg paints instantly -->
+    <link rel="preload" as="image" href="assets/hero_banner_mobile.webp?v=13" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero_banner.webp?v=13" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.vercel-insights.com">
 
