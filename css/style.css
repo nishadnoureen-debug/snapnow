@@ -32,9 +32,8 @@
     box-sizing: border-box;
 }
 
-html {
-    /* Crisp native scrolling without mousewheel interpolation lag */
-}
+
+
 
 body {
     font-family: var(--font-body);
@@ -463,12 +462,12 @@ ul {
     }
 }
 
-/* Hero Content Kinetic Entrance Flow */
+/* Hero Content Kinetic Entrance Flow (Standard Smooth Agency Animation) */
 .hero-slide-side {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(22px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -478,11 +477,11 @@ ul {
 }
 
 h1.hero-slide-side {
-    transition-delay: 0.05s;
+    transition-delay: 0.08s;
 }
 
 p.hero-slide-side {
-    transition-delay: 0.12s;
+    transition-delay: 0.18s;
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: rgba(255, 255, 255, 0.85);
     max-width: 600px;
@@ -491,7 +490,7 @@ p.hero-slide-side {
 }
 
 .hero-cta-group.hero-slide-side {
-    transition-delay: 0.18s;
+    transition-delay: 0.28s;
 }
 
 
@@ -1573,13 +1572,13 @@ p.hero-slide-side {
     .nav-links a:not(.btn) { font-size: 1.1rem; margin: 0.7rem 0; }
 }
 /* =========================================
-   Reveal Animations & Fluid Flow System
+   Reveal Animations & Fluid Flow System (Standard High-Performance)
    ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -1591,9 +1590,9 @@ p.hero-slide-side {
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -1605,9 +1604,9 @@ p.hero-slide-side {
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -1619,9 +1618,9 @@ p.hero-slide-side {
 
 .reveal-zoom {
     opacity: 0;
-    transform: scale(0.96);
-    transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -1631,20 +1630,34 @@ p.hero-slide-side {
     transform: scale(1);
 }
 
-.delay-1 { transition-delay: 0.05s; }
-.delay-2 { transition-delay: 0.1s; }
-.delay-3 { transition-delay: 0.15s; }
-.delay-4 { transition-delay: 0.2s; }
-.delay-5 { transition-delay: 0.25s; }
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.40s; }
 
-/* Subpage Heroes & Filter Controls: Instantly visible on page load with zero lag */
-.projects-hero h1, .retainers-hero h1, .production-hero h1, .subpage-hero h1, .blogs-hero h1,
-.projects-hero p, .retainers-hero p, .production-hero p, .subpage-hero p, .blogs-hero p,
+/* Subpage Hero Smooth Entrance Animations (Immediate, Zero Blank Delay) */
+.projects-hero h1, .retainers-hero h1, .production-hero h1, .subpage-hero h1, .blogs-hero h1 {
+    animation: subpageHeroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.projects-hero p, .retainers-hero p, .production-hero p, .subpage-hero p, .blogs-hero p {
+    animation: subpageHeroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
 .portfolio-filters, .blogs-filters {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    visibility: visible !important;
+    animation: subpageHeroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes subpageHeroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Micro-Flows: Card & Button Animations */
