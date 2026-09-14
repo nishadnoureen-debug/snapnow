@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    Variables & Theme
    ========================================= */
 :root {
@@ -464,28 +464,26 @@ ul {
     }
 }
 
-/* Hero Content Kinetic Entrance Flow */
+/* Hero Content Kinetic Entrance Flow (Optimized & Fast) */
 .hero-slide-side {
     opacity: 0;
-    transform: translateY(28px);
-    filter: blur(6px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(14px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
 .hero-slide-side.visible {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
 }
 
 h1.hero-slide-side {
-    transition-delay: 0.15s;
+    transition-delay: 0.04s;
 }
 
 p.hero-slide-side {
-    transition-delay: 0.35s;
+    transition-delay: 0.08s;
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: rgba(255, 255, 255, 0.85);
     max-width: 600px;
@@ -494,7 +492,7 @@ p.hero-slide-side {
 }
 
 .hero-cta-group.hero-slide-side {
-    transition-delay: 0.55s;
+    transition-delay: 0.12s;
 }
 
 
@@ -1580,77 +1578,74 @@ p.hero-slide-side {
    ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(32px);
-    filter: blur(4px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform, filter;
+    transform: translateY(16px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
 .reveal.reveal-active,
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
 }
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-35px);
-    filter: blur(4px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform, filter;
+    transform: translateX(-20px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
 .reveal-left.reveal-active,
 .reveal-left.active {
     opacity: 1;
     transform: translateX(0);
-    filter: blur(0);
 }
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(35px);
-    filter: blur(4px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform, filter;
+    transform: translateX(20px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
 .reveal-right.reveal-active,
 .reveal-right.active {
     opacity: 1;
     transform: translateX(0);
-    filter: blur(0);
 }
 
 .reveal-zoom {
     opacity: 0;
-    transform: scale(0.92);
-    filter: blur(4px);
-    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform, filter;
+    transform: scale(0.96);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
 .reveal-zoom.reveal-active,
 .reveal-zoom.active {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.18s; }
-.delay-3 { transition-delay: 0.26s; }
-.delay-4 { transition-delay: 0.34s; }
-.delay-5 { transition-delay: 0.42s; }
+.delay-1 { transition-delay: 0.05s; }
+.delay-2 { transition-delay: 0.10s; }
+.delay-3 { transition-delay: 0.15s; }
+.delay-4 { transition-delay: 0.20s; }
+.delay-5 { transition-delay: 0.25s; }
+
+/* Subpage Heroes: Always instantly visible with zero delay */
+.projects-hero h1, .retainers-hero h1, .production-hero h1, .subpage-hero h1, .blogs-hero h1,
+.projects-hero p, .retainers-hero p, .production-hero p, .subpage-hero p, .blogs-hero p {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    visibility: visible !important;
+}
 
 /* Micro-Flows: Card & Button Animations */
 .service-number {

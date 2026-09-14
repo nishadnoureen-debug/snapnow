@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
@@ -72,15 +72,15 @@
         });
     });
 
-    // Trigger Hero Animations on Load
-    setTimeout(() => {
+    // Trigger Hero Animations on Load Instantly
+    requestAnimationFrame(() => {
         document.querySelectorAll('.hero-slide-side').forEach(el => el.classList.add('visible'));
-    }, 120);
+    });
 
     // Scroll Reveal Animation Flow (Intersection Observer)
     const revealOptions = {
-        threshold: 0.08,
-        rootMargin: "0px 0px -20px 0px"
+        threshold: 0.04,
+        rootMargin: "0px 0px 40px 0px"
     };
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -97,13 +97,17 @@
         revealObserver.observe(el);
     });
 
-    // Immediately activate any reveal elements already in the viewport on initial load
-    document.querySelectorAll(revealSelectors).forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('reveal-active', 'active');
-        }
-    });
+    // Immediately activate any reveal elements already in or near the viewport on initial load
+    function activateVisibleElements() {
+        const innerH = window.innerHeight || document.documentElement.clientHeight;
+        document.querySelectorAll(revealSelectors).forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < innerH + 60 && rect.bottom > -60) {
+                el.classList.add('reveal-active', 'active');
+            }
+        });
+    }
+    activateVisibleElements();
 
 
 
@@ -951,4 +955,31 @@
             }, 350);
         }, 3200);
     }
+
+    // Instant Page Prefetching: Prefetches internal pages on hover/touch for instant page changes
+    const prefetchedUrls = new Set();
+    function prefetchPage(url) {
+        if (!url || prefetchedUrls.has(url)) return;
+        const clean = url.split('#')[0].split('?')[0];
+        if (!clean.endsWith('.html') && clean !== '' && clean !== '/') return;
+        prefetchedUrls.add(url);
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+    }
+
+    document.addEventListener('mouseover', (e) => {
+        const a = e.target.closest('a');
+        if (a && a.href && (a.origin === window.location.origin || !a.href.startsWith('http'))) {
+            prefetchPage(a.getAttribute('href'));
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchstart', (e) => {
+        const a = e.target.closest('a');
+        if (a && a.href && (a.origin === window.location.origin || !a.href.startsWith('http'))) {
+            prefetchPage(a.getAttribute('href'));
+        }
+    }, { passive: true });
 });
