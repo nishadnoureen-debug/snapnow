@@ -1,577 +1,1569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Npj2iIyK9BXOpkyh7dpwZ5RSkDf8o-2MVKx0CajNPow" />
-    <title>Snapnow | Marketing Agency in Dubai</title>
-    <meta name="description" content="Snapnow is a creative marketing agency in Dubai offering digital marketing, social media, branding, content creation, photography, video and podcast production.">
-    
-    
-    <link rel="preload" as="image" href="assets/hero_banner_mobile.webp?v=13" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/hero_banner.webp?v=13" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="Npj2iIyK9BXOpkyh7dpwZ5RSkDf8o-2MVKx0CajNPow">
+<title>Snapnow | Marketing Agency in Dubai</title>
+<meta name="description" content="Snapnow is a marketing agency in Dubai. Strategy, content, production and ad spend, run by one team on one floor at Damas Tower.">
+<meta name="theme-color" content="#061217">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://snapnow.ae/">
 
-    
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdn.vercel-insights.com">
+<!-- DEPLOY STEP: patch og:url and og:image with the live absolute URL before zipping -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Snapnow | Marketing Agency in Dubai">
+<meta property="og:description" content="Strategy, content, production and ad spend, run by one team on one floor at Damas Tower, Dubai.">
+<meta property="og:url" content="https://snapnow.ae/">
+<meta property="og:image" content="https://snapnow.ae/assets/hero-ending.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
-    <!-- Google Fonts & CDN Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"></noscript>
-    
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <link rel="stylesheet" href="css/style.min.css?v=18">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    
-    
-    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23061217'/><circle cx='16' cy='10.5' r='3' fill='%23A4D65E'/><rect x='5' y='18' width='22' height='3.4' rx='1.7' fill='%23A4D65E'/></svg>">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- A portrait phone paints the poster first, then streams the video in behind it, so the
+     poster is the largest paint. The JS finds it late, so preload it, scoped to exactly the
+     screens that show it: portrait phones that have not asked for reduced motion. -->
+<link rel="preload" as="image" href="assets/hero-poster-portrait.jpg" fetchpriority="high"
+      media="(orientation: portrait) and (max-width: 720px) and (prefers-reduced-motion: no-preference)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@300;400&family=Space+Mono:wght@400&display=swap">
+
+<style>
+/* ============================================================
+   TOKENS  (palette sampled from the hero footage itself)
+   ============================================================ */
+:root{
+  --canvas:#061217;
+  --canvas-2:#0A1A20;
+  --panel:#0E2127;
+  --panel-2:#122A31;
+  --line:#1B3138;            /* decorative hairlines only */
+  --line-strong:#4E6F73;     /* interactive borders, 3.5:1 on canvas */
+  --accent:#A4D65E;
+  --accent-hover:#B8E477;
+  --accent-muted:#45592C;
+  --text-primary:#EAF0E4;
+  --text-secondary:#93A39C;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+  --tshadow:0 1px 2px rgba(3,8,10,.95),0 3px 12px rgba(3,8,10,.78),0 10px 44px rgba(3,8,10,.8);
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Hanken Grotesk',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  --hero-h:640vh;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--canvas);color:var(--text-primary);
+  font-family:var(--body);font-weight:300;font-size:clamp(16px,1.05vw,19px);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.025em;margin:0}
+p{margin:0}
+::selection{background:var(--accent);color:var(--canvas)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--accent);color:var(--canvas);
+  padding:10px 16px;border-radius:8px;font-family:var(--mono);font-size:13px;transition:top .3s var(--ease)}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ============================================================
+   THE FIXED ENVIRONMENT LAYER  (one place, not stacked sections)
+   ============================================================ */
+.env{position:fixed;inset:0;z-index:0;pointer-events:none}
+.env::before{
+  content:"";position:absolute;inset:-20%;
+  background:
+    radial-gradient(60% 45% at 22% 18%,rgba(164,214,94,.055),transparent 70%),
+    radial-gradient(55% 40% at 82% 72%,rgba(96,180,170,.05),transparent 72%);
+  animation:drift 96s var(--ease-soft) -22s infinite alternate;
+}
+.env::after{
+  content:"";position:absolute;inset:0;opacity:.16;
+  background-image:radial-gradient(rgba(234,240,228,.5) .5px,transparent .5px);
+  background-size:3px 3px;
+}
+@keyframes drift{from{transform:translate3d(-2.5%,-1.5%,0) scale(1.02)}to{transform:translate3d(2.5%,2%,0) scale(1.06)}}
+
+.motes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.mote{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--accent);opacity:.16;
+  animation:mote 34s linear infinite}
+@keyframes mote{from{transform:translate3d(0,12vh,0)}to{transform:translate3d(3vw,-112vh,0)}}
+
+/* ============================================================
+   THE LIME LINE  (the signature: one unbroken spine down the site)
+   ============================================================ */
+.spine{position:fixed;left:18px;top:0;width:56px;height:100vh;height:100dvh;z-index:3;pointer-events:none}
+.spine path{fill:none;stroke:var(--accent);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.5}
+.spine .rail-bg{opacity:.13}
+.spine circle{fill:var(--canvas);stroke:var(--accent);stroke-width:1;vector-effect:non-scaling-stroke;
+  opacity:.22;transition:opacity .7s var(--ease)}
+.spine circle.lit{opacity:1;fill:var(--accent)}
+/* the spine narrows before it disappears, so landscape tablets keep the signature */
+@media (max-width:1240px){.spine{left:6px;width:40px}}
+@media (max-width:1000px){.spine{display:none}}
+@media (max-height:620px){.spine{display:none}}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;padding:18px 0;
+  transition:background .5s var(--ease),backdrop-filter .5s var(--ease),padding .5s var(--ease)}
+.nav::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(4,10,13,.88),rgba(4,10,13,.42) 55%,transparent)}
+.nav.solid{background:rgba(6,18,23,.86);backdrop-filter:blur(14px);padding:11px 0;
+  border-bottom:1px solid var(--line)}
+.nav.solid::before{opacity:0}
+.nav-in{position:relative;display:flex;align-items:center;gap:24px;
+  width:min(1280px,92vw);margin:0 auto}
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand img{width:168px;height:auto}
+.nav-links{margin-left:auto;display:flex;align-items:center;gap:clamp(14px,1.7vw,30px)}
+.nav-links a{font-size:14px;letter-spacing:.01em;text-decoration:none;color:var(--text-primary);opacity:.82;
+  transition:opacity .35s var(--ease),color .35s var(--ease)}
+.nav-links a:hover{opacity:1;color:var(--accent)}
+.nav-cta{font-family:var(--display);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  padding:10px 18px;border-radius:999px;background:var(--accent);color:var(--canvas)!important;opacity:1!important;
+  font-weight:700;transition:transform .4s var(--ease),background .4s var(--ease)}
+.nav-cta:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line-strong);border-radius:10px;
+  width:44px;height:44px;color:var(--text-primary);cursor:pointer;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:1.5px;background:currentColor;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+@media (max-width:900px){
+  .burger{display:flex}
+  .nav-links{position:fixed;inset:0 0 auto 0;top:0;padding:88px 7vw 30px;flex-direction:column;align-items:flex-start;
+    gap:6px;background:rgba(6,18,23,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
+    transform:translateY(-104%);transition:transform .55s var(--ease);margin-left:0}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{font-size:19px;padding:11px 0}
+  .nav-cta{margin-top:12px}
+}
+
+/* ============================================================
+   THE SCRUB HERO
+   ============================================================ */
+.hero{position:relative;height:var(--hero-h);z-index:2}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--canvas)}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .9s var(--ease);will-change:transform;transform:translateZ(0)}
+.stage.video-ready video{opacity:1}
+.stage.video-failed video{display:none}
+.poster{position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.02);transition:opacity 1.1s var(--ease)}
+.stage.video-ready .poster{opacity:0}
+
+/* layer 1: the global base scrim, always on */
+.scrim{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 122% 92% at 50% 46%,rgba(4,10,13,0) 34%,rgba(4,10,13,.64) 100%)}
+.scrim-top{position:absolute;inset:0 0 auto 0;height:34vh;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(4,10,13,.8),transparent)}
+
+/* loading ring */
+.ring{position:absolute;right:clamp(20px,3.4vw,52px);bottom:clamp(20px,3.4vw,52px);
+  width:46px;height:46px;color:var(--accent);opacity:.9;transform:rotate(-90deg)}
+.ring circle{transition:stroke-dashoffset .2s linear}
+.stage.video-ready .ring{opacity:0;transition:opacity .6s var(--ease)}
+.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);
+  text-shadow:var(--tshadow)}
+
+/* caption bands */
+.band{position:absolute;inset:0;opacity:0;pointer-events:none;text-shadow:var(--tshadow)}
+.band::before{content:"";position:absolute;inset:-6%;pointer-events:none;
+  opacity:calc(.26 + .74*var(--k,1));
+  background:radial-gradient(ellipse 70% 60% at var(--sx,50%) var(--sy,50%),
+    rgba(3,8,10,.72) 0%,rgba(3,8,10,.5) 46%,rgba(3,8,10,0) 76%)}
+.band.settle::before{inset:0;
+  background:linear-gradient(to bottom,rgba(3,8,10,0) 26%,rgba(3,8,10,.58) 58%,rgba(3,8,10,.88) 100%)}
+/* containers are sized in px, never ch: a ch on a container resolves in the body font,
+   not the display face inside it. The ch caps live on the text elements themselves. */
+.band-body{position:absolute;width:min(560px,36vw)}
+.band-body.pos-l{left:clamp(28px,7vw,140px);top:50%;transform:translateY(-50%)}
+.band-body.pos-r{right:clamp(28px,7vw,140px);top:50%;transform:translateY(-50%);text-align:right}
+.band-body.pos-lt{left:clamp(28px,7vw,140px);top:22%}
+.band-body.pos-settle{left:50%;bottom:10vh;transform:translateX(-50%);width:min(760px,82vw);text-align:center}
+
+.kicker{font-family:var(--mono);font-size:clamp(10px,.74vw,12px);letter-spacing:.26em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px;display:block}
+.band h2,.band h1{font-size:clamp(30px,3.55vw,68px);font-weight:800;margin-bottom:16px;max-width:15ch}
+.band-body.pos-r h2{margin-left:auto}
+.band-body.pos-settle h2{max-width:none}
+.band .sub{font-size:clamp(15px,1.12vw,18.5px);color:var(--text-primary);opacity:.9;max-width:34ch}
+.band-body.pos-r .sub{margin-left:auto}
+.band-body.pos-settle .sub{max-width:44ch;margin:0 auto}
+.band .btn{text-shadow:none}
+
+/* the settle frame: the ink finishes falling, then the page draws the frame around the
+   closing message in one continuous clockwise stroke. Transform only, fully reversible. */
+.sframe{position:absolute;inset:-34px -46px;pointer-events:none}
+.sframe span{position:absolute;background:var(--accent);opacity:.92;box-shadow:0 0 18px rgba(164,214,94,.55)}
+.sframe .t{top:0;left:0;height:1.5px;width:100%;transform-origin:left center;
+  transform:scaleX(clamp(0,(var(--k4,0) - .06)*4.4,1))}
+.sframe .r{top:0;right:0;width:1.5px;height:100%;transform-origin:center top;
+  transform:scaleY(clamp(0,(var(--k4,0) - .26)*4.4,1))}
+.sframe .b{bottom:0;right:0;height:1.5px;width:100%;transform-origin:right center;
+  transform:scaleX(clamp(0,(var(--k4,0) - .46)*4.4,1))}
+.sframe .l{bottom:0;left:0;width:1.5px;height:100%;transform-origin:center bottom;
+  transform:scaleY(clamp(0,(var(--k4,0) - .66)*4.4,1))}
+@media (max-width:1100px){.sframe{inset:-24px -22px}}
+
+/* ---- entrance: blur to sharp (band 1) ---- */
+.b2s{position:relative}
+.b2s .soft{position:absolute;inset:0;filter:blur(11px);opacity:calc(1 - var(--k,0));pointer-events:none}
+.b2s .sharp{opacity:var(--k,0)}
+.band-body.pos-r .b2s .soft{right:0;left:auto;width:100%}
+
+/* ---- entrance: scatter (band 2) ---- */
+.w{display:inline-block;white-space:pre}
+.c{display:inline-block;will-change:transform,opacity}
+[data-entrance="scatter"] .c{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);
+  opacity:var(--kc);
+  transform:translate(calc((1 - var(--kc))*var(--jx,0px)),calc((1 - var(--kc))*var(--jy,0px)))
+            rotate(calc((1 - var(--kc))*var(--jr,0deg)));
+}
+/* ---- entrance: gather, invented for this footage (band 3) ---- */
+[data-entrance="gather"] .c{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*3.1,1);
+  opacity:var(--kc);
+  transform:translate(calc((1 - var(--kc))*var(--gx,0px)),calc((1 - var(--kc))*var(--gy,0px)));
+}
+/* ---- entrance: word by word rise into a staged settle (band 4) ---- */
+[data-entrance="rise"] .w{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*2.9,1);
+  opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*26px));
+}
+[data-entrance="rise"] .sub{--ks:clamp(0,(var(--k,0) - .6)*4,1);opacity:var(--ks);
+  transform:translateY(calc((1 - var(--ks))*14px))}
+[data-entrance="rise"] .btn-row{--kb:clamp(0,(var(--k,0) - .74)*4.4,1);opacity:var(--kb);
+  transform:translateY(calc((1 - var(--kb))*16px))}
+
+/* ============================================================
+   THE STATIC HERO  (the five gates get a designed layout, not an apology)
+   ============================================================ */
+/* 100vh first: older iOS ignores svh entirely, and without a fallback the
+   hero would collapse to the height of its own text. */
+.static-hero{display:none;position:relative;min-height:100vh;min-height:100svh;align-items:flex-end;
+  padding:132px 0 clamp(48px,9vh,86px);isolation:isolate}
+/* the static hero is the phone's largest paint, so small screens get the 1000px file */
+.static-hero .bg{position:absolute;inset:0;z-index:-2;
+  background-image:url('assets/hero-ending-sm.jpg');background-size:cover;background-position:50% 46%}
+@media (min-width:1100px){.static-hero .bg{background-image:url('assets/hero-ending.jpg')}}
+.static-hero .bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(4,10,13,.82) 0%,rgba(4,10,13,.34) 34%,rgba(4,10,13,.9) 82%,var(--canvas) 100%)}
+.static-hero h1{font-size:clamp(34px,8.4vw,58px);margin:14px 0 18px}
+.static-hero .sub{font-size:clamp(15.5px,4vw,19px);color:var(--text-primary);opacity:.92;max-width:30ch}
+.static-hero .btn-row{margin-top:30px}
+
+/* ============================================================
+   SHARED PIECES
+   ============================================================ */
+.wrap{width:min(1440px,92vw);margin:0 auto;position:relative;z-index:2}
+section{position:relative;z-index:2}
+.pad{padding:clamp(86px,13vh,150px) 0}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.6}
+
+/* buttons take the display face: Space Mono's uppercase W misreads on a call to action.
+   Mono keeps the small-label role: eyebrows, indices, form labels, footer meta. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:15px 28px;border-radius:999px;text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:transform .45s var(--ease),background .45s var(--ease),border-color .45s var(--ease),color .45s var(--ease)}
+.btn-primary{background:var(--accent);color:var(--canvas);border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover);transform:translateY(-3px)}
+.btn-ghost{background:transparent;color:var(--text-primary);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+.btn-row{display:flex;flex-wrap:wrap;gap:13px}
+.band-body.pos-settle .btn-row{justify-content:center}
+.band-body.pos-r .btn-row{justify-content:flex-end}
+@media (pointer:coarse){.btn{min-height:44px}}
+
+/* entrances on scroll */
+.rev{opacity:0;transform:translateY(26px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rev.in{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(22px);
+  transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.stagger.in>*{opacity:1;transform:none}
+.stagger.in>*:nth-child(1){transition-delay:.02s}
+.stagger.in>*:nth-child(2){transition-delay:.11s}
+.stagger.in>*:nth-child(3){transition-delay:.2s}
+.stagger.in>*:nth-child(4){transition-delay:.29s}
+.stagger.in>*:nth-child(5){transition-delay:.38s}
+.stagger.in>*:nth-child(6){transition-delay:.47s}
+/* retire the stagger once the entrance is done, at matching specificity */
+.stagger.done.in>*:nth-child(1),.stagger.done.in>*:nth-child(2),.stagger.done.in>*:nth-child(3),
+.stagger.done.in>*:nth-child(4),.stagger.done.in>*:nth-child(5),.stagger.done.in>*:nth-child(6){transition-delay:0s}
+
+/* ============================================================
+   SETTLE STRIP
+   ============================================================ */
+.strip{border-bottom:1px solid var(--line);background:linear-gradient(to bottom,rgba(10,26,32,.7),transparent)}
+.strip-in{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,80px);align-items:end;
+  padding:clamp(64px,9vh,110px) 0}
+.strip h2{font-size:clamp(26px,3.1vw,48px)}
+.strip h2 em{font-style:normal;color:var(--accent)}
+.strip .meta{display:flex;flex-direction:column;gap:12px;font-family:var(--mono);font-size:12.5px;
+  letter-spacing:.04em;color:var(--text-secondary)}
+.strip .meta b{color:var(--text-primary);font-weight:400;display:block;font-family:var(--body);font-size:15px;letter-spacing:0}
+@media (max-width:820px){.strip-in{grid-template-columns:1fr;align-items:start}}
+
+/* ============================================================
+   STATIONS  (a horizontal rail, so it shares no skeleton with its neighbours)
+   ============================================================ */
+.stations{background:var(--canvas-2);border-bottom:1px solid var(--line)}
+.st-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:clamp(42px,6vh,72px)}
+.st-head h2{font-size:clamp(28px,3.6vw,60px);max-width:18ch}
+.st-head p{color:var(--text-secondary);max-width:38ch;font-size:15.5px}
+.rail{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line)}
+.station{position:relative;padding:34px 26px 40px;border-right:1px solid var(--line);
+  transition:background .6s var(--ease)}
+.station:last-child{border-right:0}
+.station::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--accent);
+  transition:width 1s var(--ease)}
+.station.lit::before{width:100%}
+.station .no{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.14em;display:block;margin-bottom:26px}
+.station h3{font-family:var(--display);font-size:clamp(16px,1.32vw,21px);font-weight:800;
+  letter-spacing:-.01em;margin-bottom:12px;text-transform:uppercase}
+.station p{font-size:14.6px;color:var(--text-secondary);line-height:1.62}
+/* the living element: a node sitting on the rule above its own station */
+.station .dot{position:absolute;left:26px;top:-3.5px;width:7px;height:7px;border-radius:50%;background:var(--accent);
+  opacity:.2;animation:pulse 5.5s var(--ease-soft) -1.4s infinite}
+@keyframes pulse{0%,100%{opacity:.16;transform:scale(1)}50%{opacity:.55;transform:scale(1.45)}}
+@media (max-width:980px){
+  .rail{grid-template-columns:1fr 1fr}
+  .station{border-bottom:1px solid var(--line)}
+  .station:nth-child(2n){border-right:0}
+}
+@media (max-width:600px){.rail{grid-template-columns:1fr}.station{border-right:0}.st-head{grid-template-columns:1fr}}
+
+/* ============================================================
+   WORK
+   ============================================================ */
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:clamp(34px,5vh,58px)}
+.work-head h2{font-size:clamp(28px,3.6vw,60px)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,20px)}
+.card{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);
+  text-decoration:none;display:block;background:var(--panel)}
+.card img{aspect-ratio:9/16;object-fit:cover;width:100%;height:auto;
+  transition:transform 1.2s var(--ease),filter 1.2s var(--ease);filter:saturate(.82)}
+.card:hover img,.card:focus-visible img{transform:scale(1.06);filter:saturate(1)}
+.card .cap{position:absolute;inset:auto 0 0 0;padding:52px 18px 18px;
+  background:linear-gradient(to top,rgba(4,10,13,.97) 0%,rgba(4,10,13,.9) 34%,rgba(4,10,13,.6) 64%,rgba(4,10,13,0) 100%)}
+.card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:7px}
+.card .ttl{font-family:var(--display);font-weight:700;font-size:15.5px;line-height:1.22;letter-spacing:-.01em}
+@media (max-width:900px){.grid4{grid-template-columns:1fr 1fr}}
+
+/* ============================================================
+   THE INTERACTIVE MOMENT
+   ============================================================ */
+.gather{background:var(--canvas-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.gather-in{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,80px);align-items:center}
+.gather h2{font-size:clamp(26px,3.2vw,46px);margin-bottom:18px}
+.gather p.lede{color:var(--text-secondary);max-width:36ch;margin-bottom:28px;font-size:15.5px}
+.hold{position:relative;display:inline-flex;align-items:center;gap:14px;padding:15px 30px;border-radius:999px;
+  border:1px solid var(--line-strong);background:transparent;color:var(--text-primary);cursor:pointer;
+  font-family:var(--display);font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation;min-height:44px}
+.hold .fill{position:absolute;inset:0;background:var(--accent);transform-origin:left center;
+  transform:scaleX(var(--p,0));opacity:.92}
+.hold .lbl{position:relative;z-index:1;mix-blend-mode:difference;color:#fff}
+.hold:hover{border-color:var(--accent)}
+/* --sc scales the scatter to the box, so no dot ever lands outside it on a small screen */
+.stagecell{--sc:1;position:relative;min-height:clamp(268px,56vh,440px);border:1px solid var(--line);border-radius:16px;
+  background:radial-gradient(60% 70% at 50% 50%,rgba(164,214,94,.07),transparent 72%),var(--panel);overflow:hidden}
+@media (max-width:1100px){.stagecell{--sc:.8}}
+@media (max-width:760px){.stagecell{--sc:.56}}
+@media (max-width:620px){.stagecell{min-height:300px}}
+@media (max-width:420px){.stagecell{--sc:.46}}
+@media (max-height:620px){.stagecell{--sc:.5;min-height:268px}}
+.pt{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 18px rgba(164,214,94,.6);
+  transform:translate(calc(var(--ox,0px)*var(--sc)*(1 - var(--p,0))),calc(var(--oy,0px)*var(--sc)*(1 - var(--p,0))));
+  left:50%;top:50%;margin:-4.5px 0 0 -4.5px}
+.gbar{position:absolute;left:12%;right:12%;top:50%;height:1px;background:var(--accent);
+  transform:scaleX(var(--p,0));transform-origin:center;opacity:calc(.25 + .75*var(--p,0));
+  box-shadow:0 0 16px rgba(164,214,94,.5)}
+.glist{list-style:none;margin:0;padding:0;position:absolute;left:0;right:0;bottom:20px;
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-inline:16px}
+.glist li{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text-secondary);
+  opacity:.3;transition:opacity .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
+@media (max-width:620px){
+  .glist{gap:6px;bottom:14px;padding-inline:10px}
+  .glist li{font-size:9.5px;padding:6px 9px;letter-spacing:.09em}
+}
+.glist li.on{opacity:1;color:var(--accent);border-color:var(--accent-muted)}
+.gdone{margin-top:22px;font-size:15.5px;color:var(--text-primary);opacity:0;transform:translateY(10px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.gdone.on{opacity:1;transform:none}
+@media (max-width:900px){.gather-in{grid-template-columns:1fr}}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);margin-top:clamp(34px,5vh,56px)}
+.tier{border:1px solid var(--line);border-radius:16px;padding:clamp(26px,2.6vw,38px);background:var(--panel);
+  display:flex;flex-direction:column;transition:border-color .6s var(--ease),transform .6s var(--ease)}
+.tier:hover{border-color:var(--accent-muted);transform:translateY(-4px)}
+.tier.feature{border-color:var(--accent-muted);background:var(--panel-2)}
+.tier .name{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.tier .amt{font-family:var(--display);font-weight:900;font-size:clamp(28px,2.9vw,42px);letter-spacing:-.03em;line-height:1}
+.tier .per{font-family:var(--mono);font-size:12px;color:var(--text-secondary);margin:10px 0 22px;display:block}
+.tier ul{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:11px}
+.tier li{font-size:14.8px;color:var(--text-secondary);display:flex;gap:11px;align-items:baseline}
+.tier li::before{content:"";flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.75;transform:translateY(-2px)}
+.tier .btn{margin-top:auto;width:100%}
+.price-note{margin-top:26px;font-size:14.5px;color:var(--text-secondary)}
+.price-note a{color:var(--accent)}
+@media (max-width:900px){.price-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{background:var(--canvas-2);border-top:1px solid var(--line)}
+.faq-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,80px);align-items:start}
+.faq h2{font-size:clamp(28px,3.4vw,50px);max-width:14ch}
+.qa{border-top:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;padding:24px 40px 24px 0;position:relative;
+  font-family:var(--display);font-weight:700;font-size:clamp(16px,1.35vw,20px);letter-spacing:-.01em}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:1.5px;background:var(--accent);
+  transition:transform .5s var(--ease)}
+.qa summary::before{content:"";position:absolute;right:6px;top:50%;width:11px;height:1.5px;background:var(--accent);
+  transform:rotate(90deg);transition:transform .5s var(--ease),opacity .5s var(--ease)}
+.qa[open] summary::before{transform:rotate(0);opacity:0}
+.qa p{padding:0 clamp(0px,4vw,60px) 26px 0;color:var(--text-secondary);font-size:15.4px}
+.faq-aside{margin-top:26px;color:var(--text-secondary);font-size:15.4px;max-width:30ch}
+.faq-btn{margin-top:22px}
+@media (max-width:860px){.faq-in{grid-template-columns:1fr}}
+
+/* ============================================================
+   CTA + FORM
+   ============================================================ */
+.start{position:relative;overflow:hidden}
+.start::before{content:"";position:absolute;inset:0;z-index:0;opacity:.3;
+  background-image:url('assets/hero-ending-sm.jpg');background-size:cover;background-position:50% 52%}
+@media (min-width:1100px){.start::before{background-image:url('assets/hero-ending.jpg')}}
+.start::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,var(--canvas) 0%,rgba(6,18,23,.82) 42%,var(--canvas) 100%)}
+.start .wrap{z-index:2}
+.start-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,84px);align-items:start}
+.start h2{font-size:clamp(30px,4vw,60px);margin-bottom:20px}
+.start .lede{color:var(--text-primary);opacity:.9;max-width:34ch;margin-bottom:30px;font-size:16.5px}
+.contacts{display:flex;flex-direction:column;gap:16px;font-size:15px}
+.contacts a{color:var(--text-primary);text-decoration:none;transition:color .35s var(--ease)}
+.contacts a:hover{color:var(--accent)}
+.contacts .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);display:block;margin-bottom:3px}
+
+form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,2.8vw,38px)}
+.field{margin-bottom:18px}
+.field label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-secondary);display:block;margin-bottom:8px}
+.field input,.field textarea{width:100%;background:var(--canvas);border:1px solid var(--line-strong);border-radius:10px;
+  padding:14px 15px;color:var(--text-primary);font-family:var(--body);font-size:15.5px;font-weight:300;
+  transition:border-color .4s var(--ease),background .4s var(--ease)}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field textarea:focus{border-color:var(--accent);outline:none;background:var(--canvas-2)}
+.field input::placeholder,.field textarea::placeholder{color:#6E7E79}
+form .btn{width:100%;margin-top:6px}
+.form-note{margin-top:16px;font-size:13px;color:var(--text-secondary);line-height:1.55}
+.thanks{display:none;text-align:center;padding:26px 6px}
+.thanks.on{display:block}
+.thanks .mark{width:46px;height:46px;border-radius:50%;border:1px solid var(--accent);margin:0 auto 18px;
+  display:grid;place-items:center;color:var(--accent);font-family:var(--mono)}
+.thanks h3{font-size:22px;margin-bottom:10px}
+.thanks p{color:var(--text-secondary);font-size:15px}
+form.sent .form-body{display:none}
+@media (max-width:900px){.start-in{grid-template-columns:1fr}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);background:var(--canvas-2);padding:clamp(54px,8vh,86px) 0 34px}
+.f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:48px}
+.f-top img{width:172px;margin-bottom:18px}
+.f-top p{color:var(--text-secondary);font-size:15px;max-width:34ch}
+/* weight 400, not 700: Space Mono bold was a separate 16KB download serving
+   only these two footer headings, and at 10.5px uppercase the difference is
+   not worth a font file. */
+.f-col h4{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text-secondary);margin-bottom:16px}
+.f-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.f-col a{font-size:15px;text-decoration:none;color:var(--text-primary);opacity:.84;transition:color .35s var(--ease),opacity .35s var(--ease)}
+.f-col a:hover{color:var(--accent);opacity:1}
+.f-bot{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;
+  gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--text-secondary)}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;
+  color:var(--text-primary);text-decoration:none;font-family:var(--mono);font-size:11px;
+  transition:border-color .4s var(--ease),color .4s var(--ease),transform .4s var(--ease)}
+.socials a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+@media (max-width:820px){.f-top{grid-template-columns:1fr 1fr}.f-top>:first-child{grid-column:1/-1}}
+
+/* ============================================================
+   TOUCH TARGETS
+   Every tappable thing reaches 44px under a finger, and nothing moves on a
+   mouse. This block sits after the footer rules on purpose, so it wins the
+   cascade. Any display change here restates its own alignment.
+   The one exception is a link inside a sentence, which WCAG exempts because
+   forcing it to 44px would break the line it lives in.
+   ============================================================ */
+@media (pointer:coarse){
+  .btn{min-height:44px}
+  .skip{padding:14px 18px}
+  .brand{min-height:44px;align-items:center}
+  .nav-links a{min-height:44px;display:inline-flex;align-items:center;justify-content:flex-start}
+  .nav-links .nav-cta{justify-content:center}
+  .f-col a,.contacts a{display:inline-flex;align-items:center;justify-content:flex-start;min-height:44px}
+  .f-col ul{gap:2px}
+  .socials a{width:46px;height:46px}
+  .qa summary{padding-top:23px;padding-bottom:23px}
+  .field input,.field textarea{padding-top:15px;padding-bottom:15px}
+}
+
+/* ============================================================
+   SCREEN SHAPES
+   Width alone does not describe a device. These four blocks handle the
+   shapes that width-only breakpoints miss.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   PORTRAIT SCROLL HERO (phones and portrait tablets)
+   In portrait the ink runs straight down the middle of frame, so there is no
+   room to flank it with text. The captions go full width instead and take the
+   calm band above or below the action, with a directional scrim rather than
+   the desktop ellipse.
+   ------------------------------------------------------------ */
+@media (pointer:coarse){.stage{height:100svh}}
+
+@media (orientation:portrait) and (max-width:1024px){
+  .hero{height:540vh}
+  .band-body{width:auto;left:6vw;right:6vw;text-align:left}
+  .band-body.pos-l,.band-body.pos-r,.band-body.pos-lt{top:auto;bottom:13vh;transform:none}
+  .band-body.pos-r{top:14vh;bottom:auto;text-align:left}   /* band 2 rides high, over the calm top */
+  .band-body.pos-r h2,.band-body.pos-r .sub{margin-left:0;margin-right:auto}
+  .band-body.pos-r .btn-row{justify-content:flex-start}
+  .band-body.pos-settle{left:6vw;right:6vw;bottom:9vh;transform:none;width:auto;text-align:center}
+  .band h1,.band h2{font-size:clamp(28px,7.2vw,44px);max-width:none}
+  .band .sub{font-size:clamp(14.5px,3.8vw,17px);max-width:none}
+  .band-body.pos-settle .sub{margin:0 auto}
+  /* full-width captions need a directional scrim, not a centred ellipse */
+  .band::before{inset:0;opacity:calc(.3 + .7*var(--k,1));
+    background:linear-gradient(to top,rgba(3,8,10,.82) 0%,rgba(3,8,10,.6) 30%,rgba(3,8,10,.22) 55%,rgba(3,8,10,0) 78%)}
+  .band.mtop::before{
+    background:linear-gradient(to bottom,rgba(3,8,10,.82) 0%,rgba(3,8,10,.6) 32%,rgba(3,8,10,.22) 58%,rgba(3,8,10,0) 80%)}
+  .band.settle::before{
+    background:linear-gradient(to top,rgba(3,8,10,.86) 0%,rgba(3,8,10,.66) 34%,rgba(3,8,10,.26) 62%,rgba(3,8,10,0) 84%)}
+  .sframe{inset:-22px -18px}
+  .cue{bottom:16px}
+}
+@media (orientation:portrait) and (max-width:720px){
+  .hero{height:600vh}   /* phone beats need the extra distance to survive the flick test */
+  /* a portrait phone that asked for reduced motion gets a properly composed
+     portrait still, instead of the landscape one cover-cropped */
+  .static-hero .bg{background-image:url('assets/hero-ending-portrait.jpg')}
+  .band-body.pos-l,.band-body.pos-lt{bottom:11vh}
+  .band-body.pos-r{top:12vh}
+}
+
+/* narrow phones, 360px and under */
+@media (max-width:380px){
+  .wrap{width:90vw}
+  .static-hero h1{font-size:clamp(29px,8.6vw,40px)}
+  .static-hero .sub{font-size:15px}
+  .btn{padding:14px 22px;font-size:12px;letter-spacing:.08em}
+  .btn-row{gap:10px}
+  .station{padding:28px 20px 32px}
+  .tier{padding:24px 22px}
+  .nav .brand img,.f-top img{width:148px}
+  .eyebrow{font-size:10.5px;letter-spacing:.2em}
+}
+
+/* short landscape screens: a phone held sideways has almost no height */
+@media (orientation:landscape) and (max-height:560px){
+  .static-hero{padding:72px 0 24px;align-items:center}
+  .static-hero .kicker{margin-bottom:8px}
+  .static-hero h1{font-size:clamp(25px,4.3vw,38px);margin:0 0 10px;max-width:19ch}
+  .static-hero .sub{font-size:14.5px;max-width:46ch}
+  .static-hero .btn-row{margin-top:16px;gap:10px}
+  .static-hero .btn{min-height:42px;padding:11px 20px;font-size:11.5px}
+  .pad{padding:64px 0}
+}
+
+/* landscape tablets keep the scroll hero, so the bands get room for a finger */
+@media (orientation:landscape) and (pointer:coarse) and (max-width:1200px){
+  .band-body{width:min(470px,43vw)}
+  .band-body.pos-lt{top:18%}
+  .band h2,.band h1{font-size:clamp(28px,3.9vw,44px)}
+  .band-body.pos-settle{bottom:8vh}
+}
+
+/* wide desktops: grow the composition instead of stranding it mid-screen */
+@media (min-width:1700px){
+  .band-body.pos-l,.band-body.pos-lt{left:clamp(140px,9vw,250px)}
+  .band-body.pos-r{right:clamp(140px,9vw,250px)}
+  .band-body.pos-settle{width:min(920px,70vw)}
+}
+
+/* ============================================================
+   THE STATIC-HERO GATES
+   Phones and portrait tablets now scrub the video too, so only two gates
+   remain, and both are about there being no room or no permission for a
+   journey rather than about screen size:
+     - a phone held sideways has no height for the beats to land in
+       (440px, not 560: every phone in landscape measures 380px or less after
+       the browser bar, while 8 to 10 inch Android tablets measure 470 to 530
+       and have room for the journey)
+     - reduced motion is a stated preference and is always honoured
+   These two strings are duplicated character for character in JS.
+   ============================================================ */
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 440px),
+       (prefers-reduced-motion: reduce){
+  .hero{display:none}
+  .static-hero{display:flex}
+}
+@media (max-height:560px){.cue,.ring{display:none}}
+
+/* reduced motion, honoured completely */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;transition-delay:0s!important}
+  .rev,.stagger>*{opacity:1!important;transform:none!important}
+  .station::before{width:100%}
+  .glist li{opacity:1;color:var(--accent);border-color:var(--accent-muted)}
+  .gbar{transform:scaleX(1);opacity:1}
+  .pt{transform:none}
+  .gdone{opacity:1;transform:none}
+}
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused!important}
+</style>
 </head>
 <body>
-    
-    
-    <nav class="navbar">
-        <div class="container nav-content">
-            <div class="logo">
-                <a href="#home" class="logo-text">
-                    <img src="assets/logo_white.webp" alt="SnapNow Logo" class="logo-img logo-white" width="225" height="38" decoding="async">
-                    <img src="assets/logo_black.webp" alt="SnapNow Logo" class="logo-img logo-black" width="225" height="38" decoding="async">
-                </a>
-            </div>
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="nav-links">
-                <a href="index.html#home">Home</a>
-                <a href="projects.html">Our Projects</a>
-                <a href="blogs.html">News & Insights</a>
-                <a href="retainers.html">Marketing</a>
-                <a href="production.html">Production</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="#bookingModal" class="btn btn-primary open-booking-modal">Let's Talk!</a>
-            </div>
-        </div>
-    </nav>
+<a class="skip" href="#main">Skip to content</a>
 
-    
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <picture>
-                <source media="(max-width: 768px)" srcset="assets/hero_banner_mobile.webp?v=13" type="image/webp">
-                <img src="assets/hero_banner.webp?v=13" alt="Snapnow team celebrating a creative project" fetchpriority="high" decoding="sync" width="2560" height="1440">
-            </picture>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-glow-flow">
-            <div class="hero-flow-orb orb-1"></div>
-            <div class="hero-flow-orb orb-2"></div>
-        </div>
-        <div class="container hero-content">
-            <h1 class="floating-text hero-slide-side"><span class="hero-line hero-line-1">MARKETING AGENCY</span><br><span class="highlight hero-line hero-line-2">IN DUBAI</span></h1>
-            <p class="sub-headline hero-slide-side">
-                Snapnow is a creative marketing agency in Dubai helping businesses grow through digital marketing, social media, branding, content creation, photography, video production, and podcast production.
-                <br><br>
-                From building your brand to creating engaging content and reaching the right audience, we bring strategy and creativity together to drive real growth.
-            </p>
-            <div class="hero-cta-group hero-slide-side">
-                <a href="projects.html" class="btn btn-primary btn-large">Our Projects</a>
-                <a href="retainers.html" class="btn btn-outline-white btn-large hero-dynamic-cta" id="heroDynamicBtn">
-                    <span class="dynamic-text-container">Explore Marketing</span>
-                    <i class="fa-solid fa-arrow-right dynamic-btn-icon"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+<div class="env" aria-hidden="true"></div>
+<div class="motes" id="motes" aria-hidden="true"></div>
 
-    
-    <section class="pillars section-padding" id="pillars">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Our Core <span class="highlight">Pillars</span></h2>
-                <p>Strategic, creative, and technical excellence driving measurable results.</p>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-card reveal delay-1">
-                    <div class="pillar-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Digital Marketing & SEO</h3>
-                    <p>Targeted performance marketing, SEO, SEM, and data-driven growth strategies.</p>
-                </div>
-                <div class="pillar-card reveal delay-2">
-                    <div class="pillar-icon"><i class="fa-solid fa-hashtag"></i></div>
-                    <h3>Social Media & Content</h3>
-                    <p>High-converting static creatives, reels, copywriting, and active platform management.</p>
-                </div>
-                <div class="pillar-card reveal delay-3">
-                    <div class="pillar-icon"><i class="fa-solid fa-video"></i></div>
-                    <h3>Photo & Video Production</h3>
-                    <p>Cinematic visuals, commercial photography, and full-scale podcast production.</p>
-                </div>
-                <div class="pillar-card reveal delay-4">
-                    <div class="pillar-icon"><i class="fa-solid fa-bullhorn"></i></div>
-                    <h3>Branding & Strategy</h3>
-                    <p>Comprehensive brand identities, creative direction, and campaign lead generation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<svg class="spine" id="spine" viewBox="0 0 56 1000" preserveAspectRatio="none" aria-hidden="true">
+  <path class="rail-bg" d="M28 0 L28 90 C28 112 10 118 10 140 C10 162 28 168 28 190 L28 270 C28 292 46 298 46 320 C46 342 28 348 28 370 L28 470 C28 492 10 498 10 520 C10 542 28 548 28 570 L28 670 C28 692 46 698 46 720 C46 742 28 748 28 770 L28 850 C28 872 10 878 10 900 C10 922 28 928 28 950 L28 1000"/>
+  <path class="rail" id="rail" d="M28 0 L28 90 C28 112 10 118 10 140 C10 162 28 168 28 190 L28 270 C28 292 46 298 46 320 C46 342 28 348 28 370 L28 470 C28 492 10 498 10 520 C10 542 28 548 28 570 L28 670 C28 692 46 698 46 720 C46 742 28 748 28 770 L28 850 C28 872 10 878 10 900 C10 922 28 928 28 950 L28 1000"/>
+  <circle class="node" cx="10" cy="140" r="3.4"/>
+  <circle class="node" cx="46" cy="320" r="3.4"/>
+  <circle class="node" cx="10" cy="520" r="3.4"/>
+  <circle class="node" cx="46" cy="720" r="3.4"/>
+  <circle class="node" cx="10" cy="900" r="3.4"/>
+</svg>
 
-    
-    <section class="packages section-padding" id="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>SERVICES <span class="highlight">OFFERED</span></h2>
-                <h3 class="section-subtitle">Full-Suite Creative & Growth Marketing in Dubai</h3>
-                <p>From brand strategy and cinematic video production to performance marketing, PR, and offline campaigns, we deliver end-to-end creative and digital solutions that drive real results.</p>
-            </div>
-            
-            <div class="services-grid">
-                
-                
-                <div class="service-card reveal delay-1">
-                    <div class="service-card-header">
-                        <span class="service-number">01</span>
-                        <div class="service-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                    </div>
-                    <h3>Brand Strategy & Consulting</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Strategy (brand, marketing, digital growth, campaign)</li>
-                        <li><i class="fa-solid fa-check"></i> Brand positioning & architecture</li>
-                        <li><i class="fa-solid fa-check"></i> Market research & competitor analysis</li>
-                        <li><i class="fa-solid fa-check"></i> Target audience identification & persona mapping</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Brand Strategy & Consulting">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-2">
-                    <div class="service-card-header">
-                        <span class="service-number">02</span>
-                        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    </div>
-                    <h3>Branding & Creative Design</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Unique logo design & corporate branding</li>
-                        <li><i class="fa-solid fa-check"></i> Merchandise & uniform branding</li>
-                        <li><i class="fa-solid fa-check"></i> Marketing brochures & sales collateral</li>
-                        <li><i class="fa-solid fa-check"></i> Company profiles & investor pitch decks</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Branding & Creative Design">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-3">
-                    <div class="service-card-header">
-                        <span class="service-number">03</span>
-                        <div class="service-icon"><i class="fa-solid fa-share-nodes"></i></div>
-                    </div>
-                    <h3>Social Media Management</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Social media growth strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Content calendar planning & curation</li>
-                        <li><i class="fa-solid fa-check"></i> Platform management (Instagram, Facebook, TikTok, LinkedIn, YouTube)</li>
-                        <li><i class="fa-solid fa-check"></i> Content scheduling & audience engagement</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Social Media Management">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-1">
-                    <div class="service-card-header">
-                        <span class="service-number">04</span>
-                        <div class="service-icon"><i class="fa-solid fa-clapperboard"></i></div>
-                    </div>
-                    <h3>Content Creation</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Reels (product, promotional, educational, explainer)</li>
-                        <li><i class="fa-solid fa-check"></i> Founder-led & personal branding formats</li>
-                        <li><i class="fa-solid fa-check"></i> UGC-style, trend-based & testimonial videos</li>
-                        <li><i class="fa-solid fa-check"></i> AI-generated content & motion graphics</li>
-                        <li><i class="fa-solid fa-check"></i> Shorts, scriptwriting & creative direction</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Content Creation">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-2">
-                    <div class="service-card-header">
-                        <span class="service-number">05</span>
-                        <div class="service-icon"><i class="fa-solid fa-film"></i></div>
-                    </div>
-                    <h3>Concept Video</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Storyboarding & creative conceptualization</li>
-                        <li><i class="fa-solid fa-check"></i> Commercial & narrative scripting</li>
-                        <li><i class="fa-solid fa-check"></i> Artist, actor & talent management</li>
-                        <li><i class="fa-solid fa-check"></i> Full cinematic production & post-production</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Concept Video">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-3">
-                    <div class="service-card-header">
-                        <span class="service-number">06</span>
-                        <div class="service-icon"><i class="fa-solid fa-microphone-lines"></i></div>
-                    </div>
-                    <h3>Podcast Video</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Show ideation & format structure</li>
-                        <li><i class="fa-solid fa-check"></i> Episode scriptwriting & research</li>
-                        <li><i class="fa-solid fa-check"></i> Interview preparation & talking points</li>
-                        <li><i class="fa-solid fa-check"></i> Multi-camera studio production & sound engineering</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Podcast Video">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-1">
-                    <div class="service-card-header">
-                        <span class="service-number">07</span>
-                        <div class="service-icon"><i class="fa-solid fa-camera-retro"></i></div>
-                    </div>
-                    <h3>Photography & Videography</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Product, food, corporate, lifestyle & fashion</li>
-                        <li><i class="fa-solid fa-check"></i> Event coverage, real estate & luxury property</li>
-                        <li><i class="fa-solid fa-check"></i> Corporate videos, TVC, interviews & documentaries</li>
-                        <li><i class="fa-solid fa-check"></i> Studio production & on-location multi-cam shoots</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Photography & Videography">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-2">
-                    <div class="service-card-header">
-                        <span class="service-number">08</span>
-                        <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    </div>
-                    <h3>Performance Marketing</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Meta ads (Instagram & Facebook)</li>
-                        <li><i class="fa-solid fa-check"></i> Google ads, YouTube ads & TikTok ads</li>
-                        <li><i class="fa-solid fa-check"></i> LinkedIn sponsored advertising</li>
-                        <li><i class="fa-solid fa-check"></i> High-conversion lead generation campaigns</li>
-                        <li><i class="fa-solid fa-check"></i> In-depth performance reporting & ROI tracking</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Performance Marketing">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-3">
-                    <div class="service-card-header">
-                        <span class="service-number">09</span>
-                        <div class="service-icon"><i class="fa-solid fa-star"></i></div>
-                    </div>
-                    <h3>Influencer / Celebrity Marketing</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Micro, macro & celebrity influencer matching</li>
-                        <li><i class="fa-solid fa-check"></i> Content creator partnerships & UGC deals</li>
-                        <li><i class="fa-solid fa-check"></i> Influencer campaign briefing & management</li>
-                        <li><i class="fa-solid fa-check"></i> Campaign ROI measurement & reach analytics</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Influencer & Celebrity Marketing">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-1">
-                    <div class="service-card-header">
-                        <span class="service-number">10</span>
-                        <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
-                    </div>
-                    <h3>Digital Marketing</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Digital strategy & growth roadmaps</li>
-                        <li><i class="fa-solid fa-check"></i> SEO (Search Engine Optimisation) & SEM</li>
-                        <li><i class="fa-solid fa-check"></i> Google Business Profile optimisation</li>
-                        <li><i class="fa-solid fa-check"></i> Online campaign management & funnels</li>
-                        <li><i class="fa-solid fa-check"></i> Email marketing, WhatsApp marketing & lead gen</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Digital Marketing">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-2">
-                    <div class="service-card-header">
-                        <span class="service-number">11</span>
-                        <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    </div>
-                    <h3>Website & Digital Solutions</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Website design & modern development</li>
-                        <li><i class="fa-solid fa-check"></i> High-converting landing pages & funnels</li>
-                        <li><i class="fa-solid fa-check"></i> Modern UI/UX design & prototyping</li>
-                        <li><i class="fa-solid fa-check"></i> Speed optimisation, maintenance & security</li>
-                        <li><i class="fa-solid fa-check"></i> Domain, hosting setup & ongoing support</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Website & Digital Solutions">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-3">
-                    <div class="service-card-header">
-                        <span class="service-number">12</span>
-                        <div class="service-icon"><i class="fa-solid fa-newspaper"></i></div>
-                    </div>
-                    <h3>Public Relations & Communications</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> PR strategy, press releases & media relations</li>
-                        <li><i class="fa-solid fa-check"></i> Regional & international media coverage</li>
-                        <li><i class="fa-solid fa-check"></i> Press conferences, product launches & announcements</li>
-                        <li><i class="fa-solid fa-check"></i> Media interviews & crisis communication</li>
-                        <li><i class="fa-solid fa-check"></i> Corporate communications, PR campaigns & media kits</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Public Relations & Communications">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-1">
-                    <div class="service-card-header">
-                        <span class="service-number">13</span>
-                        <div class="service-icon"><i class="fa-solid fa-user-tie"></i></div>
-                    </div>
-                    <h3>Personal Branding</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Personal branding & executive positioning strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Social media positioning (LinkedIn & Instagram)</li>
-                        <li><i class="fa-solid fa-check"></i> Dedicated photoshoots & thought-leadership videos</li>
-                        <li><i class="fa-solid fa-check"></i> Platform-specific management & scriptwriting</li>
-                        <li><i class="fa-solid fa-check"></i> Interview preparation & public profile management</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Personal Branding">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-2">
-                    <div class="service-card-header">
-                        <span class="service-number">14</span>
-                        <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-                    </div>
-                    <h3>Events & Experiences</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Event strategy, planning & complete management</li>
-                        <li><i class="fa-solid fa-check"></i> Brand activations, grand openings & press events</li>
-                        <li><i class="fa-solid fa-check"></i> Corporate events, exhibitions & conferences</li>
-                        <li><i class="fa-solid fa-check"></i> Networking events, mall activations & pop-ups</li>
-                        <li><i class="fa-solid fa-check"></i> Full event branding, photography & celebrity coordination</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Events & Experiences">Enquire Service</a>
-                </div>
-
-                
-                <div class="service-card reveal delay-3">
-                    <div class="service-card-header">
-                        <span class="service-number">15</span>
-                        <div class="service-icon"><i class="fa-solid fa-store"></i></div>
-                    </div>
-                    <h3>Offline Marketing</h3>
-                    <ul class="service-tags">
-                        <li><i class="fa-solid fa-check"></i> Billboards, hoardings & bridge banners</li>
-                        <li><i class="fa-solid fa-check"></i> Bus, bus stop, metro & vehicle branding</li>
-                        <li><i class="fa-solid fa-check"></i> Mall, cinema, retail & in-store branding</li>
-                        <li><i class="fa-solid fa-check"></i> Outdoor, print, flyers, brochures, posters & banners</li>
-                        <li><i class="fa-solid fa-check"></i> Premium corporate gifting & customized branded merchandise</li>
-                    </ul>
-                    <a href="#bookingModal" class="btn btn-primary open-booking-modal" data-package="Offline Marketing">Enquire Service</a>
-                </div>
-
-            </div>
-
-            
-            <div class="customise-package-card reveal delay-2">
-                <div class="customise-content">
-                    <div class="customise-badge">Tailored Marketing & Production</div>
-                    <h3>NEED A CUSTOMIZED SOLUTION?</h3>
-                    <h4>Custom Packages Tailored for Your Goals</h4>
-                    <p>Looking for a specialized combination of marketing retainers, creative shoots, or multi-channel campaigns? <strong>Let’s create the exact solution your business needs.</strong></p>
-                    <p class="customise-disclaimer"><i class="fa-solid fa-circle-info"></i> Looking for set packages? </p>
-                </div>
-                <div class="customise-actions">
-                    <a href="https://wa.me/971585511617?text=Hi%20SnapNow%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <footer class="footer" id="contact">
-        <div class="container footer-content reveal">
-            <div class="footer-brand" style="flex: 1; min-width: 300px;">
-                <div class="logo">
-                    <a href="#home" class="logo-text">
-                        <img src="assets/logo_white.webp" alt="SnapNow Logo" class="logo-img logo-white" width="225" height="38" decoding="async">
-                        <img src="assets/logo_black.webp" alt="SnapNow Logo" class="logo-img logo-black" width="225" height="38" decoding="async">
-                    </a>
-                </div>
-                <p>Creative marketing agency in Dubai helping businesses grow through strategy, content, and high-impact digital marketing.</p>
-                <div style="margin-top: 2rem;">
-                    <h3 style="color: var(--white);">Contact Us Directly</h3>
-                    <ul class="contact-list" style="margin-top: 1rem;">
-                        <li><i class="fa-solid fa-location-dot"></i> <span>DAMAS TOWER - Al Maktoum Rd - Riggat Al Buteen - Dubai</span></li>
-                        <li><i class="fa-solid fa-phone"></i> <a href="tel:0585511617">+971 58 551 1617</a>, <a href="tel:0585511618">+971 58 551 1618</a></li>
-                        <li><i class="fa-regular fa-envelope"></i> <a href="mailto:info@snapnow.ae">info@snapnow.ae</a></li>
-                    </ul>
-                    <div class="direct-contact-buttons">
-                        <a href="https://wa.me/971585511617" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-whatsapp">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                        </a>
-                        <a href="https://www.instagram.com/snapnow.ae?igsh=MTJpZjJqNW93Mm8zNg==" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://www.linkedin.com/company/snap-now" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-linkedin">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61588710761043" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-facebook">
-                            <i class="fa-brands fa-facebook-f"></i>
-                            <span>Facebook</span>
-                        </a>
-                        <a href="https://www.youtube.com/@SnapNowMedia" target="_blank" rel="noopener noreferrer" class="contact-floating-btn btn-float-youtube">
-                            <i class="fa-brands fa-youtube"></i>
-                            <span>YouTube</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-booking" style="flex: 1; min-width: 300px;">
-                <h3 id="bookingFormTitle" style="color: var(--white); margin-bottom: 0.5rem;">Get Started with SnapNow</h3>
-                <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Fill out the form below to enquire about our retainer packages or request a custom proposal.</p>
-                <form id="bookingForm" class="footer-form">
-                    <input type="hidden" id="selectedPackage" name="service" value="">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="e.g. Ahmed Al Rashid">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="e.g. hello@yourbrand.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone / WhatsApp Number</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="e.g. +971 50 000 0000">
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Event / Start Date (Optional)</label>
-                        <input type="text" id="date" name="date" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 SnapNow. All rights reserved.</p>
-        </div>
-    </footer>
-
-    
-    <div id="bookingModal" class="modal-overlay">
-        <div class="modal-content modal-form-content">
-            <div class="modal-close-btn" id="closeBookingModal">&times;</div>
-            <div class="modal-header-section">
-                <h3 class="modal-title" id="popupBookingTitle">Book Your Session</h3>
-                <p class="modal-subtitle">Tell us about your project goals and we'll get back to you within 24 hours.</p>
-            </div>
-            <form id="popupBookingForm" class="popup-form">
-                <input type="hidden" id="popupSelectedPackage" name="service" value="">
-                <div class="form-group">
-                    <label for="popupName">Full Name</label>
-                    <input type="text" id="popupName" name="name" required placeholder="e.g. Ahmed Al Rashid">
-                </div>
-                <div class="form-group">
-                    <label for="popupEmail">Email Address</label>
-                    <input type="email" id="popupEmail" name="email" required placeholder="e.g. hello@yourbrand.com">
-                </div>
-                <div class="form-group">
-                    <label for="popupPhone">Phone / WhatsApp Number</label>
-                    <input type="tel" id="popupPhone" name="phone" required placeholder="e.g. +971 50 000 0000">
-                </div>
-                <div class="form-group">
-                    <label for="popupDate">Preferred Date (Optional)</label>
-                    <input type="text" id="popupDate" name="date" placeholder="Click to pick a date" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
-                </div>
-                <div class="form-group">
-                    <label for="popupServiceSelect">Package / Service</label>
-                    <select id="popupServiceSelect" name="service" class="form-select">
-                        <option value="">Select Package / Service (Optional)</option>
-                        <optgroup label="Services Offered">
-                            <option value="Brand Strategy & Consulting">Brand Strategy & Consulting</option>
-                            <option value="Branding & Creative Design">Branding & Creative Design</option>
-                            <option value="Social Media Management">Social Media Management</option>
-                            <option value="Content Creation">Content Creation</option>
-                            <option value="Concept Video">Concept Video</option>
-                            <option value="Podcast Video">Podcast Video</option>
-                            <option value="Photography & Videography">Photography & Videography</option>
-                            <option value="Performance Marketing">Performance Marketing</option>
-                            <option value="Influencer & Celebrity Marketing">Influencer / Celebrity Marketing</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                            <option value="Website & Digital Solutions">Website & Digital Solutions</option>
-                            <option value="Public Relations & Communications">Public Relations & Communications</option>
-                            <option value="Personal Branding">Personal Branding</option>
-                            <option value="Events & Experiences">Events & Experiences</option>
-                            <option value="Offline Marketing">Offline Marketing</option>
-                        </optgroup>
-                        <optgroup label="Marketing">
-                            <option value="Essential Retainer">Essential (AED 4,999/mo)</option>
-                            <option value="Signature Retainer">Signature (AED 7,999/mo)</option>
-                            <option value="Executive Retainer">Executive (AED 9,999/mo)</option>
-                            <option value="Customised Marketing Retainer">Customised Retainer</option>
-                        </optgroup>
-                        <optgroup label="Production">
-                            <option value="Express Shoot">Express Shoot (AED 2,799)</option>
-                            <option value="Mobile Pro Shoot">Mobile Pro Shoot (AED 599)</option>
-                            <option value="Essential Shoot">Essential Shoot (AED 999)</option>
-                            <option value="Signature Reel Shoot">Signature Reel Shoot (AED 1,299)</option>
-                            <option value="Elite Photography Shoot">Elite Photography (AED 1,099)</option>
-                            <option value="Prestige Hybrid Shoot">Prestige Hybrid Shoot (AED 2,299)</option>
-                            <option value="Royal Production Shoot">Royal Production Shoot (AED 4,899)</option>
-                            <option value="Forever Pre-Wedding Shoot">Forever Pre-Wedding (AED 2,299)</option>
-                            <option value="Aerial Elite Drone Shoot">Aerial Elite Drone (AED 2,499+)</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Submit Booking Request</button>
-            </form>
-        </div>
-    </div>
-
-    
-    <div id="confirmationModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-close-btn" id="closeModal">&times;</div>
-            <div class="modal-success-icon">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                </svg>
-            </div>
-            <h3 class="modal-title">Booking Received!</h3>
-            <p class="modal-message">Thank you, <strong id="modalName">Name</strong>. Your request for <strong id="modalPackage">Package</strong> is successfully sent.</p>
-            <div class="modal-details">
-                <p><strong>Email:</strong> <span id="modalEmail">email@example.com</span></p>
-                <p><strong>Phone:</strong> <span id="modalPhone">+971...</span></p>
-                <p id="modalDateContainer"><strong>Event Date:</strong> <span id="modalDate">TBD</span></p>
-            </div>
-            <p class="modal-subtext">Our team will contact you within 24 hours to confirm your session.</p>
-            <button id="modalOkBtn" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Perfect, Thank You!</button>
-        </div>
-    </div>
-
-    
-    <a href="https://wa.me/971585511617" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="Snapnow home">
+      <img src="assets/logo_white.webp" alt="Snapnow" width="225" height="38" decoding="async">
     </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
+      <span></span>
+    </button>
+    <div class="nav-links" id="navlinks">
+      <a href="projects.html">Our Projects</a>
+      <a href="blogs.html">News &amp; Insights</a>
+      <a href="retainers.html">Marketing</a>
+      <a href="production.html">Production</a>
+      <a href="contact.html">Contact</a>
+      <a href="#start" class="nav-cta">Let's talk</a>
+    </div>
+  </div>
+</nav>
 
-    <script src="js/script.min.js?v=10" defer></script>
+<main id="main" tabindex="-1">
+
+<!-- ==================== THE SCRUB HERO ==================== -->
+<div class="hero" id="hero">
+  <div class="stage" id="stage">
+    <div class="poster" id="poster" aria-hidden="true"></div>
+    <video id="hero-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="scrim-top" aria-hidden="true"></div>
+
+    <!-- band 1 -->
+    <div class="band" data-a="0" data-b="0.24" data-entrance="blur" style="--sx:26%;--sy:50%">
+      <div class="band-body pos-l">
+        <span class="kicker">Marketing agency, Dubai</span>
+        <div class="b2s">
+          <h1 class="sharp">Everything your brand needs is in one room.</h1>
+          <p class="soft" aria-hidden="true">Everything your brand needs is in one room.</p>
+        </div>
+        <p class="sub">Snapnow. Marketing agency, Dubai.</p>
+      </div>
+    </div>
+
+    <!-- band 2 -->
+    <div class="band mtop" data-a="0.27" data-b="0.51" data-entrance="scatter" data-spread=".5" style="--sx:74%;--sy:50%">
+      <div class="band-body pos-r">
+        <h2 class="split">Five vendors. Five invoices. No one accountable.</h2>
+        <p class="sub">That is how most brands in this city get marketed.</p>
+      </div>
+    </div>
+
+    <!-- band 3 -->
+    <div class="band" data-a="0.54" data-b="0.78" data-entrance="gather" data-ramp="0.034" style="--sx:26%;--sy:34%">
+      <div class="band-body pos-lt">
+        <h2 class="split">Here it is one team, one floor, one number to call.</h2>
+        <p class="sub">Strategy, camera, edit, ad spend, and the report that shows what it earned.</p>
+      </div>
+    </div>
+
+    <!-- band 4, the settle -->
+    <div class="band settle" data-a="0.81" data-b="1" data-entrance="rise" style="--sx:50%;--sy:62%">
+      <div class="band-body pos-settle">
+        <div class="sframe" id="sframe" aria-hidden="true">
+          <span class="t"></span><span class="r"></span><span class="b"></span><span class="l"></span>
+        </div>
+        <h2 class="split-words">Come see the room.</h2>
+        <p class="sub">Tell us what you are trying to grow, and we will show you exactly how we would do it.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#start">Start a project</a>
+          <a class="btn btn-ghost" href="projects.html">See our work</a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="ring" id="ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
+              stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+    </svg>
+    <span class="cue" id="cue" aria-hidden="true">Scroll</span>
+  </div>
+</div>
+
+<!-- ==================== THE STATIC HERO ==================== -->
+<header class="static-hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="kicker">Marketing agency, Dubai</span>
+    <h1>Everything your brand needs is in one room.</h1>
+    <p class="sub">Strategy, content, production and ad spend, run by one team on one floor at Damas Tower.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#start">Start a project</a>
+      <a class="btn btn-ghost" href="projects.html">See our work</a>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== SETTLE STRIP ==================== -->
+<section class="strip" aria-labelledby="strip-h">
+  <div class="wrap strip-in">
+    <h2 id="strip-h" class="rev">The room is real. It is on the <em>eighth</em> floor of Damas Tower, and you are welcome in it.</h2>
+    <div class="meta rev">
+      <span><b>Damas Tower, Al Maktoum Road</b>Riggat Al Buteen, Dubai</span>
+      <span><b>+971 58 551 1617</b>Sunday to Friday</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STATIONS ==================== -->
+<section class="stations pad" id="what" aria-labelledby="st-h">
+  <div class="wrap">
+    <div class="st-head">
+      <div class="rev">
+        <span class="eyebrow">What one room means</span>
+        <h2 id="st-h">Fifteen services. Five things that actually happen on the floor.</h2>
+      </div>
+      <p class="rev">Nothing here gets handed to a stranger. The person who writes the plan can walk to the person holding the camera.</p>
+    </div>
+    <div class="rail stagger" id="stations">
+      <article class="station">
+        <span class="no">01</span>
+        <h3>Strategy</h3>
+        <p>Brand positioning, market research, and the plan the rest of the floor works to.</p>
+        <span class="dot" aria-hidden="true"></span>
+      </article>
+      <article class="station">
+        <span class="no">02</span>
+        <h3>Content</h3>
+        <p>Reels, UGC, founder led formats, scripts, and the calendar behind them.</p>
+        <span class="dot" aria-hidden="true"></span>
+      </article>
+      <article class="station">
+        <span class="no">03</span>
+        <h3>Production</h3>
+        <p>Photography, video, podcasts and drone. Shot by the same people who planned it.</p>
+        <span class="dot" aria-hidden="true"></span>
+      </article>
+      <article class="station">
+        <span class="no">04</span>
+        <h3>Attention</h3>
+        <p>Meta, Google, TikTok and LinkedIn, plus influencers, PR and offline placements.</p>
+        <span class="dot" aria-hidden="true"></span>
+      </article>
+      <article class="station">
+        <span class="no">05</span>
+        <h3>The report</h3>
+        <p>Leads, cost per lead, and what the spend earned. Not impressions.</p>
+        <span class="dot" aria-hidden="true"></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WORK ==================== -->
+<section class="pad" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="work-head">
+      <div class="rev">
+        <span class="eyebrow">Shot on the floor</span>
+        <h2 id="work-h">Recent work</h2>
+      </div>
+      <a class="btn btn-ghost rev" href="projects.html">All projects</a>
+    </div>
+    <div class="grid4 stagger">
+      <a class="card" href="https://www.instagram.com/reel/DYzNJ3EMiaj/" target="_blank" rel="noopener">
+        <img src="assets/project_ballet.webp" srcset="assets/project_ballet-sm.webp 360w, assets/project_ballet.webp 576w" sizes="(min-width:900px) 23vw, 45vw" alt="Prima Ballet: Grace in Motion" width="576" height="1024" loading="lazy" decoding="async">
+        <span class="cap"><span class="tag">Ballet &amp; Dance</span><span class="ttl">Prima Ballet: Grace in Motion</span></span>
+      </a>
+      <a class="card" href="https://www.instagram.com/reel/DZCNn0aSzMv/" target="_blank" rel="noopener">
+        <img src="assets/project_bike.webp" srcset="assets/project_bike-sm.webp 360w, assets/project_bike.webp 576w" sizes="(min-width:900px) 23vw, 45vw" alt="Desert Dirt Bike Adventure" width="576" height="1024" loading="lazy" decoding="async">
+        <span class="cap"><span class="tag">Action Sports</span><span class="ttl">Desert Dirt Bike Adventure</span></span>
+      </a>
+      <a class="card" href="https://www.instagram.com/reel/DZH381wyyQn/" target="_blank" rel="noopener">
+        <img src="assets/project_diya.webp" srcset="assets/project_diya-sm.webp 360w, assets/project_diya.webp 576w" sizes="(min-width:900px) 23vw, 45vw" alt="Diya Gold and Diamonds Giveaway" width="576" height="1024" loading="lazy" decoding="async">
+        <span class="cap"><span class="tag">Commercial Promo</span><span class="ttl">Diya Gold &amp; Diamonds Giveaway</span></span>
+      </a>
+      <a class="card" href="https://www.instagram.com/reel/DZHVBlIy9qX/" target="_blank" rel="noopener">
+        <img src="assets/project_gym.webp" srcset="assets/project_gym-sm.webp 360w, assets/project_gym.webp 576w" sizes="(min-width:900px) 23vw, 45vw" alt="Umarul: Elite Fitness Journey" width="576" height="1024" loading="lazy" decoding="async">
+        <span class="cap"><span class="tag">Fitness &amp; Gym</span><span class="ttl">Umarul: Elite Fitness Journey</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== THE INTERACTIVE MOMENT ==================== -->
+<section class="gather pad" aria-labelledby="g-h">
+  <div class="wrap gather-in">
+    <div class="rev">
+      <span class="eyebrow">Try it</span>
+      <h2 id="g-h">Gather the room.</h2>
+      <p class="lede">Five parts of your marketing, currently sitting in five different places. Press and hold to bring them into one line.</p>
+      <button class="hold" id="hold" aria-describedby="g-h">
+        <span class="fill" aria-hidden="true"></span>
+        <span class="lbl">Press and hold</span>
+      </button>
+      <p class="gdone" id="gdone">That is the whole pitch. One line, one team, one person who answers when you call.</p>
+    </div>
+    <div class="stagecell rev" id="cell" aria-hidden="true">
+      <span class="gbar"></span>
+      <span class="pt" style="--ox:-160px;--oy:-118px"></span>
+      <span class="pt" style="--ox:135px;--oy:-142px"></span>
+      <span class="pt" style="--ox:-186px;--oy:96px"></span>
+      <span class="pt" style="--ox:168px;--oy:74px"></span>
+      <span class="pt" style="--ox:16px;--oy:150px"></span>
+      <ul class="glist" id="glist">
+        <li>Strategy</li><li>Content</li><li>Production</li><li>Attention</li><li>The report</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section class="pad" id="pricing" aria-labelledby="p-h">
+  <div class="wrap">
+    <div class="rev">
+      <span class="eyebrow">What it costs</span>
+      <h2 id="p-h">Written down, before you sign anything.</h2>
+    </div>
+    <div class="price-grid stagger">
+      <article class="tier">
+        <span class="name">Essential</span>
+        <span class="amt">AED 4,999</span>
+        <span class="per">per month</span>
+        <ul>
+          <li>Social media management</li>
+          <li>Monthly content calendar</li>
+          <li>Static creatives and reels</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <a class="btn btn-ghost" href="#start">Enquire</a>
+      </article>
+      <article class="tier feature">
+        <span class="name">Signature</span>
+        <span class="amt">AED 7,999</span>
+        <span class="per">per month</span>
+        <ul>
+          <li>Everything in Essential</li>
+          <li>Monthly shoot day on the floor</li>
+          <li>Paid campaigns on Meta and Google</li>
+          <li>Lead tracking and cost per lead</li>
+        </ul>
+        <a class="btn btn-primary" href="#start">Enquire</a>
+      </article>
+      <article class="tier">
+        <span class="name">Executive</span>
+        <span class="amt">AED 9,999</span>
+        <span class="per">per month</span>
+        <ul>
+          <li>Everything in Signature</li>
+          <li>Full production and podcast studio</li>
+          <li>PR, influencer and offline campaigns</li>
+          <li>Strategy sessions with the founders</li>
+        </ul>
+        <a class="btn btn-ghost" href="#start">Enquire</a>
+      </article>
+    </div>
+    <p class="price-note rev">Single shoots start at AED 599. Full package lists live on <a href="retainers.html">Marketing</a> and <a href="production.html">Production</a>. Custom scopes are quoted after one call.</p>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="faq pad" aria-labelledby="f-h">
+  <div class="wrap faq-in">
+    <div class="rev">
+      <span class="eyebrow">The honest answers</span>
+      <h2 id="f-h">The questions people ask before they trust an agency.</h2>
+      <p class="faq-aside">Still unsure? Ask us in person. The floor is open and the kettle works.</p>
+      <a class="btn btn-ghost faq-btn" href="#start">Start a project</a>
+    </div>
+    <div class="rev">
+      <details class="qa">
+        <summary>What is actually inside the retainer?</summary>
+        <p>A written scope, before anything starts. What gets made each month, how often it goes out, which platforms it runs on, and who on the team is doing it. If a line is not written down, it is not in the plan.</p>
+      </details>
+      <details class="qa">
+        <summary>Am I locked into a long contract?</summary>
+        <p>Retainers run month to month with a notice period agreed up front. Ask about the notice period on the first call, and get the answer in writing before you sign.</p>
+      </details>
+      <details class="qa">
+        <summary>How long before I see anything?</summary>
+        <p>Content starts going out in the first month. Paid campaigns need roughly ninety days of real spend before the numbers mean anything. Anyone promising faster than that is guessing.</p>
+      </details>
+      <details class="qa">
+        <summary>Who owns my ad accounts and my content?</summary>
+        <p>You do. Accounts are set up in your name, and the files we shoot are yours. If you ever leave, you leave with all of it.</p>
+      </details>
+      <details class="qa">
+        <summary>Will I meet the people doing the work?</summary>
+        <p>Yes. Come to Damas Tower and meet the floor. The person planning your campaign sits near the person holding the camera, and you can talk to both.</p>
+      </details>
+      <details class="qa">
+        <summary>Do you only work with big brands?</summary>
+        <p>No. A single shoot starts at AED 599 and retainers start at AED 4,999 a month. Tell us the budget you actually have and we will tell you plainly what it buys.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== START ==================== -->
+<section class="start pad" id="start" aria-labelledby="s-h">
+  <div class="wrap start-in">
+    <div class="rev">
+      <span class="eyebrow">One call</span>
+      <h2 id="s-h">Tell us what you are trying to grow.</h2>
+      <p class="lede">Send it over and someone from the floor comes back to you within one working day. No pitch deck, no pressure.</p>
+      <div class="contacts">
+        <span><span class="lbl">Office</span>Damas Tower, Al Maktoum Road, Riggat Al Buteen, Dubai</span>
+        <span><span class="lbl">Phone</span><a href="tel:+971585511617">+971 58 551 1617</a> <span aria-hidden="true" style="color:var(--accent-muted);padding:0 6px">/</span> <a href="tel:+971585511618">+971 58 551 1618</a></span>
+        <span><span class="lbl">Email</span><a href="mailto:info@snapnow.ae">info@snapnow.ae</a></span>
+        <span><span class="lbl">WhatsApp</span><a href="https://wa.me/971585511617?text=Hi%20SnapNow%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener">Message the studio</a></span>
+      </div>
+    </div>
+
+    <form id="startForm" class="rev" novalidate>
+      <div class="form-body">
+        <div class="field">
+          <label for="f-name">Full name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email address</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone or WhatsApp</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+971 ..." required>
+        </div>
+        <div class="field">
+          <label for="f-goal">What are you trying to grow?</label>
+          <textarea id="f-goal" name="goal" placeholder="A few lines is plenty."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" id="submitBtn">Send it over</button>
+        <p class="form-note">Your message goes straight to the Snapnow team inbox. We do not pass your details to anyone else.</p>
+      </div>
+      <div class="thanks" id="thanks" role="status" aria-live="polite">
+        <span class="mark" aria-hidden="true">OK</span>
+        <h3>Got it.</h3>
+        <p>We will come back to you within one working day.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <img src="assets/logo_white.webp" alt="Snapnow" width="225" height="38" loading="lazy" decoding="async">
+        <p>A marketing agency in Dubai. Strategy, content, production and ad spend, run by one team on one floor.</p>
+      </div>
+      <div class="f-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="projects.html">Our Projects</a></li>
+          <li><a href="blogs.html">News &amp; Insights</a></li>
+          <li><a href="retainers.html">Marketing</a></li>
+          <li><a href="production.html">Production</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="https://maps.google.com/?q=Damas+Tower+Al+Maktoum+Road+Dubai" target="_blank" rel="noopener">Damas Tower, Dubai</a></li>
+          <li><a href="tel:+971585511617">+971 58 551 1617</a></li>
+          <li><a href="tel:+971585511618">+971 58 551 1618</a></li>
+          <li><a href="mailto:info@snapnow.ae">info@snapnow.ae</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>&copy; <span id="yr">2026</span> Snapnow. All rights reserved.</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/snapnow.ae" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.linkedin.com/company/snap-now" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        <a href="https://www.facebook.com/profile.php?id=61588710761043" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://www.youtube.com/@SnapNowMedia" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        <a href="https://wa.me/971585511617" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- utilities ---------- */
+var clamp=function(v,lo,hi){return Math.min(hi,Math.max(lo,v));};
+var smoothstep=function(p,e0,e1){var t=clamp((p-e0)/(e1-e0),0,1);return t*t*(3-2*t);};
+function rng(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+
+var $=function(s,c){return (c||document).querySelector(s);};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- nav ---------- */
+var nav=$('#nav'),burger=$('#burger'),navlinks=$('#navlinks');
+var navSolid=false;
+function navScroll(){
+  var want=window.scrollY>60;
+  if(want!==navSolid){navSolid=want;nav.classList.toggle('solid',want);}
+}
+addEventListener('scroll',navScroll,{passive:true});navScroll();
+burger.addEventListener('click',function(){
+  var open=navlinks.classList.toggle('open');
+  burger.setAttribute('aria-expanded',open?'true':'false');
+  burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+});
+$$('#navlinks a').forEach(function(a){a.addEventListener('click',function(){
+  navlinks.classList.remove('open');burger.setAttribute('aria-expanded','false');
+});});
+
+/* ---------- drifting motes, whisper level ---------- */
+(function(){
+  var host=$('#motes'),r=rng(20260912);
+  for(var i=0;i<14;i++){
+    var m=document.createElement('span');m.className='mote';
+    m.style.left=(r()*100).toFixed(2)+'%';
+    m.style.top=(60+r()*60).toFixed(2)+'vh';
+    m.style.animationDuration=(26+r()*26).toFixed(1)+'s';
+    m.style.animationDelay=(-r()*40).toFixed(1)+'s';
+    m.style.opacity=(0.08+r()*0.14).toFixed(2);
+    host.appendChild(m);
+  }
+})();
+
+/* ---------- the lime line ---------- */
+var rail=$('#rail'),railLen=0,lastRail=-1;
+if(rail&&rail.getTotalLength){
+  railLen=rail.getTotalLength();
+  rail.style.strokeDasharray=railLen;
+  rail.style.strokeDashoffset=railLen;
+}
+function drawRail(){
+  if(!railLen)return;
+  var h=document.documentElement.scrollHeight-innerHeight;
+  var p=h>0?clamp(scrollY/h,0,1):1;
+  var off=Math.round(railLen*(1-p));
+  if(off!==lastRail){lastRail=off;rail.style.strokeDashoffset=off;}
+}
+addEventListener('scroll',drawRail,{passive:true});
+addEventListener('resize',drawRail);
+drawRail();
+
+/* ---------- section entrances ----------
+   Position-based, not crossing-based. IntersectionObserver only reports an
+   element that CROSSES the viewport, so one fast fling on a phone (or an
+   anchor link straight to #start) takes an element from "below, not
+   intersecting" to "above, not intersecting" with no threshold crossed, no
+   callback, and the section stays at opacity 0 for good. This sweep asks
+   where each element IS instead, so anything in view or already scrolled
+   past is revealed. It stops costing anything once the sets empty. */
+var nodes=$$('#spine .node');
+var stationEls=$$('#stations .station');
+var pendingRev=$$('.rev,.stagger');
+var pendingSt=stationEls.slice();
+var sweepQueued=false;
+
+function sweepEntrances(){
+  sweepQueued=false;
+  var vh=innerHeight,i,el,r;
+  for(i=pendingRev.length-1;i>=0;i--){
+    el=pendingRev[i];r=el.getBoundingClientRect();
+    if(r.top<vh*0.88){                       /* in view, or already passed */
+      el.classList.add('in');
+      if(el.classList.contains('stagger')){
+        (function(t){setTimeout(function(){t.classList.add('done');},1400);})(el);
+      }
+      pendingRev.splice(i,1);
+    }
+  }
+  for(i=pendingSt.length-1;i>=0;i--){
+    el=pendingSt[i];r=el.getBoundingClientRect();
+    if(r.top<vh*0.78){
+      el.classList.add('lit');
+      var n=nodes[stationEls.indexOf(el)];
+      if(n)n.classList.add('lit');
+      pendingSt.splice(i,1);
+    }
+  }
+}
+function queueSweep(){
+  if(sweepQueued||(!pendingRev.length&&!pendingSt.length))return;
+  sweepQueued=true;
+  requestAnimationFrame(sweepEntrances);
+}
+addEventListener('scroll',queueSweep,{passive:true});
+addEventListener('resize',queueSweep);
+sweepEntrances();                                  /* catches an anchor-link landing */
+addEventListener('load',sweepEntrances);           /* and the browser's own hash jump */
+setTimeout(sweepEntrances,400);
+
+/* ---------- text splitting, once at load, seeded ---------- */
+function splitChars(el,seed,mode,spread){
+  var text=el.textContent.trim();
+  el.textContent='';
+  var sr=document.createElement('span');sr.className='sr-only';sr.textContent=text;el.appendChild(sr);
+  var vis=document.createElement('span');vis.setAttribute('aria-hidden','true');
+  var r=rng(seed),words=text.split(' ');
+  var total=text.replace(/ /g,'').length,idx=0;
+  words.forEach(function(w,wi){
+    var ws=document.createElement('span');ws.className='w';
+    for(var i=0;i<w.length;i++){
+      var cs=document.createElement('span');cs.className='c';cs.textContent=w[i];
+      if(mode==='gather'){
+        var pos=total>1?(idx/(total-1)-0.5):0;           /* -0.5 at the left end, +0.5 at the right */
+        cs.style.setProperty('--gx',(pos*168+ (r()*20-10)).toFixed(1)+'px');
+        cs.style.setProperty('--gy',((r()*2-1)*14).toFixed(1)+'px');
+        cs.style.setProperty('--th',(Math.abs(pos)*0.44+r()*0.06).toFixed(3));
+      }else{
+        cs.style.setProperty('--th',(r()*(spread||0.55)).toFixed(3));
+        cs.style.setProperty('--jx',((r()*2-1)*38).toFixed(1)+'px');
+        cs.style.setProperty('--jy',((r()*2-1)*30).toFixed(1)+'px');
+        cs.style.setProperty('--jr',((r()*2-1)*15).toFixed(1)+'deg');
+      }
+      ws.appendChild(cs);idx++;
+    }
+    vis.appendChild(ws);
+    if(wi<words.length-1)vis.appendChild(document.createTextNode(' '));
+  });
+  el.appendChild(vis);
+}
+function splitWords(el,seed){
+  var text=el.textContent.trim();
+  el.textContent='';
+  var sr=document.createElement('span');sr.className='sr-only';sr.textContent=text;el.appendChild(sr);
+  var vis=document.createElement('span');vis.setAttribute('aria-hidden','true');
+  var words=text.split(' ');
+  words.forEach(function(w,i){
+    var ws=document.createElement('span');ws.className='w';ws.textContent=w;
+    ws.style.setProperty('--th',(i/Math.max(1,words.length-1)*0.4).toFixed(3));
+    vis.appendChild(ws);
+    if(i<words.length-1)vis.appendChild(document.createTextNode(' '));
+  });
+  el.appendChild(vis);
+}
+
+/* ---------- the hero ---------- */
+var hero=$('#hero'),stage=$('#stage'),video=$('#hero-video'),posterLayer=$('#poster'),
+    ring=$('#ring'),ringC=ring?ring.querySelector('circle'):null,cue=$('#cue'),sframe=$('#sframe');
+
+/* A portrait phone gets a 9:16 encode: half the bytes of the landscape master
+   for the same sharpness once cover-cropped, which matters on cellular data.
+   Everything else takes the landscape master. A phone that rotates lands on
+   the static-hero gate, so the chosen source never has to change mid-session. */
+var PHONE_PORTRAIT='(orientation: portrait) and (max-width: 720px)';
+var SRC=matchMedia(PHONE_PORTRAIT).matches
+  ? {v:'assets/hero-scrub-portrait.mp4',b:3241058,p:'assets/hero-poster-portrait.jpg'}
+  : {v:'assets/hero-scrub.mp4',b:5116121,p:'assets/hero-poster.jpg'};
+/* Both files are encoded for scrubbing, not playback: every frame is a keyframe,
+   no B-frames, and x264's fastdecode tune. A seek then decodes exactly one frame
+   instead of a chain of them. Measured: seeks ~40ms -> ~8ms, and a steady scroll
+   shows ~53 of every 60 frames instead of ~22. The files are about twice the size,
+   which is the price of a scrub that does not stutter. */
+var VIDEO_URL=SRC.v;
+var VIDEO_BYTES=SRC.b;
+var POSTER_URL=SRC.p;
+
+var bands=$$('.band').map(function(el,i){
+  var mode=el.getAttribute('data-entrance');
+  var head=el.querySelector('.split');
+  if(head)splitChars(head,1000+i*37,mode==='gather'?'gather':'scatter',parseFloat(el.getAttribute('data-spread'))||0.55);
+  var hw=el.querySelector('.split-words');
+  if(hw)splitWords(hw,2000+i*11);
+  return {
+    el:el,
+    a:parseFloat(el.getAttribute('data-a')),
+    b:parseFloat(el.getAttribute('data-b')),
+    ramp:parseFloat(el.getAttribute('data-ramp'))||0,
+    first:i===0,
+    last:i===$$('.band').length-1,
+    settle:el.classList.contains('settle'),
+    op:-1,k:-1
+  };
+});
+
+var target=0,shown=0,rafId=null,lastTick=0,heroOnScreen=true,scrubOn=false;
+var seekBusy=false,pendingTime=null;
+var loadK=0,loadStart=0;
+
+function heroProgress(){
+  var r=hero.getBoundingClientRect();
+  /* measure against the sticky stage, not innerHeight: mobile browser chrome
+     collapses on scroll and innerHeight moves with it, which would drift the
+     scrub against the scroll. The stage's own height is the honest divisor. */
+  var range=hero.offsetHeight-stage.offsetHeight;
+  if(range<=0)return 0;
+  return clamp(-r.top/range,0,1);
+}
+/* A seek that never reports seeked (an undecoded frame on WebKit) must not wedge
+   the gate. After 600ms it is treated as lost and the newest target goes through,
+   and a trailing flush makes sure the last position lands even once the scroll
+   loop has come to rest. On a healthy browser seeks finish in a few ms and none
+   of this ever triggers. */
+var seekAt=0,seekRetry=null;
+function flushSeek(){
+  seekRetry=null;
+  if(pendingTime===null)return;
+  var age=performance.now()-seekAt;
+  if(seekBusy&&age<600){seekRetry=setTimeout(flushSeek,620-age);return;}
+  var t=pendingTime;pendingTime=null;seekBusy=false;requestSeek(t);
+}
+function requestSeek(t){
+  if(!video.duration||isNaN(video.duration))return;
+  var age=performance.now()-seekAt;
+  if(seekBusy&&age<600){
+    pendingTime=t;
+    if(!seekRetry)seekRetry=setTimeout(flushSeek,Math.max(20,620-age));
+    return;
+  }
+  seekBusy=true;seekAt=performance.now();pendingTime=null;
+  try{video.currentTime=t;}catch(e){seekBusy=false;}
+}
+video.addEventListener('seeked',function(){
+  seekBusy=false;
+  if(pendingTime!==null){var t=pendingTime;pendingTime=null;requestSeek(t);}
+});
+video.addEventListener('error',function(){seekBusy=false;pendingTime=null;failVideo();});
+
+function updateCaptions(p){
+  for(var i=0;i<bands.length;i++){
+    var b=bands[i];
+    var f=Math.min(0.034,(b.b-b.a)/3);          /* widened from 0.02: this hero has a 540vh scroll range */
+    var inEase=b.first?1:smoothstep(p,b.a,b.a+f);
+    var outEase=b.last?1:(1-smoothstep(p,b.b-f,b.b));
+    var op=inEase*outEase;
+    var ramp=b.ramp||Math.min(0.025,(b.b-b.a)*0.35);
+    var k=clamp((p-b.a)/ramp,0,1);
+    if(b.first)k=Math.max(k,loadK);
+    if(op<0.004)op=0;else if(op>0.996)op=1;     /* snap, so the delta gate cannot settle short */
+    if(op!==b.op&&(Math.abs(op-b.op)>0.004||op===0||op===1)){
+      b.op=op;b.el.style.opacity=op;
+    }
+    if(k!==b.k&&(Math.abs(k-b.k)>0.008||k===0||k===1)){
+      b.k=k;b.el.style.setProperty('--k',k.toFixed(3));
+      if(b.settle&&sframe)sframe.style.setProperty('--k4',k.toFixed(3));
+    }
+  }
+  if(cue){
+    var cop=p<0.06?1:0;
+    if(cue._o!==cop){cue._o=cop;cue.style.opacity=cop;}
+  }
+}
+
+function tick(now){
+  var dt=Math.min(100,now-(lastTick||now));
+  lastTick=now;
+  if(loadStart){
+    loadK=clamp((now-loadStart)/900,0,1);
+    if(loadK>=1)loadStart=0;
+  }
+  var k=0.16;
+  shown+=(target-shown)*(1-Math.pow(1-k,dt/16.667));
+  var settled=Math.abs(target-shown)<0.0005&&loadK>=1;
+  if(settled){shown=target;rafId=null;lastTick=0;}
+  else{rafId=requestAnimationFrame(tick);}
+  if(video.duration)requestSeek(shown*video.duration);
+  updateCaptions(shown);
+}
+function onScroll(){
+  target=heroProgress();
+  if(rafId===null&&heroOnScreen)rafId=requestAnimationFrame(tick);
+}
+
+var heroIO=new IntersectionObserver(function(es){
+  heroOnScreen=es[0].isIntersecting;
+  if(heroOnScreen&&scrubOn&&rafId===null)rafId=requestAnimationFrame(tick);
+},{threshold:0});
+if(hero)heroIO.observe(hero);
+
+/* ---------- streamed blob loader ---------- */
+var heroInit=false;
+function failVideo(){
+  if(ring)ring.style.display='none';
+  stage.classList.add('video-failed');
+}
+function initHeroOnce(){
+  if(heroInit)return;heroInit=true;
+  posterLayer.style.backgroundImage="url('"+POSTER_URL+"')";
+  var started=false;
+  function start(){if(started)return;started=true;loadHeroBlob().catch(failVideo);}
+  var img=new Image();
+  img.onload=start;img.onerror=start;img.src=POSTER_URL;
+  setTimeout(start,4000);
+  loadStart=performance.now();
+  if(rafId===null)rafId=requestAnimationFrame(tick);
+}
+function loadHeroBlob(){
+  var ctrl=new AbortController();
+  var watchdog=setTimeout(function(){ctrl.abort();},20000);
+  var opts={signal:ctrl.signal};
+  try{opts.priority='low';}catch(e){}
+  return fetch(VIDEO_URL,opts).then(function(res){
+    if(!res.ok||!res.body)throw new Error('no body');
+    var total=Number(res.headers.get('Content-Length'))||VIDEO_BYTES;
+    var reader=res.body.getReader(),chunks=[],got=0,lastRing=0;
+    function pump(){
+      return reader.read().then(function(r){
+        if(r.done)return;
+        clearTimeout(watchdog);
+        watchdog=setTimeout(function(){ctrl.abort();},20000);
+        chunks.push(r.value);got+=r.value.length;
+        var frac=Math.min(1,got/total),now=performance.now();
+        if(ringC&&(now-lastRing>100||frac===1)){
+          lastRing=now;ringC.style.strokeDashoffset=Math.round(126*(1-frac));
+        }
+        return pump();
+      });
+    }
+    return pump().then(function(){
+      clearTimeout(watchdog);
+      if(ringC)ringC.style.strokeDashoffset=0;
+      armVideo(URL.createObjectURL(new Blob(chunks,{type:'video/mp4'})));
+    });
+  });
+}
+
+/* ---------- arming the video, WebKit-proof ----------
+   iPad and iPhone Safari will not buffer or decode a video that ships
+   preload="none" and has never been asked to play. canplay may never fire, and
+   a seek may never report back. So:
+   - ready is decided by whichever proof arrives first, not by canplay alone
+   - the decoder is primed with a muted play and an immediate pause
+   - if autoplay is refused (Low Power Mode), the first tap or swipe primes it
+   - a watchdog makes sure the page never waits forever behind a full ring
+   preload stays "none" in the markup, so a gated visitor still downloads nothing. */
+var videoReady=false;
+function markReady(){
+  if(videoReady||!video.duration||isNaN(video.duration))return;
+  videoReady=true;
+  seekBusy=false;pendingTime=null;
+  requestSeek(heroProgress()*video.duration);
+  stage.classList.add('video-ready');
+}
+var gestureArmed=false;
+function armGesturePrime(){
+  if(gestureArmed)return;gestureArmed=true;
+  var evs=['touchend','pointerup','click','keydown'];
+  function once(){
+    evs.forEach(function(ev){removeEventListener(ev,once,true);});
+    var p;try{p=video.play();}catch(e){return;}
+    if(p&&p.then)p.then(function(){video.pause();markReady();}).catch(function(){});
+  }
+  evs.forEach(function(ev){addEventListener(ev,once,{capture:true,passive:true});});
+}
+function armVideo(url){
+  video.muted=true;video.defaultMuted=true;video.playsInline=true;
+  video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');
+  video.preload='auto';
+  ['loadeddata','canplay'].forEach(function(ev){
+    video.addEventListener(ev,function(){if(video.readyState>=2)markReady();});
+  });
+  video.src=url;
+  video.load();
+  var p;
+  try{p=video.play();}catch(e){p=null;}
+  if(p&&p.then)p.then(function(){video.pause();markReady();}).catch(armGesturePrime);
+  else armGesturePrime();
+  setTimeout(function(){
+    if(videoReady)return;
+    if(video.readyState>=1&&video.duration)markReady();   /* metadata is enough to scrub */
+    else failVideo();                                       /* honest still, never a stuck ring */
+  },8000);
+}
+
+/* ---------- the five static-hero gates (identical strings to the CSS) ---------- */
+var GATES=[
+  '(orientation: landscape) and (pointer: coarse) and (max-height: 440px)',
+  '(prefers-reduced-motion: reduce)'
+];
+function enableScrub(){
+  if(scrubOn)return;scrubOn=true;
+  initHeroOnce();
+  addEventListener('scroll',onScroll,{passive:true});
+  bands.forEach(function(b){b.op=-1;b.k=-1;});
+  unpinFinalStates();
+  updateCaptions(heroProgress());
+  onScroll();
+}
+function disableScrub(){
+  if(!scrubOn)return;scrubOn=false;
+  removeEventListener('scroll',onScroll);
+  if(rafId!==null){cancelAnimationFrame(rafId);rafId=null;}
+}
+function applyHeroMode(){
+  var off=GATES.some(function(q){return matchMedia(q).matches;});
+  if(off)disableScrub();else enableScrub();
+}
+var MQLS=GATES.map(function(q){return matchMedia(q);});
+MQLS.forEach(function(m){
+  if(m.addEventListener)m.addEventListener('change',applyHeroMode);
+  else if(m.addListener)m.addListener(applyHeroMode);
+});
+
+/* ---------- the interactive moment: gather the room ---------- */
+var hold=$('#hold'),cell=$('#cell'),glist=$$('#glist li'),gdone=$('#gdone');
+var gp=0,gTarget=0,gRaf=null,gLast=0,gDone=false;
+function paintGather(){
+  cell.style.setProperty('--p',gp.toFixed(3));
+  var n=Math.round(gp*glist.length+0.001);
+  for(var i=0;i<glist.length;i++){
+    var on=i<n;
+    if(glist[i]._on!==on){glist[i]._on=on;glist[i].classList.toggle('on',on);}
+  }
+  hold.style.setProperty('--p',gp.toFixed(3));
+  if(gp>=0.999&&!gDone){gDone=true;gdone.classList.add('on');hold.querySelector('.lbl').textContent='Gathered';}
+}
+function gTick(now){
+  var dt=Math.min(100,now-(gLast||now));gLast=now;
+  var rate=gTarget>gp?1/1400:-1/900;                 /* release eases back, never snaps */
+  gp=clamp(gp+rate*dt,0,1);
+  paintGather();
+  if((gTarget===1&&gp<1)||(gTarget===0&&gp>0)){gRaf=requestAnimationFrame(gTick);}
+  else{gRaf=null;gLast=0;}
+}
+function gStart(e){
+  if(e&&e.cancelable)e.preventDefault();
+  gTarget=1;if(gRaf===null)gRaf=requestAnimationFrame(gTick);
+}
+function gEnd(){gTarget=0;if(gRaf===null)gRaf=requestAnimationFrame(gTick);}
+if(hold){
+  ['mousedown','touchstart','pointerdown'].forEach(function(ev){hold.addEventListener(ev,gStart,{passive:false});});
+  ['mouseup','mouseleave','touchend','touchcancel','pointerup','pointercancel'].forEach(function(ev){hold.addEventListener(ev,gEnd);});
+  hold.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();gStart();}});
+  hold.addEventListener('keyup',function(e){if(e.key===' '||e.key==='Enter')gEnd();});
+}
+
+/* ---------- reduced motion, live, in both directions ---------- */
+var pinned=false;
+function pinToFinalStates(){
+  pinned=true;
+  if(railLen){rail.style.strokeDashoffset=0;}
+  nodes.forEach(function(n){n.classList.add('lit');});
+  $$('.rev,.stagger').forEach(function(e){e.classList.add('in','done');});
+  stationEls.forEach(function(e){e.classList.add('lit');});
+  pendingRev.length=0;pendingSt.length=0;         /* the sweep has nothing left to do */
+  gp=1;gTarget=1;if(gRaf!==null){cancelAnimationFrame(gRaf);gRaf=null;}
+  paintGather();
+  disableScrub();
+}
+function unpinFinalStates(){
+  if(!pinned)return;pinned=false;
+  if(railLen)drawRail();
+}
+var rmq=matchMedia('(prefers-reduced-motion: reduce)');
+function onRM(e){if(e.matches)pinToFinalStates();else applyHeroMode();}
+if(rmq.addEventListener)rmq.addEventListener('change',onRM);
+else if(rmq.addListener)rmq.addListener(onRM);
+if(rmq.matches)pinToFinalStates();
+
+applyHeroMode();
+
+/* ---------- pause every animation on a hidden tab ---------- */
+document.addEventListener('visibilitychange',function(){
+  document.body.classList.toggle('paused',document.hidden);
+});
+
+/* ---------- the form ---------- */
+var form=$('#startForm');
+if(form){
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=$('#submitBtn');
+    var name=$('#f-name').value.trim(),email=$('#f-email').value.trim(),
+        phone=$('#f-phone').value.trim(),goal=$('#f-goal').value.trim();
+    if(!name||!email||!phone){
+      [['#f-name',name],['#f-email',email],['#f-phone',phone]].forEach(function(p){
+        if(!p[1])$(p[0]).style.borderColor='var(--accent)';
+      });
+      return;
+    }
+    btn.disabled=true;btn.textContent='Sending';
+    var payload={
+      "Name":name,"Email":email,"Phone":phone,
+      "What they want to grow":goal||'Not specified',
+      "_subject":"New Snapnow enquiry from "+name,
+      "_cc":"info@snapnow.ae",
+      "_template":"table",
+      "_captcha":"false"
+    };
+    fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify(payload)
+    }).catch(function(err){console.warn('Email service notice:',err);})
+      .then(function(){
+        form.classList.add('sent');
+        $('#thanks').classList.add('on');
+      });
+  });
+}
+})();
+</script>
 </body>
 </html>
