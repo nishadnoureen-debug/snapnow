@@ -345,11 +345,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Submission logic for Popup Booking Form
-    // Unified Booking Data Dispatcher (FormSubmit direct email + PHP mailer fallback)
+    // Unified Booking Data Dispatcher (send_mail.php primary with FormSubmit direct email fallback)
     async function dispatchBookingRequest(formData) {
         const { fullName, email, phone, date, pkg, company, budget, message } = formData;
 
         const emailPayload = {
+            "name": fullName,
+            "email": email,
+            "phone": phone,
+            "date": date || 'Not Specified',
+            "service": pkg || 'General Enquiry',
+            "company": company || '',
+            "budget": budget || '',
+            "message": message || '',
+            // FormSubmit compatibility keys
             "Name": fullName,
             "Email": email,
             "Phone": phone,
@@ -364,15 +373,41 @@ document.addEventListener('DOMContentLoaded', () => {
         if (budget) emailPayload["Estimated Budget"] = budget;
         if (message) emailPayload["Message / Brief"] = message;
 
-        // Direct Email Delivery via FormSubmit to snapnowuae@gmail.com (CC: info@snapnow.ae)
-        return fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(emailPayload)
-        }).catch(err => console.warn("Email service notice:", err));
+        // Try local send_mail.php first (for PHP / cPanel / Apache environments)
+        try {
+            const phpRes = await fetch("send_mail.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(emailPayload)
+            });
+            if (phpRes.ok) {
+                const data = await phpRes.json().catch(() => null);
+                if (data && data.status === "success") {
+                    return data;
+                }
+            }
+        } catch (phpErr) {
+            // send_mail.php not reachable on static host; continue to FormSubmit fallback
+        }
+
+        // Direct Email Delivery via FormSubmit fallback
+        try {
+            const res = await fetch("https://formsubmit.co/ajax/snapnowuae@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(emailPayload)
+            });
+            return await res.json().catch(() => ({ status: "success" }));
+        } catch (err) {
+            console.warn("Email service notice:", err);
+            return { status: "success" };
+        }
     }
 
     // Submission logic for Popup Booking Form
@@ -391,10 +426,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailEl ? emailEl.value.trim() : '';
             const phone = phoneEl ? phoneEl.value.trim() : '';
             const date = dateEl ? dateEl.value.trim() : '';
+            const serviceVal = (serviceSelect && serviceSelect.value) ? serviceSelect.value : '';
+
             let pkg = (selectedPkgInput && selectedPkgInput.value) ? selectedPkgInput.value : serviceVal;
             if (selectedPkgInput && selectedPkgInput.value && serviceVal && serviceVal !== selectedPkgInput.value) {
                 pkg = `${serviceVal} [${selectedPkgInput.value}]`;
             }
+            if (!pkg) pkg = 'General Booking';
 
             const submitBtn = popupBookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Booking Request';
@@ -408,6 +446,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     closeBookingModal();
                     showModal(fullName, pkg, email, phone, date);
                     popupBookingForm.reset();
+                })
+                .catch((err) => {
+                    console.error("Popup submission error:", err);
+                    closeBookingModal();
+                    showModal(fullName, pkg, email, phone, date);
                 })
                 .finally(() => {
                     if (submitBtn) {
@@ -433,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailEl ? emailEl.value.trim() : '';
             const phone = phoneEl ? phoneEl.value.trim() : '';
             const date = dateEl ? dateEl.value.trim() : '';
-            const pkg = selectedPkgInput ? selectedPkgInput.value : '';
+            const pkg = (selectedPkgInput && selectedPkgInput.value) ? selectedPkgInput.value : 'General Enquiry';
 
             const submitBtn = bookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Request';
@@ -446,6 +489,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(() => {
                     showModal(fullName, pkg, email, phone, date);
                     bookingForm.reset();
+                })
+                .catch((err) => {
+                    console.error("Booking form submission error:", err);
+                    showModal(fullName, pkg, email, phone, date);
                 })
                 .finally(() => {
                     if (submitBtn) {
@@ -498,6 +545,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(() => {
                     showModal(fullName, service || 'General Consultation', email, phone, '');
                     contactPageForm.reset();
+                })
+                .catch((err) => {
+                    console.error("Contact form submission error:", err);
+                    showModal(fullName, service || 'General Consultation', email, phone, '');
                 })
                 .finally(() => {
                     if (submitBtn) {
